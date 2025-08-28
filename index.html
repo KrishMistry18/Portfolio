@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Krish Hitendra Mistry — Personal Portfolio</title>
+    <meta name="description" content="Portfolio of Krish Hitendra Mistry — IT student and full‑stack developer from Mumbai, India." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+      :root { --accent: #3a86ff; --ink: #111827; --muted: #4b5563; --surface: #ffffff; --surface-2: #f5f7fb; --card: #ffffff; --border: #e5e7eb; }
+      [data-theme="dark"] { --ink: #e5e7eb; --muted: #9ca3af; --surface: #0b1020; --surface-2: #0f1730; --card: #0e152b; --border: #1f2a44; }
+      html { scroll-behavior: smooth; }
+      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--ink); background: var(--surface); }
+      h1, h2, h3, h4, h5 { letter-spacing: 0.2px; }
+      .lead { color: var(--muted); }
+      .btn-primary { background-color: var(--accent); border-color: var(--accent); box-shadow: 0 6px 18px rgba(58,134,255,.28); }
+      .btn-primary:hover { filter: brightness(0.95); }
+      .btn-outline-primary { color: var(--accent); border-color: var(--accent); }
+      .btn-outline-primary:hover { background: var(--accent); color: #fff; }
+      .o_cc { padding: 64px 0; }
+      .o_cc.bg-light { background: var(--surface-2) !important; }
+      .card { border: 1px solid var(--border); background: var(--card); transition: transform .18s ease, box-shadow .18s ease; color: var(--ink); }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+      [data-theme="dark"] .card:hover { box-shadow: 0 10px 24px rgba(0,0,0,.5); }
+      .card-title { color: var(--ink); }
+      .card-text { color: #374151; }
+      [data-theme="dark"] .card-title { color: #e5e7eb; }
+      [data-theme="dark"] .card-text { color: #cbd5e1; }
+      .card-footer.bg-white { background: var(--card) !important; border-top: 1px solid var(--border); }
+      footer { padding: 48px 0; color: var(--muted); background: var(--surface); }
+      a { text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .badge-skill { background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; }
+      [data-theme="dark"] .badge.bg-primary-subtle { background-color: rgba(58,134,255,.18) !important; color: #cbd5e1 !important; }
+      .hero { position: relative; overflow: hidden; }
+      .hero::before { content: ""; position: absolute; inset: -20%; background: conic-gradient(from 180deg at 50% 50%, rgba(58,134,255,.25), rgba(93,76,255,.25), rgba(58,134,255,.25)); filter: blur(80px); animation: swirl 20s linear infinite; pointer-events: none; }
+      .hero a.btn { position: relative; z-index: 1; }
+      .badge { user-select: none; }
+      @keyframes swirl { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.1);} 100% { transform: rotate(360deg) scale(1); } }
+      .section-title { position: relative; display: inline-block; padding-bottom: 8px; }
+      .section-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 56px; height: 3px; background: var(--accent); border-radius: 2px; opacity: .9; }
+      .ratio-portrait { aspect-ratio: 3/4; object-fit: cover; }
+      @media (max-width: 768px) { .pdf-frame { height: 520px; } }
+
+      /* Skills progress */
+      .skillbar { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+      .skillbar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), #7c3aed); width: 0; transition: width 1.2s ease; }
+
+      /* Timeline */
+      .timeline { position: relative; margin-left: 8px; }
+      .timeline::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+      .timeline-item { position: relative; padding-left: 36px; margin-bottom: 18px; }
+      .timeline-item::before { content: ""; position: absolute; left: 2px; top: 4px; width: 16px; height: 16px; background: var(--surface); border: 2px solid var(--accent); border-radius: 50%; }
+      [data-theme="dark"] .timeline-item::before { background: var(--card); }
+
+      /* Reveal */
+      .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+      .reveal-visible { opacity: 1; transform: translateY(0); }
+
+      /* Featured cards and tags */
+      .feature-card { border-radius: 14px; padding: 20px; background: var(--card); border: 1px solid var(--border); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+      [data-theme="dark"] .feature-card { box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+      .tag { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; border: 1px solid var(--border); margin-right: 6px; margin-bottom: 6px; color: var(--ink); background: var(--surface-2); }
+      [data-theme="dark"] .tag { color: #e5e7eb; background: rgba(255,255,255,.03); }
+      .card-actions a { margin-right: 10px; }
+
+      /* Rating dots */
+      .rating-dots { display: inline-flex; gap: 6px; }
+      .rating-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(58,134,255,.35); }
+      .rating-dot.active { background: linear-gradient(90deg, var(--accent), #7c3aed); }
+
+      /* Certificates carousel */
+      .carousel-wrap { position: relative; }
+      .carousel-track { display: flex; gap: 24px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 8px; }
+      .carousel-track::-webkit-scrollbar { height: 8px; }
+      .carousel-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+      .carousel-btn { position: absolute; top: -48px; right: 0; }
+
+      /* Back to top */
+      #backToTop { position: fixed; right: 18px; bottom: 18px; z-index: 50; opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; }
+      #backToTop.show { opacity: 1; transform: translateY(0); }
+
+      /* Toggle removed: default dark mode enforced */
+      [data-theme="dark"] .text-muted { color: #9ca3af !important; }
+
+      /* Hero info box */
+      .info-box { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+      .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; font-size: 12px; background: rgba(58,134,255,.15); color: #cfe1ff; border: 1px solid var(--border); margin-right: 8px; margin-bottom: 8px; }
+    </style>
+  </head>
+  <body data-theme="dark">
+    <div id="krish-portfolio">
+      <section class="o_cc o_cc1 border-bottom hero">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <div class="mb-2 d-flex gap-2 flex-wrap">
+                <span class="badge bg-primary-subtle text-primary"><i class="bi bi-code-slash me-1"></i>Full Stack Developer</span>
+                <span class="badge bg-primary-subtle text-primary"><i class="bi bi-heart-pulse me-1"></i>Vibe Coding</span>
+              </div>
+              <h1 class="fw-bold mb-2">Krish Hitendra Mistry</h1>
+              <p class="lead mb-3">IT student from Mumbai — full‑stack developer focused on building reliable, user‑friendly products.</p>
+              <p class="mb-2">I design, build, and ship end‑to‑end apps with modern web stacks. I enjoy clean code, measurable impact, and constant learning through real projects and competitions.</p>
+              <p class="text-muted mb-3">🎯 From hello world → to changing the world.</p>
+              <ul class="list-unstyled mt-3 small">
+                <li><strong>B.E. (IT)</strong>, St. Francis Institute of Technology (2023–2027) — CGPA 9.34</li>
+                <li><em>“The only way to do great work is to love what you do.”</em> — Steve Jobs</li>
+              </ul>
+              <div class="mt-4">
+                <a class="btn btn-primary me-2" href="#projects">View Projects</a>
+                <a class="btn btn-primary me-2" href="Krish_Mistry_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+                <a class="btn btn-primary me-2" href="#certificates">Certificates</a>
+                <a class="btn btn-primary" href="#contact">Contact Me</a>
+              </div>
+
+              <div class="d-flex flex-wrap gap-3 mt-4 text-muted small">
+                <span><i class="bi bi-geo-alt me-1"></i>Mumbai, India</span>
+                <span><i class="bi bi-briefcase me-1"></i>Open to Internships</span>
+                <span><i class="bi bi-envelope me-1"></i><a href="mailto:krishmistry2005@gmail.com">krishmistry2005@gmail.com</a></span>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex justify-content-lg-end mt-3 mt-lg-0">
+              <div class="info-box" style="max-width: 420px;">
+                <h4 class="mb-2">Hi, I'm Krish Mistry</h4>
+                <p class="mb-3">B.E. Student (2027) at St. Francis Institute of Technology — a results‑driven developer who enjoys building thoughtful, reliable products end‑to‑end.</p>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="pill">AI Systems</span>
+                  <span class="pill">Vibe Coding</span>
+                  <span class="pill">Full Stack</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section id="skills" class="o_cc o_cc2 reveal">
+        <div class="container">
+          <h2 class="mb-3 section-title">Technical Skills</h2>
+          <p class="text-muted mb-4">A quick overview of tools I use and where I’m strongest.</p>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h5 class="mt-2">Technical</h5>
+              <div class="mb-2">Python</div>
+              <div class="skillbar mb-3"><span style="width: 85%"></span></div>
+              <div class="mb-2">Java</div>
+              <div class="skillbar mb-3"><span style="width: 80%"></span></div>
+              <div class="mb-2">JavaScript / React</div>
+              <div class="skillbar mb-3"><span style="width: 75%"></span></div>
+              <div class="mb-2">Django / REST APIs</div>
+              <div class="skillbar mb-3"><span style="width: 78%"></span></div>
+              <div class="mb-2">SQL / PostgreSQL / MySQL</div>
+              <div class="skillbar"><span style="width: 82%"></span></div>
+              <div class="mt-3 small text-muted">Proficiency</div>
+              <div class="rating-dots mt-1">
+                <span class="rating-dot active"></span><span class="rating-dot active"></span><span class="rating-dot active"></span><span class="rating-dot active"></span><span class="rating-dot"></span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h5 class="mt-2">Soft Skills</h5>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge rounded-pill bg-primary-subtle text-primary">Problem‑solving</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary">Teamwork</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary">Communication</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary">Time Management</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary">Adaptability</span>
+                <span class="badge rounded-pill bg-primary-subtle text-primary">Leadership</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="o_cc o_cc3 bg-light reveal">
+        <div class="container">
+          <h2 class="mb-1 section-title">Featured Projects</h2>
+          <p class="text-muted mb-4">Explore my latest work showcasing innovative solutions and modern tech.</p>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+              <div class="feature-card h-100">
+                <div class="d-flex align-items-center mb-2"><i class="bi bi-bank2 fs-4 text-primary me-2"></i><h5 class="m-0">Nexus Financial — ATM‑Style Banking</h5></div>
+                <p class="mb-3">Java Swing + MySQL app with card/PIN login, deposits, withdrawals, fast cash, and transaction logs.</p>
+                <div class="mb-3"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">Desktop</span></div>
+                <div class="card-actions">
+                  <a class="btn btn-sm btn-outline-primary" href="https://github.com/KrishMistry18/nexus-financial" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>Repo</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card h-100">
+                <div class="d-flex align-items-center mb-2"><i class="bi bi-bag-check fs-4 text-primary me-2"></i><h5 class="m-0">EduCycle — Student Marketplace</h5></div>
+                <p class="mb-3">Full‑stack Django REST + React marketplace with JWT/OAuth2 auth, chat, Stripe payments, and PWA offline support.</p>
+                <div class="mb-3"><span class="tag">Django</span><span class="tag">React</span><span class="tag">Stripe</span><span class="tag">PWA</span></div>
+                <div class="card-actions">
+                  <a class="btn btn-sm btn-outline-primary" href="https://github.com/KrishMistry18/educycle" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>Repo</a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card h-100">
+                <div class="d-flex align-items-center mb-2"><i class="bi bi-geo-alt fs-4 text-primary me-2"></i><h5 class="m-0">HeritageGuide — Travel Companion</h5></div>
+                <p class="mb-3">Django app with Leaflet + OpenStreetMap and Google Maps; smart touring, AI assistant, and availability‑based bookings.</p>
+                <div class="mb-3"><span class="tag">Django</span><span class="tag">Leaflet</span><span class="tag">Maps</span></div>
+                <div class="card-actions">
+                  <a class="btn btn-sm btn-outline-primary" href="https://github.com/KrishMistry18/heritageguide" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>Repo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="o_cc o_cc4 reveal">
+        <div class="container">
+          <h2 class="section-title">Education</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h6 class="mb-1"><strong>B.E. (IT)</strong> — St. Francis Institute of Technology</h6>
+              <div class="text-muted small">2023–2027 · CGPA: 9.34 (Average)</div>
+            </div>
+            <div class="timeline-item">
+              <h6 class="mb-1"><strong>HSC (Class XII)</strong></h6>
+              <div class="text-muted small">2023 · 76%</div>
+            </div>
+            <div class="timeline-item">
+              <h6 class="mb-1"><strong>SSC (Class X)</strong></h6>
+              <div class="text-muted small">2021 · 90%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="highlights" class="o_cc o_cc5 bg-light reveal">
+        <div class="container">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h2 class="section-title">Online Courses</h2>
+              <ul>
+                <li><strong>MongoDB Basics Bootcamp — Q2 2025:</strong> NoSQL, database fundamentals, and scalability concepts.</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h2 class="section-title">Achievements</h2>
+              <ul>
+                <li><strong>2nd Prize</strong> — Colloquium ’25 (SFIT), IT for Good Governance</li>
+                <li><strong>Participation</strong> — “Projest” Project Exhibition, SFIT, 2022</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section id="hobbies" class="o_cc o_cc7 reveal">
+        <div class="container">
+          <h2>Hobbies & Interests</h2>
+          <ul>
+            <li>Chess and Carrom: Competed in various tournaments, developing strategic thinking and problem-solving skills.</li>
+            <li>Cricket and Box Cricket: A two-time winner of box cricket tournaments, demonstrating teamwork, leadership, and a competitive drive.</li>
+            <li>Technology: Actively participate in tech communities and attend industry events to stay current with emerging trends.</li>
+            <li>Travel: Enjoy exploring historical sites, which has cultivated an appreciation for diverse cultures and a global perspective.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="certificates" class="o_cc o_cc5 reveal">
+        <div class="container">
+          <h2 class="section-title">Certificates & Achievements</h2>
+          <p class="text-muted mb-3">Proof of continuous learning.</p>
+          <div class="carousel-wrap">
+            <div class="carousel-track" id="certTrack">
+              <figure class="m-0 text-center">
+                <img src="Colloquium_certificate.jpg" alt="Colloquium Certificate" class="rounded-3" style="height:220px; width:auto; border:1px solid var(--border);" />
+                <figcaption class="small text-muted mt-2">Colloquium — 2nd Prize</figcaption>
+              </figure>
+              <figure class="m-0 text-center">
+                <img src="Prayas_certificate.jpg" alt="Prayas Certificate" class="rounded-3" style="height:220px; width:auto; border:1px solid var(--border);" />
+                <figcaption class="small text-muted mt-2">Prayas</figcaption>
+              </figure>
+              <figure class="m-0 text-center">
+                <img src="Volunteering_Colloquium_certificate.png" alt="Volunteering Colloquium Certificate" class="rounded-3" style="height:220px; width:auto; border:1px solid var(--border);" />
+                <figcaption class="small text-muted mt-2">Volunteering — Colloquium</figcaption>
+              </figure>
+            </div>
+            <div class="carousel-btn">
+              <button class="btn btn-outline-primary btn-sm me-2" id="certPrev"><i class="bi bi-arrow-left"></i></button>
+              <button class="btn btn-primary btn-sm" id="certNext"><i class="bi bi-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="o_cc o_cc8 border-top">
+        <div class="container">
+          <h2>Contact</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><strong>Email:</strong> <a href="mailto:krishmistry2005@gmail.com">krishmistry2005@gmail.com</a></li>
+                <li><strong>Phone/WhatsApp:</strong> +91 9619499942</li>
+                <li><strong>Location:</strong> Mumbai, India</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/krish-mistry-029052b7" target="_blank" rel="noopener">/in/krish-mistry-029052b7</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/KrishMistry18" target="_blank" rel="noopener">github.com/KrishMistry18</a></li>
+              </ul>
+              <a class="btn btn-primary mt-2" href="Krish_Mistry_Resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
+              <div class="small text-muted mt-2">Tip: Open in new tab to view full screen.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="text-center border-top">
+      <div class="container">
+        <p class="mb-0 small">© <span id="y"></span> Krish Hitendra Mistry</p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="btn btn-primary btn-sm" aria-label="Back to top">↑</button>
+
+    <script>
+      // Year
+      document.getElementById('y').textContent = new Date().getFullYear();
+
+      // Theme toggle with persistence
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') { root.setAttribute('data-theme', 'dark'); if (toggle) toggle.checked = true; }
+      toggle?.addEventListener('change', () => {
+        const isDark = toggle.checked;
+        root.setAttribute('data-theme', isDark ? 'dark' : '');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('reveal-visible');
+            const bars = e.target.querySelectorAll('.skillbar > span');
+            bars.forEach((b) => { const w = b.getAttribute('style'); b.setAttribute('style', w); });
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Back to top
+      const back = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) back.classList.add('show'); else back.classList.remove('show');
+      });
+      back.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Certificates carousel controls
+      const track = document.getElementById('certTrack');
+      const prev = document.getElementById('certPrev');
+      const next = document.getElementById('certNext');
+      const scrollStep = 320;
+      prev?.addEventListener('click', () => track.scrollBy({ left: -scrollStep, behavior: 'smooth' }));
+      next?.addEventListener('click', () => track.scrollBy({ left: scrollStep, behavior: 'smooth' }));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>
+
+
