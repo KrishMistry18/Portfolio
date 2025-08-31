@@ -4,6 +4,12 @@ Live site: https://KrishMistry18.github.io/krishmistry
 
 This repository contains a single‑page portfolio (`index.html`) with dark‑mode design, featured projects, skills, education timeline, certificates carousel, and hobbies.
 
+## Featured Projects
+- **Nexus Financial** — ATM-style banking app (Java + MySQL)
+- **EduCycle** — Student marketplace (Django + React + Stripe)
+- **HeritageGuide** — Travel companion (Django + Maps APIs)
+- **ChessAnalyzer** — Web chess analysis suite (Next.js + Stockfish)
+
 ## Local preview
 - Open `index.html` directly, or run a local server:
 ```bash
