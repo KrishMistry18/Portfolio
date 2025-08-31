@@ -27,4 +27,4 @@ python -m http.server 8000
 ## Contact
 - Email: krishmistry2005@gmail.com
 - GitHub: https://github.com/KrishMistry18
-- LinkedIn: https://www.linkedin.com/in/krish-mistry-029052b7
+- LinkedIn: https://www.linkedin.com/in/krishmistry18
