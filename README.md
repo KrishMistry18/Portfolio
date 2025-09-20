@@ -1,7 +1,6 @@
 # Krish Mistry – Personal Portfolio
 
-Live site: https://KrishMistry18.github.io/krishmistry
-
+Live site: https://krishmistry18.github.io/Portfolio/
 This repository contains a single‑page portfolio (`index.html`) with dark‑mode design, featured projects, skills, education timeline, certificates carousel, and hobbies.
 
 ## Featured Projects
