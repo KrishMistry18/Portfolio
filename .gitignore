@@ -1,0 +1,5 @@
+.vscode/
+*.docx
+# Original certificate PDFs (converted to JPG for web display)
+Colloquium_2026_certificate.pdf
+Devtown*.pdf
