@@ -1184,7 +1184,7 @@ a.cert-card .cert-view{
       <ul class="flagship-points">
         <li>3D globe (Three.js + Leaflet) with 7 live environmental overlays — earthquakes, wildfires, AQI, wind — via Open-Meteo, USGS, and NASA EONET APIs</li>
         <li>Gemini 2.0 Flash auto-generates structured geopolitical events with forex impact analysis every 4 hours via automated Vercel cron jobs</li>
-        <li>Live forex panel powered by Twelve Data API and Supabase Realtime push — zero manual refresh needed</li>
+        <li>Live forex panel powered by Twelve Data API and Firebase Realtime Database — zero manual refresh needed</li>
       </ul>
       <div class="flagship-footer">
         <div class="tags">
@@ -1192,7 +1192,7 @@ a.cert-card .cert-view{
           <span class="tag tag-blue">TypeScript</span>
           <span class="tag tag-blue">Three.js</span>
           <span class="tag tag-green">Gemini AI</span>
-          <span class="tag tag-amber">Supabase</span>
+          <span class="tag tag-amber">Firebase</span>
           <span class="tag">Vercel</span>
         </div>
         <div class="proj-links">
@@ -1234,9 +1234,9 @@ a.cert-card .cert-view{
         <div class="proj-name">ChessAnalyzer</div>
         <p class="proj-desc">Browser-based chess analysis suite powered by Stockfish WASM — zero backend, full engine strength, runs entirely in the browser with a polished Next.js UI.</p>
         <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Multi-engine support: Stockfish 17 / 16.1 / 16 / 11 with WASM threads, adapts to device CPU cores</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Move classification (Brilliant → Blunder), evaluation graph, opening detection, best-move arrows</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>40+ piece themes, multi-PV lines, game summary, IndexedDB local save — no account needed</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies, mistakes, and blunders</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>40+ piece themes, SAN move list, zero backend dependency for analysis</li>
         </ul>
         <div class="proj-footer">
           <div class="proj-tags">
@@ -1256,19 +1256,19 @@ a.cert-card .cert-view{
       <div class="proj-card reveal reveal-delay-2">
         <div class="proj-icon">🛒</div>
         <div class="proj-name">EduCycle</div>
-        <p class="proj-desc">Full-stack student marketplace for buying and selling academic essentials — lab equipment, drawing tools, study materials — deployed on Vercel with Supabase PostgreSQL.</p>
+        <p class="proj-desc">Full-stack student marketplace for buying and selling academic essentials — lab equipment, drawing tools, study materials — deployed on Vercel with PostgreSQL.</p>
         <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>JWT + OAuth2 auth, 2FA, cart & order flow, category filtering, and real-time notifications</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Django 5.2 + DRF backend with Supabase PostgreSQL; WhiteNoise static serving on Vercel serverless</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>PWA-ready with offline support, analytics dashboard, and Django admin for content management</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>JWT + OAuth2 auth, 2FA, real-time chat, and Stripe payment integration with an analytics dashboard</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Django REST + React.js backend; Redis caching, advanced search and filtering</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>PWA-enabled app with offline support, and a fully responsive UI</li>
         </ul>
         <div class="proj-footer">
           <div class="proj-tags">
-            <span class="tag">Django 5.2</span>
-            <span class="tag">DRF</span>
-            <span class="tag tag-amber">Supabase</span>
+            <span class="tag">Django REST</span>
+            <span class="tag">React.js</span>
+            <span class="tag tag-amber">PostgreSQL</span>
+            <span class="tag">Redis</span>
             <span class="tag tag-amber">Stripe</span>
-            <span class="tag">Vercel</span>
           </div>
           <div style="display:flex;gap:5px">
             <a href="https://edu-cycle-five.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">live ↗</a>
@@ -1282,16 +1282,17 @@ a.cert-card .cert-view{
         <div class="proj-name">HeritageGuide</div>
         <p class="proj-desc">Django travel companion with Leaflet + OSM maps, smart multi-modal routing, curated POI markers, multi-day itinerary planning, and slot-based bookings.</p>
         <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Interactive Leaflet + OSM map with driving/walking/cycling routes via OSRM — no API key needed</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Curated POI markers for historic sites, museums & monuments with slot-based booking engine</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Multi-day itinerary planner with City → Attraction → Day → Activity data model; deployed on Vercel</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Interactive Leaflet + OSM map with smart multi-modal routing (driving/walking/cycling/transit) via Leaflet Routing Machine</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Multi-day itinerary planner, slot-based attraction booking with availability enforcement</li>
+          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Optional Google Maps upgrade for Place Search and Drawing tools</li>
         </ul>
         <div class="proj-footer">
           <div class="proj-tags">
             <span class="tag">Django 5</span>
             <span class="tag">Leaflet</span>
+            <span class="tag">OpenStreetMap</span>
             <span class="tag">Google Maps API</span>
-            <span class="tag tag-amber">Supabase</span>
+            <span class="tag tag-amber">Firebase</span>
           </div>
           <div style="display:flex;gap:5px">
             <a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">live ↗</a>
@@ -1321,26 +1322,7 @@ a.cert-card .cert-view{
         </div>
       </div>
 
-      <div class="proj-card reveal reveal-delay-2">
-        <div class="proj-icon">📺</div>
-        <div class="proj-name">WatchParty</div>
-        <p class="proj-desc">Real-time co-watching platform — watch any YouTube video in perfect sync with friends, with P2P voice, screen sharing, emoji reactions, and a video queue manager.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Sub-second video sync via Socket.IO signalling + YouTube IFrame API state reconciliation</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>WebRTC data channels for P2P chat, voice, and screen sharing — no media server needed</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Room system with configurable capacity (2–10), video queue, emoji reactions, and chat history</li>
-        </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">Express.js</span>
-            <span class="tag">WebRTC</span>
-            <span class="tag">Socket.IO</span>
-            <span class="tag">YouTube API</span>
-          </div>
-          <a href="https://github.com/KrishMistry18/WatchParty" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
-        </div>
-      </div>
+
 
       <div class="proj-card reveal reveal-delay-3">
         <div class="proj-icon">🏧</div>
@@ -1630,6 +1612,51 @@ a.cert-card .cert-view{
           <div class="cert-img-meta">
             <span class="cert-img-issuer">St. Francis Institute of Technology</span>
             <span class="cert-img-date">Apr 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- New Cert 1 -->
+      <a href="AIquiz_student_ambassador_certificate.pdf" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
+        <div class="cert-img-wrap">
+          <img src="AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador Certificate">
+          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">AIquiz Student Ambassador</div>
+          <div class="cert-img-meta">
+            <span class="cert-img-issuer">AIquiz</span>
+            <span class="cert-img-date">2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- New Cert 2 -->
+      <a href="gemini game night_certificate.pdf" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
+        <div class="cert-img-wrap">
+          <img src="gemini game night_certificate.jpg" alt="Gemini Game Night Certificate">
+          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Gemini Game Night</div>
+          <div class="cert-img-meta">
+            <span class="cert-img-issuer">Google / Gemini</span>
+            <span class="cert-img-date">2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- New Cert 3 -->
+      <a href="NSS HEAD Certificate.pdf" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-3">
+        <div class="cert-img-wrap">
+          <img src="NSS HEAD Certificate.jpg" alt="Head of NSS Certificate">
+          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
+        </div>
+        <div class="cert-img-info">
+          <div class="cert-img-title">Head of NSS</div>
+          <div class="cert-img-meta">
+            <span class="cert-img-issuer">St. Francis Institute of Technology</span>
+            <span class="cert-img-date">2025-2026</span>
           </div>
         </div>
       </a>
