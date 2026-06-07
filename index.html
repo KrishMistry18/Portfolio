@@ -54,6 +54,11 @@ body::before{
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events:none;z-index:0;opacity:.35;
 }
+/* custom cursor */
+* {
+  cursor: none !important;
+}
+
 /* grid lines */
 body::after{
   content:'';position:fixed;inset:0;
@@ -340,26 +345,58 @@ nav{
   font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--text-muted);margin-bottom:.8rem;
 }
-.interest-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.interest-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .interest-item{
-  display:flex;align-items:center;gap:7px;font-size:.82rem;
-  color:var(--text-secondary);padding:.4rem .5rem;
-  border-radius:6px;border:1px solid var(--border);background:var(--surface);
+  display:flex;align-items:center;gap:8px;font-size:.82rem;
+  color:var(--text-secondary);padding:.5rem .7rem;
+  border-radius:8px;border:1px solid var(--border);background:var(--surface);
+  transition:all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor:default;
 }
-.interest-item svg{width:14px;height:14px;color:var(--accent);flex-shrink:0}
+.interest-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(79, 142, 247, 0.3);
+  background: rgba(79, 142, 247, 0.05);
+  color: var(--text-primary);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+.interest-item svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;transition:all 0.3s ease;}
+.interest-item:hover svg {
+  transform: scale(1.15) rotate(5deg);
+  color: #fff;
+}
 .edu-row{
-  display:flex;flex-direction:column;gap:.85rem;
+  display:flex;flex-direction:column;gap:.5rem;
 }
 .edu-item{
   display:flex;gap:.9rem;align-items:flex-start;
-  padding-bottom:.85rem;border-bottom:1px solid var(--border);
+  padding:.8rem;border-radius:8px;border:1px solid transparent;
+  transition:all 0.3s ease;
 }
-.edu-item:last-child{border-bottom:none;padding-bottom:0}
+.edu-item:not(:last-child) {
+  border-bottom:1px solid var(--border);
+}
+.edu-item:hover {
+  background:rgba(255,255,255,0.03);
+  border-color:rgba(255,255,255,0.05);
+  transform:translateX(5px);
+}
 .edu-dot{
   width:8px;height:8px;border-radius:50%;background:var(--accent);
   flex-shrink:0;margin-top:.4rem;
+  transition:all 0.3s ease;
+  box-shadow: 0 0 8px var(--accent);
 }
-.edu-title{font-size:.88rem;font-weight:500;margin-bottom:2px}
+.edu-item:hover .edu-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 12px var(--accent);
+}
+.edu-dot.muted{
+  background:var(--text-muted);
+  box-shadow: none;
+}
+.edu-title{font-size:.88rem;font-weight:600;margin-bottom:2px;transition:color 0.3s ease;}
+.edu-item:hover .edu-title { color:var(--accent); }
 .edu-sub{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--text-muted);letter-spacing:.03em}
 
 /* ═══════════════════════════════════════════
@@ -467,88 +504,206 @@ nav{
 .proj-link:hover{color:var(--accent);border-color:rgba(79,142,247,.3);background:var(--accent-dim)}
 
 /* ═══════════════════════════════════════════
-   LEADERSHIP
+   LEADERSHIP / JOURNEY
 ═══════════════════════════════════════════ */
-#leadership .inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
-.timeline{position:relative;padding-left:1.5rem}
-.timeline::before{
-  content:'';position:absolute;left:0;top:.5rem;bottom:.5rem;
-  width:1px;background:linear-gradient(to bottom,var(--accent),var(--border),transparent);
+#leadership .inner{display:flex;flex-direction:column;gap:3rem;margin-top:2rem}
+.journey-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
 }
-.tl-item{position:relative;margin-bottom:2rem;padding-left:1.25rem}
-.tl-item:last-child{margin-bottom:0}
-.tl-dot{
-  position:absolute;left:-1.875rem;top:.35rem;
-  width:10px;height:10px;border-radius:50%;background:var(--bg-2);
-  border:2px solid var(--accent);
+.bento-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border: 2px solid var(--border-bright);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
-.tl-date{
-  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;
-  color:var(--accent);margin-bottom:.4rem;text-transform:uppercase;
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 10px var(--pulse-color), 0 0 20px var(--pulse-color); }
+  50% { box-shadow: 0 0 20px var(--pulse-color), 0 0 40px var(--pulse-color); }
+  100% { box-shadow: 0 0 10px var(--pulse-color), 0 0 20px var(--pulse-color); }
 }
-.tl-title{font-family:'Syne',sans-serif;font-weight:600;font-size:1rem;margin-bottom:.4rem}
-.tl-body{font-size:.85rem;color:var(--text-secondary);line-height:1.65}
-.tl-body strong{color:var(--text-primary);font-weight:500}
+@keyframes line-flow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 200%; }
+}
+.journey-line {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #d500f9, #ffea00, #ff9100, #ff5252, #d500f9);
+  background-size: 100% 200%;
+  animation: line-flow 4s linear infinite;
+  z-index: 0;
+  border-radius: 3px;
+}
+.journey-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+  padding-left: 3.5rem;
+}
+.journey-card {
+  width: 100%;
+  background: rgba(17, 20, 34, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.4rem;
+  border-radius: var(--r-lg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+.journey-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: var(--card-color, rgba(255,255,255,0.1));
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.journey-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--card-color, rgba(255,255,255,0.4));
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(var(--card-color-rgb, 255,255,255), 0.15);
+}
+.journey-card:hover::before {
+  opacity: 1;
+}
+.journey-dot {
+  position: absolute;
+  left: 1rem;
+  top: 1.5rem;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+.journey-item:nth-child(1) .journey-dot { background: #d500f9; --pulse-color: rgba(213,0,249,0.7); animation: pulse-glow 2s infinite; }
+.journey-item:nth-child(2) .journey-dot { background: #ffea00; --pulse-color: rgba(255,234,0,0.7); animation: pulse-glow 2s infinite 0.5s; }
+.journey-item:nth-child(3) .journey-dot { background: #ff9100; --pulse-color: rgba(255,145,0,0.7); animation: pulse-glow 2s infinite 1s; }
+.journey-item:nth-child(4) .journey-dot { background: #ff5252; --pulse-color: rgba(255,82,82,0.7); animation: pulse-glow 2s infinite 1.5s; }
 
-.ach-list{display:flex;flex-direction:column;gap:.9rem}
+.journey-item:nth-child(1) .journey-card { --card-color: #d500f9; --card-color-rgb: 213,0,249; }
+.journey-item:nth-child(2) .journey-card { --card-color: #ffea00; --card-color-rgb: 255,234,0; }
+.journey-item:nth-child(3) .journey-card { --card-color: #ff9100; --card-color-rgb: 255,145,0; }
+.journey-item:nth-child(4) .journey-card { --card-color: #ff5252; --card-color-rgb: 255,82,82; }
+
+.journey-date {
+  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.8rem;
+}
+.journey-item:nth-child(1) .journey-date { color: #d500f9; }
+.journey-item:nth-child(2) .journey-date { color: #ffea00; }
+.journey-item:nth-child(3) .journey-date { color: #ff9100; }
+.journey-item:nth-child(4) .journey-date { color: #ff5252; }
+
+.journey-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #fff;
+}
+.journey-body {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.journey-body strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.ach-list{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
 .ach-item{
   background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);
-  padding:1.1rem 1.25rem;display:flex;gap:1rem;align-items:flex-start;
+  padding:1.4rem;display:flex;gap:1rem;align-items:flex-start;
   transition:border-color .2s;
 }
 .ach-item:hover{border-color:var(--border-bright)}
-.ach-icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
-.ach-title{font-weight:500;font-size:.9rem;margin-bottom:3px}
-.ach-sub{font-size:.8rem;color:var(--text-secondary);line-height:1.5}
+.ach-icon{font-size:1.4rem;flex-shrink:0}
+.ach-title{font-weight:600;font-size:1rem;margin-bottom:4px;color:var(--text-primary)}
+.ach-sub{font-size:.85rem;color:var(--text-secondary);line-height:1.5}
 
 /* ═══════════════════════════════════════════
-   CERTIFICATES
+   CERTIFICATES / TROPHY ROOM
 ═══════════════════════════════════════════ */
-#certs .cert-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  gap:1rem;margin-top:3rem;
+.trophy-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 2.8rem;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0,229,255,0.8), 0 0 20px rgba(0,229,255,0.4);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
 }
-.cert-card{
-  background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);
-  padding:1.25rem;transition:all .2s;position:relative;overflow:hidden;
-}
-.cert-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--accent),transparent);
-  transform:scaleX(0);transform-origin:left;transition:transform .3s;
-}
-.cert-card:hover::before{transform:scaleX(1)}
-.cert-card:hover{border-color:var(--border-bright);transform:translateY(-1px)}
-.cert-card:hover::before{transform:scaleX(1)}
-a.cert-card{color:inherit}
-a.cert-card .cert-view{
-  display:inline-block;margin-top:.5rem;
-  font-family:'DM Mono',monospace;font-size:.6rem;
-  color:var(--accent);letter-spacing:.06em;text-transform:uppercase;
-}
-.cert-icon{font-size:1.3rem;margin-bottom:.75rem}
-.cert-title{font-weight:500;font-size:.88rem;margin-bottom:.35rem;line-height:1.35}
-.cert-issuer{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--text-muted);letter-spacing:.04em}
-.cert-date{
-  display:inline-block;margin-top:.7rem;
-  font-family:'DM Mono',monospace;font-size:.6rem;
-  color:var(--accent);letter-spacing:.06em;text-transform:uppercase;
-  background:var(--accent-dim);border:1px solid rgba(79,142,247,.2);
-  border-radius:999px;padding:2px 8px;
+.trophy-sub {
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
 
-/* image-style cert gallery */
-#certs .cert-gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:1.25rem;margin-top:3rem;
-  align-items:start;
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+}
+.marquee-track.left {
+  animation: scrollLeft 45s linear infinite;
+}
+.marquee-track.right {
+  animation: scrollRight 45s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.75rem)); }
+}
+@keyframes scrollRight {
+  0% { transform: translateX(calc(-50% - 0.75rem)); }
+  100% { transform: translateX(0); }
+}
+
 .cert-img-card{
   background:var(--bg-2);border:1px solid var(--border);
   border-radius:var(--r-lg);overflow:hidden;
   transition:border-color .25s,transform .25s;
   text-decoration:none;color:inherit;display:block;
+  width: 320px; /* Fixed width for marquee items */
+  flex-shrink: 0;
 }
 .cert-img-card:hover{border-color:var(--border-bright);transform:translateY(-3px)}
 .cert-img-wrap{
@@ -659,8 +814,17 @@ a.cert-card .cert-view{
 @media(max-width:1000px){
   #hero{grid-template-columns:1fr;padding:110px 1.5rem 80px}
   .hero-right{display:none}
-  #about .inner{grid-template-columns:1fr;gap:3rem}
-  #leadership .inner{grid-template-columns:1fr;gap:2rem}
+  .about-bento { grid-template-columns: 1fr !important; }
+  .bento-item { border-right: none !important; border-bottom: 1px solid var(--border) !important; padding: 2rem 1.5rem !important; }
+  .bento-item:last-child { border-bottom: none !important; }
+  .bento-dot { display: none !important; }
+}
+@media(max-width:768px){
+  .journey-line { left: 1rem; }
+  .journey-item { flex-direction: column !important; align-items: flex-start; padding-left: 3rem; gap: 1rem; margin-bottom: 3rem !important; }
+  .journey-card { width: 100% !important; }
+  .journey-dot { left: 1rem; top: 1.5rem; transform: translate(-50%, -50%); }
+  .ach-list{grid-template-columns:1fr}
 }
 @media(max-width:700px){
   :root{--section-gap:5rem}
@@ -920,69 +1084,80 @@ a.cert-card .cert-view{
 
 <hr class="sec-divider">
 
-<!-- ═══════════ ABOUT ═══════════ -->
+<!-- ═══════════ ABOUT & LEADERSHIP ═══════════ -->
 <section id="about">
-  <div class="container">
-    <div class="inner" style="align-items:start">
-      <!-- LEFT: story -->
-      <div class="about-story reveal">
-        <span class="section-label">/ about me</span>
-        <h2 class="section-title" style="margin-bottom:1.5rem">Built on curiosity,<br>shipped with intention.</h2>
-        <p>I'm a final-year IT student at St. Francis Institute of Technology, Mumbai — but I think of myself as a <strong>product builder first, student second</strong>. Since my first "hello world" I've been obsessed with closing the gap between idea and working software.</p>
-        <p>Over the past two years I've shipped <strong>7 production-grade apps</strong> — everything from a real-time geopolitical intelligence dashboard powered by Gemini AI, to a cross-platform community safety app using TensorFlow's MobileNetV3. I don't just build for portfolios; I build to solve real problems.</p>
-        <p>Outside code, I'm a <strong>national-level chess competitor</strong> — which has given me an obsessive appreciation for long-horizon thinking and knowing when to sacrifice short-term for strategic gain. That mindset shows up in how I architect systems.</p>
-        <p>I led <strong>Samadhan 2026</strong>, a national ideathon with 100+ participants and NGO partnerships, which taught me that shipping great software and leading great teams require the same skill: clear thinking under pressure.</p>
+  <div class="container" style="max-width: 1280px;">
+    <div class="about-bento" style="display: grid; grid-template-columns: 1fr 1fr; position: relative;">
+      
+      <!-- Top Left: About Text -->
+      <div class="bento-item reveal" style="padding: 2.5rem 3rem 2.5rem 0; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative;">
+        <span class="section-label">/ ABOUT ME</span>
+        <h2 class="section-title" style="margin-bottom:1.5rem; font-size: 3rem; letter-spacing: -0.04em;">Built on curiosity,<br>shipped with intention.</h2>
+        <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:1.2rem; font-size:1rem;">I'm a final-year IT student at St. Francis Institute of Technology, Mumbai — but I think of myself as a <strong>product builder first, student second</strong>. Since my first "hello world" I've been obsessed with closing the gap between idea and working software.</p>
+        <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:1.2rem; font-size:1rem;">Over the past two years I've shipped <strong>7 production-grade apps</strong> — everything from a real-time geopolitical intelligence dashboard powered by Gemini AI, to a cross-platform community safety app using TensorFlow's MobileNetV3. I don't just build for portfolios; I build to solve real problems.</p>
+        <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:1.2rem; font-size:1rem;">Outside code, I'm a <strong>national-level chess competitor</strong> — which has given me an obsessive appreciation for long-horizon thinking and knowing when to sacrifice short-term for strategic gain. That mindset shows up in how I architect systems.</p>
+        <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:0; font-size:1rem;">I led <strong>Samadhan 2026</strong>, a national ideathon with 100+ participants and NGO partnerships, which taught me that shipping great software and leading great teams require the same skill: clear thinking under pressure.</p>
+        
+        <!-- Center Dot -->
+        <div class="bento-dot" style="bottom: 0; right: 0; transform: translate(50%, 50%);"></div>
+        <!-- Left Middle Dot -->
+        <div class="bento-dot" style="bottom: 0; left: 0; transform: translate(-50%, 50%);"></div>
+        <!-- Top Center Dot -->
+        <div class="bento-dot" style="top: 0; right: 0; transform: translate(50%, -50%);"></div>
+      </div>
 
-        <!-- highlight cards — 2 col grid -->
-        <div class="about-highlights">
-          <div class="hl-card hl-gold">
-            <div class="hl-icon">🏆</div>
-            <div class="hl-body">
-              <div class="hl-title">Runner-up · Colloquium '25</div>
-              <div class="hl-sub">2nd place at SFIT's national-level hackathon.</div>
+      <!-- Top Right: My Journey -->
+      <div class="bento-item reveal reveal-delay-1" style="padding: 2.5rem 0 2.5rem 3rem; border-bottom: 1px solid var(--border); position: relative;">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 0.3rem; font-size: 2rem;">My Journey</h2>
+        <p class="section-sub" style="text-align: center; margin: 0 auto 2.5rem auto; font-size: 0.8rem; max-width: 300px;">Building software and building teams require the same skill: clear thinking under pressure.</p>
+        
+        <div class="journey-container" style="max-width: 100%; transform: scale(0.95); transform-origin: top center;">
+          <div class="journey-line"></div>
+          
+          <div class="journey-item" style="margin-bottom: 1.5rem;">
+            <div class="journey-dot"></div>
+            <div class="journey-card" style="padding: 1.2rem;">
+              <div class="journey-date" style="font-size: 0.8rem; margin-bottom: 0.4rem;">&lt; &gt; 2022</div>
+              <div class="journey-title" style="font-size: 1.05rem; margin-bottom: 0.3rem;">Started Coding</div>
+              <div class="journey-body" style="font-size: 0.85rem;">Wrote my first line of code and fell in love with building things from scratch.</div>
             </div>
           </div>
-          <div class="hl-card hl-amber">
-            <div class="hl-icon">⭐</div>
-            <div class="hl-body">
-              <div class="hl-title">CGPA 9.34 · Top of Batch</div>
-              <div class="hl-sub">Consistently top-ranked in B.E. IT at SFIT.</div>
+
+          <div class="journey-item" style="margin-bottom: 1.5rem;">
+            <div class="journey-dot"></div>
+            <div class="journey-card" style="padding: 1.2rem;">
+              <div class="journey-date" style="font-size: 0.8rem; margin-bottom: 0.4rem;">🎓 2023</div>
+              <div class="journey-title" style="font-size: 1.05rem; margin-bottom: 0.3rem;">BE @ St. Francis Institute of Technology</div>
+              <div class="journey-body" style="font-size: 0.85rem;">First year of Bachelor of Engineering in Information Technology. Dived deep into DSA, OS, and web fundamentals.</div>
             </div>
           </div>
-          <div class="hl-card hl-blue">
-            <div class="hl-icon">🎯</div>
-            <div class="hl-body">
-              <div class="hl-title">Ideathon Organiser</div>
-              <div class="hl-sub">Directed Samadhan '26 — 100+ participants, NGO partnerships.</div>
+
+          <div class="journey-item" style="margin-bottom: 1.5rem;">
+            <div class="journey-dot"></div>
+            <div class="journey-card" style="padding: 1.2rem;">
+              <div class="journey-date" style="font-size: 0.8rem; margin-bottom: 0.4rem;">🌟 2024</div>
+              <div class="journey-title" style="font-size: 1.05rem; margin-bottom: 0.3rem;">First Full-Stack Projects</div>
+              <div class="journey-body" style="font-size: 0.85rem;">Built EduCycle &amp; HeritageGuide — real-world apps with full backends, interactive maps, and API integrations.</div>
             </div>
           </div>
-          <div class="hl-card hl-green">
-            <div class="hl-icon">🤝</div>
-            <div class="hl-body">
-              <div class="hl-title">Head of NSS · SFIT</div>
-              <div class="hl-sub">Led community outreach &amp; social impact programs.</div>
-            </div>
-          </div>
-          <div class="hl-card hl-purple">
-            <div class="hl-icon">♟</div>
-            <div class="hl-body">
-              <div class="hl-title">National Chess Competitor</div>
-              <div class="hl-sub">Strategic thinking that shapes how I architect systems.</div>
-            </div>
-          </div>
-          <div class="hl-card hl-coral">
-            <div class="hl-icon">🚀</div>
-            <div class="hl-body">
-              <div class="hl-title">7 Production Apps · 11 Certs</div>
-              <div class="hl-sub">Every project is live. Always building, always learning.</div>
+
+          <div class="journey-item" style="margin-bottom: 0;">
+            <div class="journey-dot"></div>
+            <div class="journey-card" style="padding: 1.2rem;">
+              <div class="journey-date" style="font-size: 0.8rem; margin-bottom: 0.4rem;">🚀 2025-2026</div>
+              <div class="journey-title" style="font-size: 1.05rem; margin-bottom: 0.3rem;">Hackathons &amp; Leadership</div>
+              <div class="journey-body" style="font-size: 0.85rem;">Runner-up at Colloquium '25, organized national ideathon Samadhan '26, and led NSS as Head.</div>
             </div>
           </div>
         </div>
+
+        <!-- Right Middle Dot -->
+        <div class="bento-dot" style="bottom: 0; right: 0; transform: translate(50%, 50%);"></div>
       </div>
 
-      <!-- RIGHT: education + beyond code -->
-      <div class="about-aside reveal reveal-delay-2">
-        <div class="aside-card">
+      <!-- Bottom Left: Education & Beyond Code -->
+      <div class="bento-item reveal reveal-delay-2" style="padding: 2.5rem 3rem 2.5rem 0; border-right: 1px solid var(--border); position: relative;">
+        <div class="aside-card" style="background: transparent; border: 1px solid var(--border); margin-bottom: 1.5rem;">
           <div class="aside-card-title">Education</div>
           <div class="edu-row">
             <div class="edu-item">
@@ -993,14 +1168,14 @@ a.cert-card .cert-view{
               </div>
             </div>
             <div class="edu-item">
-              <div class="edu-dot" style="background:var(--text-muted)"></div>
+              <div class="edu-dot muted"></div>
               <div>
                 <div class="edu-title">HSC — Class XII</div>
                 <div class="edu-sub">Mother Mary's Junior College · 2023 · 76%</div>
               </div>
             </div>
             <div class="edu-item">
-              <div class="edu-dot" style="background:var(--text-muted)"></div>
+              <div class="edu-dot muted"></div>
               <div>
                 <div class="edu-title">SSC — Class X</div>
                 <div class="edu-sub">Mother Mary's High School · 2021 · 90%</div>
@@ -1009,36 +1184,70 @@ a.cert-card .cert-view{
           </div>
         </div>
 
-        <div class="aside-card">
+        <div class="aside-card" style="background: transparent; border: 1px solid var(--border); margin-bottom: 0;">
           <div class="aside-card-title">Beyond Code</div>
           <div class="interest-grid">
-            <div class="interest-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="20" height="14" rx="2"/><path d="M16 8V6a4 4 0 0 0-8 0v2"/></svg>
-              Chess (national)
+            <div class="interest-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="20" height="14" rx="2"/><path d="M16 8V6a4 4 0 0 0-8 0v2"/></svg>Chess (national)</div>
+            <div class="interest-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>Rubik's Cube</div>
+            <div class="interest-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Box Cricket (2× winner)</div>
+            <div class="interest-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Historical travel</div>
+            <div class="interest-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Art &amp; Craft</div>
+            <div class="interest-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg>Tech communities</div>
+          </div>
+        </div>
+
+        <!-- Bottom Center Dot -->
+        <div class="bento-dot" style="bottom: 0; right: 0; transform: translate(50%, 50%);"></div>
+      </div>
+
+      <!-- Bottom Right: Achievements Grid -->
+      <div class="bento-item reveal reveal-delay-3" style="padding: 2.5rem 0 2.5rem 3rem; position: relative;">
+        <div class="about-highlights" style="margin-top: 0;">
+          <div class="hl-card hl-gold" style="padding: 1.2rem;">
+            <div class="hl-icon" style="font-size: 1.3rem;">🏆</div>
+            <div class="hl-body">
+              <div class="hl-title" style="font-size: 0.95rem; margin-bottom: 4px;">Runner-up · Colloquium '25</div>
+              <div class="hl-sub" style="font-size: 0.8rem;">2nd place at SFIT's national-level hackathon.</div>
             </div>
-            <div class="interest-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-              Rubik's Cube
+          </div>
+          <div class="hl-card hl-amber" style="padding: 1.2rem;">
+            <div class="hl-icon" style="font-size: 1.3rem;">⭐</div>
+            <div class="hl-body">
+              <div class="hl-title" style="font-size: 0.95rem; margin-bottom: 4px;">CGPA 9.34 · Top of Batch</div>
+              <div class="hl-sub" style="font-size: 0.8rem;">Consistently top-ranked in B.E. IT at SFIT.</div>
             </div>
-            <div class="interest-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Box Cricket (2× winner)
+          </div>
+          <div class="hl-card hl-blue" style="padding: 1.2rem;">
+            <div class="hl-icon" style="font-size: 1.3rem;">🎯</div>
+            <div class="hl-body">
+              <div class="hl-title" style="font-size: 0.95rem; margin-bottom: 4px;">Ideathon Organiser</div>
+              <div class="hl-sub" style="font-size: 0.8rem;">Directed Samadhan '26 — 100+ participants, NGO partnerships.</div>
             </div>
-            <div class="interest-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-              Historical travel
+          </div>
+          <div class="hl-card hl-green" style="padding: 1.2rem;">
+            <div class="hl-icon" style="font-size: 1.3rem;">🤝</div>
+            <div class="hl-body">
+              <div class="hl-title" style="font-size: 0.95rem; margin-bottom: 4px;">Head of NSS · SFIT</div>
+              <div class="hl-sub" style="font-size: 0.8rem;">Led community outreach &amp; social impact programs.</div>
             </div>
-            <div class="interest-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              Art &amp; Craft
+          </div>
+          <div class="hl-card hl-purple" style="padding: 1.2rem;">
+            <div class="hl-icon" style="font-size: 1.3rem;">♟</div>
+            <div class="hl-body">
+              <div class="hl-title" style="font-size: 0.95rem; margin-bottom: 4px;">National Chess Competitor</div>
+              <div class="hl-sub" style="font-size: 0.8rem;">Strategic thinking that shapes how I architect systems.</div>
             </div>
-            <div class="interest-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg>
-              Tech communities
+          </div>
+          <div class="hl-card hl-coral" style="padding: 1.2rem;">
+            <div class="hl-icon" style="font-size: 1.3rem;">🚀</div>
+            <div class="hl-body">
+              <div class="hl-title" style="font-size: 0.95rem; margin-bottom: 4px;">7 Production Apps · 11 Certs</div>
+              <div class="hl-sub" style="font-size: 0.8rem;">Every project is live. Always building, always learning.</div>
             </div>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </section>
@@ -1056,93 +1265,80 @@ a.cert-card .cert-view{
     <div class="grid" style="margin-top:3rem">
 
       <!-- Languages -->
-      <div class="skill-cat cat-blue reveal reveal-delay-1">
+      <div class="skill-cat cat-blue reveal reveal-delay-1" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
         <div class="skill-cat-title">Languages</div>
         <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#4f8ef7;--badge-bg:rgba(79,142,247,.12)"><span class="badge-icon" style="background:#4f8ef7">Py</span><span class="badge-name">Python</span></div>
-          <div class="skill-badge" style="--badge-color:#f7df1e;--badge-bg:rgba(247,223,30,.1)"><span class="badge-icon" style="background:#f7df1e;color:#000">JS</span><span class="badge-name">JavaScript</span></div>
-          <div class="skill-badge" style="--badge-color:#3178c6;--badge-bg:rgba(49,120,198,.12)"><span class="badge-icon" style="background:#3178c6">TS</span><span class="badge-name">TypeScript</span></div>
-          <div class="skill-badge" style="--badge-color:#f89820;--badge-bg:rgba(248,152,32,.12)"><span class="badge-icon" style="background:#f89820">Jv</span><span class="badge-name">Java</span></div>
-          <div class="skill-badge" style="--badge-color:#54c5f8;--badge-bg:rgba(84,197,248,.12)"><span class="badge-icon" style="background:#54c5f8;color:#000">Dt</span><span class="badge-name">Dart</span></div>
-          <div class="skill-badge" style="--badge-color:#6295cb;--badge-bg:rgba(98,149,203,.12)"><span class="badge-icon" style="background:#6295cb">C</span><span class="badge-name">C</span></div>
-          <div class="skill-badge" style="--badge-color:#6295cb;--badge-bg:rgba(98,149,203,.12)"><span class="badge-icon" style="background:#6295cb">C++</span><span class="badge-name">C++</span></div>
-          <div class="skill-badge" style="--badge-color:#e38c00;--badge-bg:rgba(227,140,0,.12)"><span class="badge-icon" style="background:#e38c00">SQL</span><span class="badge-name">SQL</span></div>
-          <div class="skill-badge" style="--badge-color:#e34c26;--badge-bg:rgba(227,76,38,.12)"><span class="badge-icon" style="background:#e34c26">H</span><span class="badge-name">HTML</span></div>
-          <div class="skill-badge" style="--badge-color:#264de4;--badge-bg:rgba(38,77,228,.12)"><span class="badge-icon" style="background:#264de4">C</span><span class="badge-name">CSS</span></div>
-          <div class="skill-badge" style="--badge-color:#4eaa25;--badge-bg:rgba(78,170,37,.12)"><span class="badge-icon" style="background:#4eaa25">$_</span><span class="badge-name">Bash</span></div>
+          <div class="skill-badge" style="--badge-color:#6295cb;--badge-bg:rgba(98,149,203,.12)"><span class="badge-icon" style="background:#6295cb;color:#fff">C</span><span class="badge-name">C</span></div>
+          <div class="skill-badge" style="--badge-color:#6295cb;--badge-bg:rgba(98,149,203,.12)"><span class="badge-icon" style="background:#6295cb;color:#fff">C++</span><span class="badge-name">C++</span></div>
+          <div class="skill-badge" style="--badge-color:#f89820;--badge-bg:rgba(248,152,32,.12)"><span class="badge-icon" style="background:#f89820;color:#fff">Jv</span><span class="badge-name">JAVA</span></div>
+          <div class="skill-badge" style="--badge-color:#f7df1e;--badge-bg:rgba(247,223,30,.1)"><span class="badge-icon" style="background:#f7df1e;color:#000">JS</span><span class="badge-name">JAVASCRIPT</span></div>
+          <div class="skill-badge" style="--badge-color:#3178c6;--badge-bg:rgba(49,120,198,.12)"><span class="badge-icon" style="background:#3178c6;color:#fff">TS</span><span class="badge-name">TYPESCRIPT</span></div>
+          <div class="skill-badge" style="--badge-color:#4f8ef7;--badge-bg:rgba(79,142,247,.12)"><span class="badge-icon" style="background:#4f8ef7;color:#fff">Py</span><span class="badge-name">PYTHON</span></div>
+          <div class="skill-badge" style="--badge-color:#54c5f8;--badge-bg:rgba(84,197,248,.12)"><span class="badge-icon" style="background:#54c5f8;color:#000">Dt</span><span class="badge-name">DART</span></div>
         </div>
       </div>
 
-      <!-- Frontend -->
-      <div class="skill-cat cat-green reveal reveal-delay-2">
-        <div class="skill-cat-title">Frontend</div>
+      <!-- Frontend & Mobile -->
+      <div class="skill-cat cat-green reveal reveal-delay-2" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div class="skill-cat-title">Frontend & Mobile</div>
         <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#000;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333">N</span><span class="badge-name">Next.js 15</span></div>
-          <div class="skill-badge" style="--badge-color:#61dafb;--badge-bg:rgba(97,218,251,.1)"><span class="badge-icon" style="background:#20232a;color:#61dafb">⚛</span><span class="badge-name">React 18</span></div>
-          <div class="skill-badge" style="--badge-color:#646cff;--badge-bg:rgba(100,108,255,.12)"><span class="badge-icon" style="background:#646cff">V</span><span class="badge-name">Vite</span></div>
-          <div class="skill-badge" style="--badge-color:#049ef4;--badge-bg:rgba(4,158,244,.12)"><span class="badge-icon" style="background:#049ef4">3</span><span class="badge-name">Three.js</span></div>
-          <div class="skill-badge" style="--badge-color:#38bdf8;--badge-bg:rgba(56,189,248,.1)"><span class="badge-icon" style="background:#0ea5e9">TW</span><span class="badge-name">Tailwind CSS</span></div>
-          <div class="skill-badge" style="--badge-color:#5a0fc8;--badge-bg:rgba(90,15,200,.12)"><span class="badge-icon" style="background:#5a0fc8">PWA</span><span class="badge-name">PWA</span></div>
+          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">N</span><span class="badge-name">NEXT.JS</span></div>
+          <div class="skill-badge" style="--badge-color:#54c5f8;--badge-bg:rgba(84,197,248,.12)"><span class="badge-icon" style="background:#54c5f8;color:#000">Fl</span><span class="badge-name">FLUTTER</span></div>
+          <div class="skill-badge" style="--badge-color:#dd1b16;--badge-bg:rgba(221,27,22,.12)"><span class="badge-icon" style="background:#dd1b16;color:#fff">A</span><span class="badge-name">ANGULAR</span></div>
+          <div class="skill-badge" style="--badge-color:#e23237;--badge-bg:rgba(226,50,55,.12)"><span class="badge-icon" style="background:#e23237;color:#fff">AJ</span><span class="badge-name">ANGULAR.JS</span></div>
+          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">3</span><span class="badge-name">THREE.JS</span></div>
+          <div class="skill-badge" style="--badge-color:#38bdf8;--badge-bg:rgba(56,189,248,.12)"><span class="badge-icon" style="background:#38bdf8;color:#fff">TW</span><span class="badge-name">TAILWINDCSS</span></div>
+          <div class="skill-badge" style="--badge-color:#e34c26;--badge-bg:rgba(227,76,38,.12)"><span class="badge-icon" style="background:#e34c26;color:#fff">H5</span><span class="badge-name">HTML5</span></div>
+          <div class="skill-badge" style="--badge-color:#00c4cc;--badge-bg:rgba(0,196,204,.12)"><span class="badge-icon" style="background:#00c4cc;color:#fff">Cv</span><span class="badge-name">CANVA</span></div>
         </div>
       </div>
 
       <!-- Backend -->
-      <div class="skill-cat cat-amber reveal reveal-delay-3">
+      <div class="skill-cat cat-amber reveal reveal-delay-3" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
         <div class="skill-cat-title">Backend</div>
         <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#68a063;--badge-bg:rgba(104,160,99,.12)"><span class="badge-icon" style="background:#68a063">⬡</span><span class="badge-name">Node.js</span></div>
-          <div class="skill-badge" style="--badge-color:#888;--badge-bg:rgba(136,136,136,.1)"><span class="badge-icon" style="background:#333">Ex</span><span class="badge-name">Express.js</span></div>
-          <div class="skill-badge" style="--badge-color:#092e20;--badge-bg:rgba(9,46,32,.2)"><span class="badge-icon" style="background:#092e20;border:1px solid #0c4b33">Dj</span><span class="badge-name">Django REST Framework</span></div>
-          <div class="skill-badge" style="--badge-color:#3ecf8e;--badge-bg:rgba(62,207,142,.1)"><span class="badge-icon" style="background:#166534">API</span><span class="badge-name">REST API Design</span></div>
-          <div class="skill-badge" style="--badge-color:#f59e0b;--badge-bg:rgba(245,158,11,.12)"><span class="badge-icon" style="background:#b45309">🔑</span><span class="badge-name">JWT</span></div>
-          <div class="skill-badge" style="--badge-color:#f59e0b;--badge-bg:rgba(245,158,11,.12)"><span class="badge-icon" style="background:#b45309">Auth</span><span class="badge-name">OAuth2</span></div>
-          <div class="skill-badge" style="--badge-color:#f97316;--badge-bg:rgba(249,115,22,.12)"><span class="badge-icon" style="background:#f97316;color:#000">WR</span><span class="badge-name">WebRTC</span></div>
-          <div class="skill-badge" style="--badge-color:#010101;--badge-bg:rgba(255,255,255,.07)"><span class="badge-icon" style="background:#010101;border:1px solid #444">S.</span><span class="badge-name">Socket.IO</span></div>
+          <div class="skill-badge" style="--badge-color:#68a063;--badge-bg:rgba(104,160,99,.12)"><span class="badge-icon" style="background:#68a063;color:#fff">⬡</span><span class="badge-name">NODE.JS</span></div>
+          <div class="skill-badge" style="--badge-color:#092e20;--badge-bg:rgba(9,46,32,.2)"><span class="badge-icon" style="background:#092e20;border:1px solid #0c4b33;color:#fff">Dj</span><span class="badge-name">DJANGO</span></div>
+          <div class="skill-badge" style="--badge-color:#888;--badge-bg:rgba(136,136,136,.12)"><span class="badge-icon" style="background:#333;color:#fff">Ex</span><span class="badge-name">EXPRESS.JS</span></div>
+          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">Fk</span><span class="badge-name">FLASK</span></div>
+          <div class="skill-badge" style="--badge-color:#cb3837;--badge-bg:rgba(203,56,55,.12)"><span class="badge-icon" style="background:#cb3837;color:#fff">N</span><span class="badge-name">NPM</span></div>
         </div>
       </div>
 
-      <!-- Mobile -->
-      <div class="skill-cat cat-coral reveal reveal-delay-4">
-        <div class="skill-cat-title">Mobile</div>
+      <!-- Databases -->
+      <div class="skill-cat cat-blue reveal reveal-delay-4" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div class="skill-cat-title">Databases</div>
         <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#54c5f8;--badge-bg:rgba(84,197,248,.12)"><span class="badge-icon" style="background:#54c5f8;color:#000">Fl</span><span class="badge-name">Flutter (Android / iOS)</span></div>
-          <div class="skill-badge" style="--badge-color:#ffca28;--badge-bg:rgba(255,202,40,.1)"><span class="badge-icon" style="background:#1a73e8">🔥</span><span class="badge-name">Firebase Firestore</span></div>
-          <div class="skill-badge" style="--badge-color:#3DDC84;--badge-bg:rgba(61,220,132,.1)"><span class="badge-icon" style="background:#3DDC84;color:#000">AS</span><span class="badge-name">Android Studio</span></div>
+          <div class="skill-badge" style="--badge-color:#00758f;--badge-bg:rgba(0,117,143,.15)"><span class="badge-icon" style="background:#00758f;color:#fff">My</span><span class="badge-name">MYSQL</span></div>
+          <div class="skill-badge" style="--badge-color:#003b57;--badge-bg:rgba(0,59,87,.15)"><span class="badge-icon" style="background:#003b57;color:#fff">Sq</span><span class="badge-name">SQLITE</span></div>
+          <div class="skill-badge" style="--badge-color:#3ecf8e;--badge-bg:rgba(62,207,142,.12)"><span class="badge-icon" style="background:#1c1c1c;border:1px solid #3ecf8e;color:#3ecf8e">Sb</span><span class="badge-name">SUPABASE</span></div>
+          <div class="skill-badge" style="--badge-color:#4db33d;--badge-bg:rgba(77,179,61,.12)"><span class="badge-icon" style="background:#4db33d;color:#fff">M</span><span class="badge-name">MONGODB</span></div>
+          <div class="skill-badge" style="--badge-color:#336791;--badge-bg:rgba(51,103,145,.15)"><span class="badge-icon" style="background:#336791;color:#fff">PG</span><span class="badge-name">POSTGRES</span></div>
         </div>
       </div>
 
-      <!-- Databases & Cloud -->
-      <div class="skill-cat cat-blue reveal reveal-delay-1">
-        <div class="skill-cat-title">Databases & Cloud</div>
+      <!-- Cloud & DevOps -->
+      <div class="skill-cat cat-blue reveal reveal-delay-1" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div class="skill-cat-title">Cloud & DevOps</div>
         <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#336791;--badge-bg:rgba(51,103,145,.15)"><span class="badge-icon" style="background:#336791">PG</span><span class="badge-name">PostgreSQL</span></div>
-          <div class="skill-badge" style="--badge-color:#3ecf8e;--badge-bg:rgba(62,207,142,.1)"><span class="badge-icon" style="background:#1c1c1c;border:1px solid #3ecf8e;color:#3ecf8e">Sb</span><span class="badge-name">Supabase</span></div>
-          <div class="skill-badge" style="--badge-color:#00758f;--badge-bg:rgba(0,117,143,.15)"><span class="badge-icon" style="background:#00758f">My</span><span class="badge-name">MySQL</span></div>
-          <div class="skill-badge" style="--badge-color:#4db33d;--badge-bg:rgba(77,179,61,.12)"><span class="badge-icon" style="background:#4db33d">M</span><span class="badge-name">MongoDB</span></div>
-          <div class="skill-badge" style="--badge-color:#ffca28;--badge-bg:rgba(255,202,40,.1)"><span class="badge-icon" style="background:#1a73e8">🔥</span><span class="badge-name">Firebase</span></div>
-          <div class="skill-badge" style="--badge-color:#000;--badge-bg:rgba(255,255,255,.07)"><span class="badge-icon" style="background:#000;border:1px solid #333">▲</span><span class="badge-name">Vercel</span></div>
-          <div class="skill-badge" style="--badge-color:#2496ed;--badge-bg:rgba(36,150,237,.12)"><span class="badge-icon" style="background:#2496ed">🐳</span><span class="badge-name">Docker</span></div>
+          <div class="skill-badge" style="--badge-color:#ffca28;--badge-bg:rgba(255,202,40,.12)"><span class="badge-icon" style="background:#1a73e8;color:#fff">🔥</span><span class="badge-name">FIREBASE</span></div>
+          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">▲</span><span class="badge-name">VERCEL</span></div>
+          <div class="skill-badge" style="--badge-color:#ff9900;--badge-bg:rgba(255,153,0,.12)"><span class="badge-icon" style="background:#232f3e;color:#ff9900">A</span><span class="badge-name">AWS</span></div>
+          <div class="skill-badge" style="--badge-color:#4285f4;--badge-bg:rgba(66,133,244,.12)"><span class="badge-icon" style="background:#fff;color:#4285f4">G</span><span class="badge-name">GOOGLECLOUD</span></div>
+          <div class="skill-badge" style="--badge-color:#2496ed;--badge-bg:rgba(36,150,237,.12)"><span class="badge-icon" style="background:#2496ed;color:#fff">🐳</span><span class="badge-name">DOCKER</span></div>
+          <div class="skill-badge" style="--badge-color:#d33833;--badge-bg:rgba(211,56,51,.12)"><span class="badge-icon" style="background:#fff;color:#d33833">J</span><span class="badge-name">JENKINS</span></div>
+          <div class="skill-badge" style="--badge-color:#f05032;--badge-bg:rgba(240,80,50,.12)"><span class="badge-icon" style="background:#f05032;color:#fff">Git</span><span class="badge-name">GIT</span></div>
         </div>
       </div>
 
-      <!-- AI / ML -->
-      <div class="skill-cat cat-green reveal reveal-delay-2">
-        <div class="skill-cat-title">AI / ML</div>
+      <!-- AI & Data Science -->
+      <div class="skill-cat cat-coral reveal reveal-delay-2" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
+        <div class="skill-cat-title">AI & Data Science</div>
         <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#ff6f00;--badge-bg:rgba(255,111,0,.12)"><span class="badge-icon" style="background:#ff6f00">TF</span><span class="badge-name">TensorFlow</span></div>
-          <div class="skill-badge" style="--badge-color:#ff6f00;--badge-bg:rgba(255,111,0,.12)"><span class="badge-icon" style="background:#ff6f00">MN</span><span class="badge-name">MobileNetV3 (Transfer Learning)</span></div>
-          <div class="skill-badge" style="--badge-color:#4285f4;--badge-bg:rgba(66,133,244,.12)"><span class="badge-icon" style="background:linear-gradient(135deg,#4285f4,#34a853)">G</span><span class="badge-name">Google Gemini 2.0 Flash</span></div>
-          <div class="skill-badge" style="--badge-color:#a855f7;--badge-bg:rgba(168,85,247,.12)"><span class="badge-icon" style="background:#7c3aed">PE</span><span class="badge-name">Prompt Engineering</span></div>
-        </div>
-      </div>
-
-      <!-- Tools & Practices -->
-      <div class="skill-cat cat-amber reveal reveal-delay-3">
-        <div class="skill-cat-title">Tools & Practices</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#f05032;--badge-bg:rgba(240,80,50,.12)"><span class="badge-icon" style="background:#f05032">Git</span><span class="badge-name">Git</span></div>
-          <div class="skill-badge" style="--badge-color:#f05032;--badge-bg:rgba(240,80,50,.12)"><span class="badge-icon" style="background:#f05032">GH</span><span class="badge-name">GitHub</span></div>
-          <div class="skill-badge" style="--badge-color:#22b5bf;--badge-bg:rgba(34,181,191,.1)"><span class="badge-icon" style="background:#22b5bf;color:#000">RD</span><span class="badge-name">Responsive Design</span></div>
+          <div class="skill-badge" style="--badge-color:#ff6f00;--badge-bg:rgba(255,111,0,.12)"><span class="badge-icon" style="background:#ff6f00;color:#fff">TF</span><span class="badge-name">TENSORFLOW</span></div>
+          <div class="skill-badge" style="--badge-color:#150458;--badge-bg:rgba(21,4,88,.12)"><span class="badge-icon" style="background:#150458;color:#fff">Pd</span><span class="badge-name">PANDAS</span></div>
+          <div class="skill-badge" style="--badge-color:#013243;--badge-bg:rgba(1,50,67,.12)"><span class="badge-icon" style="background:#013243;color:#fff">Np</span><span class="badge-name">NUMPY</span></div>
+          <div class="skill-badge" style="--badge-color:#11557c;--badge-bg:rgba(17,85,124,.12)"><span class="badge-icon" style="background:#fff;border:1px solid #11557c;color:#11557c">Mp</span><span class="badge-name">MATPLOTLIB</span></div>
         </div>
       </div>
 
@@ -1150,15 +1346,15 @@ a.cert-card .cert-view{
 
     <!-- soft skills -->
     <div class="reveal" style="margin-top:2rem">
-      <div class="aside-card" style="background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.4rem">
-        <div class="aside-card-title" style="font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.8rem">Soft Skills</div>
+      <div class="aside-card" style="background:var(--surface);border:1px solid rgba(255,255,255,0.15);border-radius:var(--r-lg);padding:1.4rem;box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+        <div class="aside-card-title" style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary);margin-bottom:1rem;font-weight:600;">Soft Skills</div>
         <div class="tags">
-          <span class="tag">Leadership</span>
-          <span class="tag">Problem-Solving</span>
-          <span class="tag">Teamwork</span>
-          <span class="tag">Communication</span>
-          <span class="tag">Time Management</span>
-          <span class="tag">Event Organization</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Leadership</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Problem-Solving</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Teamwork</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Communication</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Time Management</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Event Organization</span>
         </div>
       </div>
     </div>
@@ -1367,363 +1563,168 @@ a.cert-card .cert-view{
   </div>
 </section>
 
-<hr class="sec-divider">
-
-<!-- ═══════════ LEADERSHIP ═══════════ -->
-<section id="leadership">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">/ leadership & impact</span>
-      <h2 class="section-title">Beyond the code.</h2>
-      <p class="section-sub">Building software and building teams require the same skill: clear thinking under pressure.</p>
-    </div>
-
-    <div class="inner">
-      <!-- timeline -->
-      <div class="reveal">
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-date">2026 · National Ideathon</div>
-            <div class="tl-title">Ideathon Organizer — Samadhan 2026</div>
-            <p class="tl-body">Directed a <strong>national-level ideathon</strong> end-to-end — logistics, participant coordination, vendor management, and on-ground operations for <strong>100+ attendees</strong>. Partnered with Ek Saath – The Earth Foundation to source real-world problem statements and mentorship.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot" style="border-color:var(--green)"></div>
-            <div class="tl-date">2025–2026 · NSS</div>
-            <div class="tl-title">Head of NSS — St. Francis Institute of Technology</div>
-            <p class="tl-body">Led community service initiatives and coordinated student volunteers across <strong>multiple social outreach programs</strong> and campus drives. Managed cross-functional teams and represented NSS at the institute level.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot" style="border-color:var(--amber)"></div>
-            <div class="tl-date">Apr 2025 · Competition</div>
-            <div class="tl-title">2nd Prize — Colloquium '25, SFIT</div>
-            <p class="tl-body">Runner-up at the college's flagship IT competition with <strong>HeritageGuide</strong>, submitted under the "IT for Good Governance" track. Also volunteered as a coordinator for the same event.</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot" style="border-color:var(--text-muted)"></div>
-            <div class="tl-date">Apr 2026 · Competition</div>
-            <div class="tl-title">Participant — Colloquium '26, SFIT</div>
-            <p class="tl-body">Participated in the <strong>IT for Smart Mobility</strong> track, presenting a project addressing urban mobility challenges.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- achievements -->
-      <div class="reveal reveal-delay-2">
-        <div class="ach-list">
-          <div class="ach-item">
-            <div class="ach-icon">🏆</div>
-            <div>
-              <div class="ach-title">2nd Prize — Colloquium '25</div>
-              <div class="ach-sub">IT for Good Governance · HeritageGuide · St. Francis Institute of Technology, April 2025</div>
-            </div>
-          </div>
-          <div class="ach-item">
-            <div class="ach-icon">🤖</div>
-            <div>
-              <div class="ach-title">AI Agent Builder Workshop</div>
-              <div class="ach-sub">Certificate of Recognition · BotCampus AI · November 2025</div>
-            </div>
-          </div>
-          <div class="ach-item">
-            <div class="ach-icon">🔐</div>
-            <div>
-              <div class="ach-title">Web Auth Intensive: Basic to Advanced</div>
-              <div class="ach-sub">Devtown × Google Developer Groups VIT-AP & Microsoft Student Chapter MSIT · October 2025</div>
-            </div>
-          </div>
-          <div class="ach-item">
-            <div class="ach-icon">🍃</div>
-            <div>
-              <div class="ach-title">NoSQL Ninjas: MongoDB Edition</div>
-              <div class="ach-sub">Devtown × GDG VIT-AP & Microsoft Student Chapter MSIT · September 2025</div>
-            </div>
-          </div>
-          <div class="ach-item">
-            <div class="ach-icon">🏏</div>
-            <div>
-              <div class="ach-title">2× Box Cricket Tournament Winner</div>
-              <div class="ach-sub">Teamwork, leadership, and a competitive drive — on and off the field</div>
-            </div>
-          </div>
-          <div class="ach-item">
-            <div class="ach-icon">♟</div>
-            <div>
-              <div class="ach-title">National-Level Chess Competitor</div>
-              <div class="ach-sub">Competed at national tournaments — strategic thinking, long-horizon planning</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Sections Leadership removed to merge with About -->
 
 <hr class="sec-divider">
 
 <!-- ═══════════ CERTIFICATES ═══════════ -->
 <section id="certs">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">/ certifications</span>
-      <h2 class="section-title">Continuous learning, certified.</h2>
-      <p class="section-sub">A selection of courses and recognitions that reflect where I'm investing my learning.</p>
+  <div class="container" style="max-width: 100vw; padding: 0;">
+    <div class="reveal" style="padding: 0 2.5rem;">
+      <h2 class="trophy-title">TROPHY ROOM</h2>
+      <p class="trophy-sub">Achievements and certifications unlocked</p>
     </div>
-    <div class="cert-gallery">
+    <div class="marquee-wrapper">
 
-      <!-- 1 -->
-      <a href="Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
-        <div class="cert-img-wrap">
-          <img src="Colloquium_certificate.jpg" alt="Colloquium 2025 Certificate of Excellence">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Colloquium '25 — Certificate of Excellence (2nd Prize)</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">St. Francis Institute of Technology</span>
-            <span class="cert-img-date">Apr 2025</span>
-          </div>
-        </div>
-      </a>
+      <!-- ROW 1 (Left to Right) -->
+      <div class="marquee-track right">
+        <!-- GROUP 1 -->
+        <a href="Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Colloquium_certificate.jpg" alt="Colloquium 2025 Certificate of Excellence"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 — 2nd Prize</div></div>
+        </a>
+        <a href="Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Prayas_certificate.jpg" alt="Prayas Project Exhibition Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Prayas Project Exhibition</div></div>
+        </a>
+        <a href="Volunteering_Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Volunteering_Colloquium_certificate.jpg" alt="Colloquium 2025 Volunteer Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 Volunteer</div></div>
+        </a>
+        <a href="BotCampusAI_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="BotCampusAI_certificate.jpg" alt="BotCampus AI Agent Builder Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">AI Agent Builder Workshop</div></div>
+        </a>
+        <a href="Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_NoSQL_GDG.png" alt="NoSQL Ninjas MongoDB GDG Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (GDG)</div></div>
+        </a>
+        <a href="Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_NoSQL_MSIT.png" alt="NoSQL Ninjas MongoDB MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (MSIT)</div></div>
+        </a>
+        <a href="Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_NoSQL_Participation.png" alt="NoSQL Ninjas MongoDB Participation Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas Participation</div></div>
+        </a>
+        <a href="WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="WebAuth_GDG_certificate.jpg" alt="Web Auth Security GDG VIT-AP Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (GDG)</div></div>
+        </a>
+        <a href="WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="WebAuth_MSIT_certificate.jpg" alt="Web Auth Security MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (MSIT)</div></div>
+        </a>
+        
+        <!-- REPEAT GROUP 1 -->
+        <a href="Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Colloquium_certificate.jpg" alt="Colloquium 2025 Certificate of Excellence"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 — 2nd Prize</div></div>
+        </a>
+        <a href="Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Prayas_certificate.jpg" alt="Prayas Project Exhibition Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Prayas Project Exhibition</div></div>
+        </a>
+        <a href="Volunteering_Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Volunteering_Colloquium_certificate.jpg" alt="Colloquium 2025 Volunteer Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 Volunteer</div></div>
+        </a>
+        <a href="BotCampusAI_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="BotCampusAI_certificate.jpg" alt="BotCampus AI Agent Builder Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">AI Agent Builder Workshop</div></div>
+        </a>
+        <a href="Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_NoSQL_GDG.png" alt="NoSQL Ninjas MongoDB GDG Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (GDG)</div></div>
+        </a>
+        <a href="Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_NoSQL_MSIT.png" alt="NoSQL Ninjas MongoDB MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (MSIT)</div></div>
+        </a>
+        <a href="Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_NoSQL_Participation.png" alt="NoSQL Ninjas MongoDB Participation Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas Participation</div></div>
+        </a>
+        <a href="WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="WebAuth_GDG_certificate.jpg" alt="Web Auth Security GDG VIT-AP Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (GDG)</div></div>
+        </a>
+        <a href="WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="WebAuth_MSIT_certificate.jpg" alt="Web Auth Security MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (MSIT)</div></div>
+        </a>
+      </div>
 
-      <!-- 2 -->
-      <a href="Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
-        <div class="cert-img-wrap">
-          <img src="Prayas_certificate.jpg" alt="Prayas Project Exhibition Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Prayas Project Exhibition — Certificate of Participation</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">St. Francis Institute of Technology</span>
-            <span class="cert-img-date">2024</span>
-          </div>
-        </div>
-      </a>
+      <!-- ROW 2 (Right to Left) -->
+      <div class="marquee-track left">
+        <!-- GROUP 2 -->
+        <a href="WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="WebAuth_Participation_certificate.jpg" alt="Web Authentication Security Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Security Participation</div></div>
+        </a>
+        <a href="Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Colloquium_2026_certificate.jpg" alt="Colloquium 2026 Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '26 Participation</div></div>
+        </a>
+        <a href="AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">AIquiz Student Ambassador</div></div>
+        </a>
+        <a href="gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="gemini_game_night_certificate.jpg" alt="Gemini Game Night"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Gemini Game Night</div></div>
+        </a>
+        <a href="NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="NSS_HEAD_Certificate.jpg" alt="Head of NSS Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Head of NSS (SFIT)</div></div>
+        </a>
+        <a href="Devtown_ML_GDG.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_ML_GDG.jpg" alt="Machine Learning Mastery GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (GDG)</div></div>
+        </a>
+        <a href="Devtown_ML_MSIT.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_ML_MSIT.jpg" alt="Machine Learning Mastery MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (MSIT)</div></div>
+        </a>
+        <a href="Devtown_ML_Participation.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_ML_Participation.jpg" alt="Machine Learning Mastery Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Participation</div></div>
+        </a>
 
-      <!-- 3 -->
-      <a href="Volunteering_Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-3">
-        <div class="cert-img-wrap">
-          <img src="Volunteering_Colloquium_certificate.jpg" alt="Colloquium 2025 Volunteer Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Certificate of Appreciation — Colloquium '25 Volunteer</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Dept. of IT, SFIT</span>
-            <span class="cert-img-date">Apr 2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- 4 -->
-      <a href="BotCampusAI_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
-        <div class="cert-img-wrap">
-          <img src="BotCampusAI_certificate.jpg" alt="BotCampus AI Agent Builder Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">AI Agent Builder Workshop — Certificate of Recognition</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">BotCampus AI</span>
-            <span class="cert-img-date">Nov 2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- 5 -->
-      <a href="Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
-        <div class="cert-img-wrap">
-          <img src="Devtown_NoSQL_GDG.png" alt="NoSQL Ninjas MongoDB GDG Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">NoSQL Ninjas: MongoDB — Participation &amp; Project Completion</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown × GDG VIT-AP</span>
-            <span class="cert-img-date">Sep 2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- 6 -->
-      <a href="Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-3">
-        <div class="cert-img-wrap">
-          <img src="Devtown_NoSQL_MSIT.png" alt="NoSQL Ninjas MongoDB MSIT Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">NoSQL Ninjas: MongoDB — Participation &amp; Project Completion</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown × Microsoft Student Chapter (MSIT)</span>
-            <span class="cert-img-date">Sep 2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- 7 -->
-      <a href="Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
-        <div class="cert-img-wrap">
-          <img src="Devtown_NoSQL_Participation.png" alt="NoSQL Ninjas MongoDB Participation Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">NoSQL Ninjas: MongoDB Edition — Certificate of Participation</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown</span>
-            <span class="cert-img-date">Sep 2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- 8 -->
-      <a href="WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
-        <div class="cert-img-wrap">
-          <img src="WebAuth_GDG_certificate.jpg" alt="Web Auth Security GDG VIT-AP Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Web Auth Intensive — Participation &amp; Project Completion</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown × GDG VIT-AP</span>
-            <span class="cert-img-date">Oct 2025</span>
-          </div>
-        </div>
-      </a>
-      <!-- 9 -->
-      <a href="WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-3">
-        <div class="cert-img-wrap">
-          <img src="WebAuth_MSIT_certificate.jpg" alt="Web Auth Security MSIT Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Web Auth Intensive — Participation &amp; Project Completion</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown × Microsoft Student Chapter (MSIT)</span>
-            <span class="cert-img-date">Oct 2025</span>
-          </div>
-        </div>
-      </a>
-      <!-- 10 -->
-      <a href="WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
-        <div class="cert-img-wrap">
-          <img src="WebAuth_Participation_certificate.jpg" alt="Web Authentication Security Participation Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Web Authentication Security — Certificate of Participation</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown</span>
-            <span class="cert-img-date">Oct 2025</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- 11 -->
-      <a href="Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
-        <div class="cert-img-wrap">
-          <img src="Colloquium_2026_certificate.jpg" alt="Colloquium 2026 Certificate of Participation">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Colloquium '26 — Certificate of Participation</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">St. Francis Institute of Technology</span>
-            <span class="cert-img-date">Apr 2026</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- New Cert 1 -->
-      <a href="AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
-        <div class="cert-img-wrap">
-          <img src="AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">AIquiz Student Ambassador</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">AIquiz</span>
-            <span class="cert-img-date">2026</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- New Cert 2 -->
-      <a href="gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
-        <div class="cert-img-wrap">
-          <img src="gemini_game_night_certificate.jpg" alt="Gemini Game Night Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Gemini Game Night</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Google / Gemini</span>
-            <span class="cert-img-date">2026</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- New Cert 3 -->
-      <a href="NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-3">
-        <div class="cert-img-wrap">
-          <img src="NSS_HEAD_Certificate.jpg" alt="Head of NSS Certificate">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Head of NSS</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">St. Francis Institute of Technology</span>
-            <span class="cert-img-date">2025-2026</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- ML Cert 1 -->
-      <a href="Devtown_ML_GDG.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-1">
-        <div class="cert-img-wrap">
-          <img src="Devtown_ML_GDG.jpg" alt="Machine Learning Mastery GDG">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Machine Learning Mastery &amp; Project Completion</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown × GDG on Campus VIT‑AP</span>
-            <span class="cert-img-date">2026</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- ML Cert 2 -->
-      <a href="Devtown_ML_MSIT.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-2">
-        <div class="cert-img-wrap">
-          <img src="Devtown_ML_MSIT.jpg" alt="Machine Learning Mastery MSIT">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Machine Learning Mastery &amp; Project Completion</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown × Microsoft Student Chapter (MSIT)</span>
-            <span class="cert-img-date">2026</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- ML Cert 3 -->
-      <a href="Devtown_ML_Participation.jpg" target="_blank" rel="noopener" class="cert-img-card reveal reveal-delay-3">
-        <div class="cert-img-wrap">
-          <img src="Devtown_ML_Participation.jpg" alt="Machine Learning Mastery Participation">
-          <div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div>
-        </div>
-        <div class="cert-img-info">
-          <div class="cert-img-title">Machine Learning Mastery Participation</div>
-          <div class="cert-img-meta">
-            <span class="cert-img-issuer">Devtown</span>
-            <span class="cert-img-date">2026</span>
-          </div>
-        </div>
-      </a>
+        <!-- REPEAT GROUP 2 -->
+        <a href="WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="WebAuth_Participation_certificate.jpg" alt="Web Authentication Security Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Security Participation</div></div>
+        </a>
+        <a href="Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Colloquium_2026_certificate.jpg" alt="Colloquium 2026 Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '26 Participation</div></div>
+        </a>
+        <a href="AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">AIquiz Student Ambassador</div></div>
+        </a>
+        <a href="gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="gemini_game_night_certificate.jpg" alt="Gemini Game Night"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Gemini Game Night</div></div>
+        </a>
+        <a href="NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="NSS_HEAD_Certificate.jpg" alt="Head of NSS Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Head of NSS (SFIT)</div></div>
+        </a>
+        <a href="Devtown_ML_GDG.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_ML_GDG.jpg" alt="Machine Learning Mastery GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (GDG)</div></div>
+        </a>
+        <a href="Devtown_ML_MSIT.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_ML_MSIT.jpg" alt="Machine Learning Mastery MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (MSIT)</div></div>
+        </a>
+        <a href="Devtown_ML_Participation.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="Devtown_ML_Participation.jpg" alt="Machine Learning Mastery Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Participation</div></div>
+        </a>
+      </div>
 
     </div>
   </div>
@@ -1801,6 +1802,82 @@ const sh = document.querySelector('.scroll-hint');
 window.addEventListener('scroll', () => {
   if(sh) sh.style.opacity = window.scrollY > 80 ? '0' : '1';
 }, { passive: true });
+</script>
+
+<!-- Custom Dynamic Cursor -->
+<div id="custom-cursor"></div>
+<style>
+  #custom-cursor {
+    position: fixed;
+    top: -12px;
+    left: -14px;
+    width: 28px;
+    height: 24px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 12 L2 4 L6 12 L2 20 Z" fill="%232eb0ff" stroke="%23ffffff" stroke-width="1.5" stroke-linejoin="round"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: 999999;
+    transform-origin: 14px 12px;
+    transition: filter 0.2s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  }
+</style>
+<script>
+  const customCursor = document.getElementById('custom-cursor');
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  let currentAngle = -45; // Start pointing top-left by default
+  let targetAngle = -45;
+  let currentScale = 1;
+  let targetScale = 1;
+
+  document.addEventListener('mousemove', (e) => {
+    const dx = e.clientX - mouseX;
+    const dy = e.clientY - mouseY;
+    
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Update angle only if moving enough to prevent jitter
+    if (Math.abs(dx) > 1.5 || Math.abs(dy) > 1.5) {
+      targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+    }
+  });
+
+  // Shortest path angle interpolation
+  function lerpAngle(start, end, factor) {
+    let delta = end - start;
+    delta = (delta + 540) % 360 - 180;
+    return start + delta * factor;
+  }
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.35;
+    cursorY += (mouseY - cursorY) * 0.35;
+    
+    currentAngle = lerpAngle(currentAngle, targetAngle, 0.15);
+    currentScale += (targetScale - currentScale) * 0.2;
+
+    customCursor.style.transform = `translate(${cursorX}px, ${cursorY}px) rotate(${currentAngle}deg) scale(${currentScale})`;
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Hover effects
+  const interactiveElements = document.querySelectorAll('a, button, .btn, .proj-card, .ach-item, .cert-img-card, .interest-item, .edu-item, .journey-card, .skill-cat, .contact-chip');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      targetScale = 1.35;
+      customCursor.style.filter = 'drop-shadow(0 0 10px rgba(46,176,255,0.9))';
+    });
+    el.addEventListener('mouseleave', () => {
+      targetScale = 1;
+      customCursor.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))';
+    });
+  });
 </script>
 </body>
 </html>
