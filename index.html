@@ -400,28 +400,146 @@ nav{
 .edu-sub{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--text-muted);letter-spacing:.03em}
 
 /* ═══════════════════════════════════════════
-   SKILLS
+   TECHNICAL EXPERTISE
 ═══════════════════════════════════════════ */
-#skills .grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;
-  margin-top:3rem;
+.expertise-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 4rem;
 }
-.skill-cat{
-  background:var(--bg-2);border:1px solid var(--border);
-  border-radius:var(--r-lg);padding:1.4rem;position:relative;overflow:hidden;
+.stack-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
 }
-.skill-cat::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+.stack-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
 }
-.cat-blue::before{background:linear-gradient(90deg,var(--accent),transparent)}
-.cat-green::before{background:linear-gradient(90deg,var(--green),transparent)}
-.cat-amber::before{background:linear-gradient(90deg,var(--amber),transparent)}
-.cat-coral::before{background:linear-gradient(90deg,var(--coral),transparent)}
-.skill-cat-title{
-  font-family:'Syne',sans-serif;font-size:.9rem;font-weight:600;
-  margin-bottom:1rem;color:var(--text-primary);
+.bento-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
 }
-.skill-tags{display:flex;flex-wrap:wrap;gap:5px}
+.bento-box {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+.bento-box:hover {
+  border-color: rgba(62,207,142, 0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.bento-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+}
+.bento-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.badge-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--badge-color, #fff);
+  background: var(--badge-bg, rgba(255,255,255,0.1));
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.badge-name:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.expertise-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
+}
+.expertise-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.what-i-do-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+.do-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  padding: 1.1rem;
+  border-radius: var(--r-lg);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+.do-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(62,207,142,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.do-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(62,207,142,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.do-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--green);
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.soft-skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.soft-skill-pill {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.5rem 1rem;
+  border-radius: var(--r-md);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.soft-skill-pill:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
+}
 
 /* ═══════════════════════════════════════════
    PROJECTS
@@ -429,43 +547,121 @@ nav{
 #projects .section-head{margin-bottom:3.5rem}
 
 /* flagship */
-.flagship{
-  background:var(--bg-2);border:1px solid var(--border);
-  border-radius:var(--r-lg);padding:2.5rem;margin-bottom:1.5rem;
-  position:relative;overflow:hidden;transition:border-color .25s;
+.flagship {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 5rem;
 }
-.flagship:hover{border-color:var(--border-bright)}
-.flagship::after{
-  content:'';position:absolute;top:0;right:0;
-  width:300px;height:300px;
-  background:radial-gradient(circle at top right,rgba(79,142,247,.06),transparent 70%);
-  pointer-events:none;
+.flagship.reverse .flagship-img-col { order: 2; }
+.flagship.reverse .flagship-details-col { order: 1; }
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 5rem;
 }
-.flagship-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--accent);
-  background:var(--accent-dim);border:1px solid rgba(79,142,247,.2);
-  border-radius:999px;padding:3px 10px;margin-bottom:1.2rem;
+.flagship-img-col {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.3));
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.flagship-title{
-  font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;
-  letter-spacing:-.025em;margin-bottom:.5rem;
+.flagship-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
-.flagship-desc{
-  font-size:.92rem;color:var(--text-secondary);line-height:1.7;
-  max-width:680px;margin-bottom:1.5rem;
+.flagship-img-col:hover img {
+  transform: scale(1.03);
 }
-.flagship-points{list-style:none;margin-bottom:1.5rem}
-.flagship-points li{
-  display:flex;gap:.75rem;align-items:flex-start;
-  font-size:.85rem;color:var(--text-secondary);margin-bottom:.5rem;line-height:1.6;
+.flagship-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.2s;
 }
-.flagship-points li::before{
-  content:'→';color:var(--accent);flex-shrink:0;margin-top:.05rem;
+.flagship-nav:hover { background: rgba(0,0,0,0.9); }
+.flagship-nav.prev { left: 1rem; }
+.flagship-nav.next { right: 1rem; }
+.flagship-nav svg { width: 14px; height: 14px; stroke-width: 3px; }
+
+.flagship-details-col {
+  display: flex;
+  flex-direction: column;
 }
-.flagship-footer{
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+.flagship-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.flagship-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+.flagship-link-icon {
+  color: var(--green);
+  transition: transform 0.2s;
+  display: inline-flex;
+}
+.flagship-link-icon:hover {
+  transform: translateY(-2px);
+}
+.flagship-link-icon svg { width: 22px; height: 22px; }
+.flagship-subtitle {
+  color: var(--green);
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+.flagship-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+.flagship-points li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.flagship-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.flagship-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 .proj-links{display:flex;gap:.6rem}
 
@@ -495,13 +691,30 @@ nav{
 }
 .proj-footer{display:flex;align-items:center;justify-content:space-between}
 .proj-tags{display:flex;gap:4px;flex-wrap:wrap}
-.proj-link{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--text-muted);text-decoration:none;letter-spacing:.04em;
-  border:1px solid var(--border);border-radius:4px;padding:3px 9px;
-  transition:all .15s;white-space:nowrap;
+.proj-link {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--r-md);
+  padding: 0.6rem 1.2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
 }
-.proj-link:hover{color:var(--accent);border-color:rgba(79,142,247,.3);background:var(--accent-dim)}
+.proj-link:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(145deg, rgba(62,207,142,0.15), rgba(62,207,142,0.02));
+  border-color: rgba(62,207,142,0.4);
+  color: var(--green);
+  box-shadow: 0 8px 25px rgba(62,207,142,0.15);
+}
 
 /* ═══════════════════════════════════════════
    LEADERSHIP / JOURNEY
@@ -919,6 +1132,33 @@ nav{
   white-space:nowrap;
 }
 
+@media (max-width: 900px) {
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .bento-layout {
+    grid-template-columns: 1fr;
+  }
+  .flagship {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .flagship.reverse .flagship-img-col { order: 1; }
+  .flagship.reverse .flagship-details-col { order: 2; }
+  .flagship-img-col {
+    aspect-ratio: 16 / 9;
+  }
+  .flagship-title {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 500px) {
+  .what-i-do-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1254,108 +1494,147 @@ nav{
 
 <hr class="sec-divider">
 
-<!-- ═══════════ SKILLS ═══════════ -->
-<section id="skills">
-  <div class="container">
-    <div class="reveal">
-      <span class="section-label">/ technical skills</span>
-      <h2 class="section-title">The stack I reach for.</h2>
-      <p class="section-sub">Grouped by domain — depth over breadth, always.</p>
-    </div>
-    <div class="grid" style="margin-top:3rem">
+<!-- ═══════════ TECHNICAL EXPERTISE ═══════════ -->
+<section id="technical-expertise">
+  <div class="container" style="max-width: 1400px;">
+    <div class="expertise-grid">
+      <!-- Left Column: The Stack -->
+      <div class="expertise-left reveal">
+        <div class="stack-title-wrap">
+          <div class="section-label" style="margin-bottom:0.5rem;">/ TECHNICAL SKILLS</div>
+          <h2 class="stack-title">The stack I reach for.</h2>
+          <p class="stack-sub">Grouped by domain — depth over breadth, always.</p>
+        </div>
+        
+        <div class="bento-layout">
+          <!-- Languages -->
+          <div class="bento-box">
+            <div class="bento-title">Languages</div>
+            <div class="bento-tags">
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1e40af">C</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1d4ed8">C++</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Java</span>
+              <span class="badge-name" style="--badge-color:#000;--badge-bg:#facc15">JavaScript</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">TypeScript</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#10b981">Python</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#06b6d4">Dart</span>
+            </div>
+          </div>
+          
+          <!-- Frontend & Mobile -->
+          <div class="bento-box">
+            <div class="bento-title">Frontend & Mobile</div>
+            <div class="bento-tags">
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#000">Next.js</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">Flutter</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">Angular</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#b91c1c">Angular.js</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3f3f46">Three.js</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0ea5e9">TailwindCSS</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f97316">HTML5</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#06b6d4">Canva</span>
+            </div>
+          </div>
+          
+          <!-- Cloud & DevOps -->
+          <div class="bento-box">
+            <div class="bento-title">Cloud & DevOps</div>
+            <div class="bento-tags">
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f59e0b">Firebase</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#000">Vercel</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#d97706">AWS</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Google Cloud</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">Docker</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">Jenkins</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Git</span>
+            </div>
+          </div>
 
-      <!-- Languages -->
-      <div class="skill-cat cat-blue reveal reveal-delay-1" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <div class="skill-cat-title">Languages</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#6295cb;--badge-bg:rgba(98,149,203,.12)"><span class="badge-icon" style="background:#6295cb;color:#fff">C</span><span class="badge-name">C</span></div>
-          <div class="skill-badge" style="--badge-color:#6295cb;--badge-bg:rgba(98,149,203,.12)"><span class="badge-icon" style="background:#6295cb;color:#fff">C++</span><span class="badge-name">C++</span></div>
-          <div class="skill-badge" style="--badge-color:#f89820;--badge-bg:rgba(248,152,32,.12)"><span class="badge-icon" style="background:#f89820;color:#fff">Jv</span><span class="badge-name">JAVA</span></div>
-          <div class="skill-badge" style="--badge-color:#f7df1e;--badge-bg:rgba(247,223,30,.1)"><span class="badge-icon" style="background:#f7df1e;color:#000">JS</span><span class="badge-name">JAVASCRIPT</span></div>
-          <div class="skill-badge" style="--badge-color:#3178c6;--badge-bg:rgba(49,120,198,.12)"><span class="badge-icon" style="background:#3178c6;color:#fff">TS</span><span class="badge-name">TYPESCRIPT</span></div>
-          <div class="skill-badge" style="--badge-color:#4f8ef7;--badge-bg:rgba(79,142,247,.12)"><span class="badge-icon" style="background:#4f8ef7;color:#fff">Py</span><span class="badge-name">PYTHON</span></div>
-          <div class="skill-badge" style="--badge-color:#54c5f8;--badge-bg:rgba(84,197,248,.12)"><span class="badge-icon" style="background:#54c5f8;color:#000">Dt</span><span class="badge-name">DART</span></div>
+          <!-- AI & Data Science -->
+          <div class="bento-box">
+            <div class="bento-title">AI & Data Science</div>
+            <div class="bento-tags">
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">TensorFlow</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1e1b4b">Pandas</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">NumPy</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0f172a">Matplotlib</span>
+            </div>
+          </div>
+          
+          <!-- Backend -->
+          <div class="bento-box">
+            <div class="bento-title">Backend</div>
+            <div class="bento-tags">
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#166534">Node.js</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#064e3b">Django</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#27272a">Express.js</span>
+              <span class="badge-name" style="--badge-color:#000;--badge-bg:#f4f4f5">Flask</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">NPM</span>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="bento-box">
+            <div class="bento-title">Databases</div>
+            <div class="bento-tags">
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">MySQL</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0f172a">SQLite</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#16a34a">Supabase</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#15803d">MongoDB</span>
+              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Postgres</span>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="bento-box" style="grid-column: 1 / -1;">
+            <div class="bento-title">Soft Skills</div>
+            <div class="bento-tags">
+              <span class="soft-skill-pill">Leadership</span>
+              <span class="soft-skill-pill">Problem-Solving</span>
+              <span class="soft-skill-pill">Teamwork</span>
+              <span class="soft-skill-pill">Communication</span>
+              <span class="soft-skill-pill">Time Management</span>
+              <span class="soft-skill-pill">Event Organization</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Frontend & Mobile -->
-      <div class="skill-cat cat-green reveal reveal-delay-2" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <div class="skill-cat-title">Frontend & Mobile</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">N</span><span class="badge-name">NEXT.JS</span></div>
-          <div class="skill-badge" style="--badge-color:#54c5f8;--badge-bg:rgba(84,197,248,.12)"><span class="badge-icon" style="background:#54c5f8;color:#000">Fl</span><span class="badge-name">FLUTTER</span></div>
-          <div class="skill-badge" style="--badge-color:#dd1b16;--badge-bg:rgba(221,27,22,.12)"><span class="badge-icon" style="background:#dd1b16;color:#fff">A</span><span class="badge-name">ANGULAR</span></div>
-          <div class="skill-badge" style="--badge-color:#e23237;--badge-bg:rgba(226,50,55,.12)"><span class="badge-icon" style="background:#e23237;color:#fff">AJ</span><span class="badge-name">ANGULAR.JS</span></div>
-          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">3</span><span class="badge-name">THREE.JS</span></div>
-          <div class="skill-badge" style="--badge-color:#38bdf8;--badge-bg:rgba(56,189,248,.12)"><span class="badge-icon" style="background:#38bdf8;color:#fff">TW</span><span class="badge-name">TAILWINDCSS</span></div>
-          <div class="skill-badge" style="--badge-color:#e34c26;--badge-bg:rgba(227,76,38,.12)"><span class="badge-icon" style="background:#e34c26;color:#fff">H5</span><span class="badge-name">HTML5</span></div>
-          <div class="skill-badge" style="--badge-color:#00c4cc;--badge-bg:rgba(0,196,204,.12)"><span class="badge-icon" style="background:#00c4cc;color:#fff">Cv</span><span class="badge-name">CANVA</span></div>
+      <!-- Right Column: What I Do -->
+      <div class="expertise-right reveal reveal-delay-2" style="display:flex;flex-direction:column;justify-content:flex-start;">
+        <h2 class="expertise-heading">Technical Expertise</h2>
+        <div style="width: 70px; height: 3px; background: var(--green); margin-bottom: 2rem; border-radius: 3px;"></div>
+        <p class="expertise-desc">I design and build scalable, high-performance web applications from idea to production — with a strong focus on usability, performance, and clean architecture.</p>
+        
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.2rem;">What I Do</h3>
+        <div class="what-i-do-grid">
+          <div class="do-item">
+            <div class="do-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div>
+            <span>Full-Stack Web Development</span>
+          </div>
+          <div class="do-item">
+            <div class="do-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div>
+            <span>AI & Machine Learning</span>
+          </div>
+          <div class="do-item">
+            <div class="do-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div>
+            <span>Mobile App Development</span>
+          </div>
+          <div class="do-item">
+            <div class="do-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div>
+            <span>Backend Architecture & APIs</span>
+          </div>
+          <div class="do-item">
+            <div class="do-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div>
+            <span>Cloud & DevOps</span>
+          </div>
+          <div class="do-item">
+            <div class="do-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></div>
+            <span>Interactive 3D & Data Viz</span>
+          </div>
         </div>
-      </div>
 
-      <!-- Backend -->
-      <div class="skill-cat cat-amber reveal reveal-delay-3" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <div class="skill-cat-title">Backend</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#68a063;--badge-bg:rgba(104,160,99,.12)"><span class="badge-icon" style="background:#68a063;color:#fff">⬡</span><span class="badge-name">NODE.JS</span></div>
-          <div class="skill-badge" style="--badge-color:#092e20;--badge-bg:rgba(9,46,32,.2)"><span class="badge-icon" style="background:#092e20;border:1px solid #0c4b33;color:#fff">Dj</span><span class="badge-name">DJANGO</span></div>
-          <div class="skill-badge" style="--badge-color:#888;--badge-bg:rgba(136,136,136,.12)"><span class="badge-icon" style="background:#333;color:#fff">Ex</span><span class="badge-name">EXPRESS.JS</span></div>
-          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">Fk</span><span class="badge-name">FLASK</span></div>
-          <div class="skill-badge" style="--badge-color:#cb3837;--badge-bg:rgba(203,56,55,.12)"><span class="badge-icon" style="background:#cb3837;color:#fff">N</span><span class="badge-name">NPM</span></div>
-        </div>
-      </div>
 
-      <!-- Databases -->
-      <div class="skill-cat cat-blue reveal reveal-delay-4" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <div class="skill-cat-title">Databases</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#00758f;--badge-bg:rgba(0,117,143,.15)"><span class="badge-icon" style="background:#00758f;color:#fff">My</span><span class="badge-name">MYSQL</span></div>
-          <div class="skill-badge" style="--badge-color:#003b57;--badge-bg:rgba(0,59,87,.15)"><span class="badge-icon" style="background:#003b57;color:#fff">Sq</span><span class="badge-name">SQLITE</span></div>
-          <div class="skill-badge" style="--badge-color:#3ecf8e;--badge-bg:rgba(62,207,142,.12)"><span class="badge-icon" style="background:#1c1c1c;border:1px solid #3ecf8e;color:#3ecf8e">Sb</span><span class="badge-name">SUPABASE</span></div>
-          <div class="skill-badge" style="--badge-color:#4db33d;--badge-bg:rgba(77,179,61,.12)"><span class="badge-icon" style="background:#4db33d;color:#fff">M</span><span class="badge-name">MONGODB</span></div>
-          <div class="skill-badge" style="--badge-color:#336791;--badge-bg:rgba(51,103,145,.15)"><span class="badge-icon" style="background:#336791;color:#fff">PG</span><span class="badge-name">POSTGRES</span></div>
-        </div>
-      </div>
-
-      <!-- Cloud & DevOps -->
-      <div class="skill-cat cat-blue reveal reveal-delay-1" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <div class="skill-cat-title">Cloud & DevOps</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#ffca28;--badge-bg:rgba(255,202,40,.12)"><span class="badge-icon" style="background:#1a73e8;color:#fff">🔥</span><span class="badge-name">FIREBASE</span></div>
-          <div class="skill-badge" style="--badge-color:#fff;--badge-bg:rgba(255,255,255,.08)"><span class="badge-icon" style="background:#000;border:1px solid #333;color:#fff">▲</span><span class="badge-name">VERCEL</span></div>
-          <div class="skill-badge" style="--badge-color:#ff9900;--badge-bg:rgba(255,153,0,.12)"><span class="badge-icon" style="background:#232f3e;color:#ff9900">A</span><span class="badge-name">AWS</span></div>
-          <div class="skill-badge" style="--badge-color:#4285f4;--badge-bg:rgba(66,133,244,.12)"><span class="badge-icon" style="background:#fff;color:#4285f4">G</span><span class="badge-name">GOOGLECLOUD</span></div>
-          <div class="skill-badge" style="--badge-color:#2496ed;--badge-bg:rgba(36,150,237,.12)"><span class="badge-icon" style="background:#2496ed;color:#fff">🐳</span><span class="badge-name">DOCKER</span></div>
-          <div class="skill-badge" style="--badge-color:#d33833;--badge-bg:rgba(211,56,51,.12)"><span class="badge-icon" style="background:#fff;color:#d33833">J</span><span class="badge-name">JENKINS</span></div>
-          <div class="skill-badge" style="--badge-color:#f05032;--badge-bg:rgba(240,80,50,.12)"><span class="badge-icon" style="background:#f05032;color:#fff">Git</span><span class="badge-name">GIT</span></div>
-        </div>
-      </div>
-
-      <!-- AI & Data Science -->
-      <div class="skill-cat cat-coral reveal reveal-delay-2" style="transition: transform 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
-        <div class="skill-cat-title">AI & Data Science</div>
-        <div class="skill-badges">
-          <div class="skill-badge" style="--badge-color:#ff6f00;--badge-bg:rgba(255,111,0,.12)"><span class="badge-icon" style="background:#ff6f00;color:#fff">TF</span><span class="badge-name">TENSORFLOW</span></div>
-          <div class="skill-badge" style="--badge-color:#150458;--badge-bg:rgba(21,4,88,.12)"><span class="badge-icon" style="background:#150458;color:#fff">Pd</span><span class="badge-name">PANDAS</span></div>
-          <div class="skill-badge" style="--badge-color:#013243;--badge-bg:rgba(1,50,67,.12)"><span class="badge-icon" style="background:#013243;color:#fff">Np</span><span class="badge-name">NUMPY</span></div>
-          <div class="skill-badge" style="--badge-color:#11557c;--badge-bg:rgba(17,85,124,.12)"><span class="badge-icon" style="background:#fff;border:1px solid #11557c;color:#11557c">Mp</span><span class="badge-name">MATPLOTLIB</span></div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- soft skills -->
-    <div class="reveal" style="margin-top:2rem">
-      <div class="aside-card" style="background:var(--surface);border:1px solid rgba(255,255,255,0.15);border-radius:var(--r-lg);padding:1.4rem;box-shadow:0 8px 32px rgba(0,0,0,0.2);">
-        <div class="aside-card-title" style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary);margin-bottom:1rem;font-weight:600;">Soft Skills</div>
-        <div class="tags">
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Leadership</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Problem-Solving</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Teamwork</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Communication</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Time Management</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;font-size:0.8rem;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='none'">Event Organization</span>
-        </div>
       </div>
     </div>
   </div>
@@ -1374,189 +1653,272 @@ nav{
 
     <!-- flagship 1 -->
     <div class="flagship reveal">
-      <span class="flagship-badge">★ Flagship Project</span>
-      <h3 class="flagship-title">ImpactGlobe — Geopolitical Intelligence Dashboard</h3>
-      <p class="flagship-desc">A real-time intelligence platform on an interactive 3D globe. Track geopolitical events, live forex markets, environmental overlays, and AI-generated impact analysis — all in one dashboard.</p>
-      <ul class="flagship-points">
-        <li>3D globe (Three.js + Leaflet) with 7 live environmental overlays — earthquakes, wildfires, AQI, wind — via Open-Meteo, USGS, and NASA EONET APIs</li>
-        <li>Gemini 2.0 Flash auto-generates structured geopolitical events with forex impact analysis every 4 hours via automated Vercel cron jobs</li>
-        <li>Live forex panel powered by Twelve Data API and Firebase Realtime Database — zero manual refresh needed</li>
-      </ul>
-      <div class="flagship-footer">
-        <div class="tags">
-          <span class="tag tag-blue">Next.js</span>
-          <span class="tag tag-blue">TypeScript</span>
-          <span class="tag tag-blue">Three.js</span>
-          <span class="tag tag-green">Gemini AI</span>
-          <span class="tag tag-amber">Firebase</span>
-          <span class="tag">Vercel</span>
+      <!-- Left: Image -->
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">ImpactGlobe</div>
+        <!-- Abstract placeholders since actual images aren't provided yet -->
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      
+      <!-- Right: Details -->
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">ImpactGlobe</h3>
+          <a href="https://impact-globe.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="proj-links">
-          <a href="https://impact-globe.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">Live ↗</a>
-          <a href="https://github.com/KrishMistry18/ImpactGlobe" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a>
+        <div class="flagship-subtitle">Geopolitical Intelligence Dashboard & 3D Interactive Map</div>
+        
+        <ul class="flagship-points">
+          <li>3D globe (Three.js + Leaflet) with 7 live environmental overlays — earthquakes, wildfires, AQI, wind — via Open-Meteo, USGS, and NASA APIs.</li>
+          <li>Gemini 2.0 Flash auto-generates structured geopolitical events with forex impact analysis every 4 hours via Vercel cron jobs.</li>
+          <li>Live forex panel powered by Twelve Data API and Firebase Realtime Database — zero manual refresh needed.</li>
+        </ul>
+        
+        <div class="flagship-footer">
+          <div class="tags">
+            <span class="tag tag-blue">Next.js</span>
+            <span class="tag tag-blue">TypeScript</span>
+            <span class="tag tag-blue">Three.js</span>
+            <span class="tag tag-green">Gemini AI</span>
+            <span class="tag tag-amber">Firebase</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/ImpactGlobe" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- flagship 2 -->
-    <div class="flagship reveal" style="margin-bottom:3rem">
-      <span class="flagship-badge" style="color:var(--green);background:var(--green-dim);border-color:rgba(62,207,142,.2)">★ Flagship Project</span>
-      <h3 class="flagship-title">HemiSphere — Smart Community Safety App</h3>
-      <p class="flagship-desc">A cross-platform mobile app (Android + iOS) for neighbourhood safety monitoring, resource sharing, and incident reporting — powered by an on-device AI model.</p>
-      <ul class="flagship-points">
-        <li>MobileNetV3 CNN (Transfer Learning) classifies accidents, construction hazards, and garbage from incident photos with on-device inference</li>
-        <li>Heuristic regression for real-time CO₂ emissions tracking — gives communities actionable environmental data</li>
-        <li>Flutter + Firebase Firestore backend with real-time sync across all community members</li>
-      </ul>
-      <div class="flagship-footer">
-        <div class="tags">
-          <span class="tag tag-green">Flutter</span>
-          <span class="tag tag-green">TensorFlow</span>
-          <span class="tag tag-green">MobileNetV3</span>
-          <span class="tag tag-amber">Firebase</span>
-          <span class="tag">Python</span>
+    <div class="flagship reverse reveal">
+      <!-- Left: Image -->
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">HemiSphere</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+
+      <!-- Right: Details -->
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">HemiSphere</h3>
+          <a href="https://hemisphere-dev.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="proj-links">
-          <a href="https://hemisphere-dev.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">Live ↗</a>
-          <a href="https://github.com/KrishMistry18/Hemisphere" class="proj-link" target="_blank" rel="noopener" style="color:var(--accent);border-color:rgba(79,142,247,.3);background:var(--accent-dim)">GitHub ↗</a>
+        <div class="flagship-subtitle">Smart Community Safety App with Edge AI</div>
+        
+        <ul class="flagship-points">
+          <li>MobileNetV3 CNN (Transfer Learning) classifies accidents, construction hazards, and garbage from incident photos with on-device inference.</li>
+          <li>Heuristic regression for real-time CO₂ emissions tracking — gives communities actionable environmental data locally.</li>
+          <li>Flutter + Firebase Firestore backend with real-time sync across all community members.</li>
+        </ul>
+        
+        <div class="flagship-footer">
+          <div class="tags">
+            <span class="tag tag-green">Flutter</span>
+            <span class="tag tag-green">TensorFlow</span>
+            <span class="tag tag-green">MobileNetV3</span>
+            <span class="tag tag-amber">Firebase</span>
+            <span class="tag">Python</span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/Hemisphere" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- project grid -->
-    <div class="proj-grid">
-      <div class="proj-card reveal reveal-delay-1">
-        <div class="proj-icon">♟</div>
-        <div class="proj-name">ChessAnalyzer</div>
-        <p class="proj-desc">Browser-based chess analysis suite powered by Stockfish WASM — zero backend, full engine strength, runs entirely in the browser with a polished Next.js UI.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies, mistakes, and blunders</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>40+ piece themes, SAN move list, zero backend dependency for analysis</li>
+    <!-- flagship 3 -->
+    <div class="flagship reveal">
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">ChessAnalyzer</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">ChessAnalyzer</h3>
+          <a href="https://chess-analyzer-qf7v.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
+        </div>
+        <div class="flagship-subtitle">Browser-based chess analysis suite powered by Stockfish WASM.</div>
+        <ul class="flagship-points">
+          <li>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU</li>
+          <li>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies, mistakes, and blunders</li>
+          <li>40+ piece themes, SAN move list, zero backend dependency for analysis</li>
         </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
+        <div class="flagship-footer">
+          <div class="tags">
             <span class="tag tag-blue">Next.js 15</span>
             <span class="tag tag-blue">TypeScript</span>
             <span class="tag">Stockfish WASM</span>
             <span class="tag">MUI</span>
             <span class="tag">Jotai</span>
           </div>
-          <div style="display:flex;gap:5px">
-            <a href="https://chess-analyzer-qf7v.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">live ↗</a>
-            <a href="https://github.com/KrishMistry18/ChessAnalyzer" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/ChessAnalyzer" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card reveal reveal-delay-2">
-        <div class="proj-icon">🛒</div>
-        <div class="proj-name">EduCycle</div>
-        <p class="proj-desc">Full-stack student marketplace for buying and selling academic essentials — lab equipment, drawing tools, study materials — deployed on Vercel with PostgreSQL.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>JWT + OAuth2 auth, 2FA, real-time chat, and Stripe payment integration with an analytics dashboard</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Django REST + React.js backend; Redis caching, advanced search and filtering</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>PWA-enabled app with offline support, and a fully responsive UI</li>
+    <!-- flagship 4 -->
+    <div class="flagship reverse reveal">
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">EduCycle</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">EduCycle</h3>
+          <a href="https://edu-cycle-five.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
+        </div>
+        <div class="flagship-subtitle">Student marketplace for buying and selling academic essentials.</div>
+        <ul class="flagship-points">
+          <li>JWT + OAuth2 auth, 2FA, real-time chat, and Stripe payment integration with an analytics dashboard</li>
+          <li>Django REST + React.js backend; Redis caching, advanced search and filtering</li>
+          <li>PWA-enabled app with offline support, and a fully responsive UI</li>
         </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
+        <div class="flagship-footer">
+          <div class="tags">
             <span class="tag">Django REST</span>
             <span class="tag">React.js</span>
             <span class="tag tag-amber">PostgreSQL</span>
             <span class="tag">Redis</span>
             <span class="tag tag-amber">Stripe</span>
           </div>
-          <div style="display:flex;gap:5px">
-            <a href="https://edu-cycle-five.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">live ↗</a>
-            <a href="https://github.com/KrishMistry18/EduCycle" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/EduCycle" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card reveal reveal-delay-3">
-        <div class="proj-icon">🗺</div>
-        <div class="proj-name">HeritageGuide</div>
-        <p class="proj-desc">Django travel companion with Leaflet + OSM maps, smart multi-modal routing, curated POI markers, multi-day itinerary planning, and slot-based bookings.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Interactive Leaflet + OSM map with smart multi-modal routing (driving/walking/cycling/transit) via Leaflet Routing Machine</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Multi-day itinerary planner, slot-based attraction booking with availability enforcement</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Optional Google Maps upgrade for Place Search and Drawing tools</li>
+    <!-- flagship 5 -->
+    <div class="flagship reveal">
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">HeritageGuide</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">HeritageGuide</h3>
+          <a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
+        </div>
+        <div class="flagship-subtitle">Django travel companion with Leaflet + OSM maps.</div>
+        <ul class="flagship-points">
+          <li>Interactive Leaflet + OSM map with smart multi-modal routing (driving/walking/cycling/transit) via Leaflet Routing Machine</li>
+          <li>Multi-day itinerary planner, slot-based attraction booking with availability enforcement</li>
+          <li>Optional Google Maps upgrade for Place Search and Drawing tools</li>
         </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
+        <div class="flagship-footer">
+          <div class="tags">
             <span class="tag">Django 5</span>
             <span class="tag">Leaflet</span>
             <span class="tag">OpenStreetMap</span>
             <span class="tag">Google Maps API</span>
             <span class="tag tag-amber">Firebase</span>
           </div>
-          <div style="display:flex;gap:5px">
-            <a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank" rel="noopener" style="color:var(--green);border-color:rgba(62,207,142,.3);background:var(--green-dim)">live ↗</a>
-            <a href="https://github.com/KrishMistry18/HeritageGuide" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/HeritageGuide" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card reveal reveal-delay-1">
-        <div class="proj-icon">🌿</div>
-        <div class="proj-name">AyurWell</div>
-        <p class="proj-desc">Personalized Ayurvedic wellness companion — dosha quiz maps your constitution to tailored diet plans, seasonal routines, and daily habit tracking with full progress analytics.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Dosha assessment engine with Vata / Pitta / Kapha scoring and AI-generated seasonal diet plans</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Django REST backend with token-based auth, CORS, and audited login/signup event logging</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Progress dashboard tracking energy, sleep, hydration trends via Recharts visualisations</li>
+    <!-- flagship 6 -->
+    <div class="flagship reverse reveal">
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">AyurWell</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">AyurWell</h3>
+        </div>
+        <div class="flagship-subtitle">Personalized Ayurvedic wellness companion.</div>
+        <ul class="flagship-points">
+          <li>Dosha assessment engine with Vata / Pitta / Kapha scoring and AI-generated seasonal diet plans</li>
+          <li>Django REST backend with token-based auth, CORS, and audited login/signup event logging</li>
+          <li>Progress dashboard tracking energy, sleep, hydration trends via Recharts visualisations</li>
         </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
+        <div class="flagship-footer">
+          <div class="tags">
             <span class="tag tag-blue">Vite + React</span>
             <span class="tag tag-blue">TypeScript</span>
             <span class="tag">Django REST</span>
             <span class="tag">shadcn-ui</span>
             <span class="tag">Tailwind</span>
           </div>
-          <a href="https://github.com/KrishMistry18/AyurWell" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/AyurWell" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card reveal reveal-delay-2">
-        <div class="proj-icon">📺</div>
-        <div class="proj-name">WatchParty</div>
-        <p class="proj-desc">Real-time co-watching platform — watch any YouTube video in perfect sync with friends, with P2P voice, screen sharing, emoji reactions, and a video queue manager.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Sub-second video sync via Socket.IO signalling + YouTube IFrame API state reconciliation</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>WebRTC data channels for P2P chat, voice, and screen sharing — no media server needed</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Room system with configurable capacity (2–10), video queue, emoji reactions, and chat history</li>
+    <!-- flagship 7 -->
+    <div class="flagship reveal">
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">WatchParty</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">WatchParty</h3>
+        </div>
+        <div class="flagship-subtitle">Real-time co-watching platform with perfect sync.</div>
+        <ul class="flagship-points">
+          <li>Sub-second video sync via Socket.IO signalling + YouTube IFrame API state reconciliation</li>
+          <li>WebRTC data channels for P2P chat, voice, and screen sharing — no media server needed</li>
+          <li>Room system with configurable capacity (2–10), video queue, emoji reactions, and chat history</li>
         </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
+        <div class="flagship-footer">
+          <div class="tags">
             <span class="tag">Node.js</span>
             <span class="tag">Express.js</span>
             <span class="tag">WebRTC</span>
             <span class="tag">Socket.IO</span>
             <span class="tag">YouTube API</span>
           </div>
-          <a href="https://github.com/KrishMistry18/WatchParty" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/WatchParty" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="proj-card reveal reveal-delay-3">
-        <div class="proj-icon">🏧</div>
-        <div class="proj-name">Nexus Financial</div>
-        <p class="proj-desc">Full-featured ATM desktop app — 3-step guided onboarding, secure card/PIN login with prepared statements, and a complete suite of banking operations backed by a ledger model.</p>
-        <ul style="list-style:none;margin:0 0 1rem 0;padding:0">
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Ledger-derived balance (sum of deposits − withdrawals) eliminates duplication and inconsistency</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);margin-bottom:.35rem;line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>Full ATM ops: Deposit, Withdrawal, Fast Cash, Balance Enquiry, Mini Statement, PIN Change</li>
-          <li style="display:flex;gap:.6rem;font-size:.78rem;color:var(--text-secondary);line-height:1.5"><span style="color:var(--accent);flex-shrink:0">→</span>SQL injection prevention via JDBC prepared statements; dual-table transaction audit trail</li>
+    <!-- flagship 8 -->
+    <div class="flagship reverse reveal" style="margin-bottom:0;">
+      <div class="flagship-img-col">
+        <div style="font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--text-primary);letter-spacing:-1px">Nexus</div>
+        <div class="flagship-nav prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 18l-6-6 6-6"/></svg></div>
+        <div class="flagship-nav next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 18l6-6-6-6"/></svg></div>
+      </div>
+      <div class="flagship-details-col">
+        <div class="flagship-title-row">
+          <h3 class="flagship-title">Nexus Financial</h3>
+        </div>
+        <div class="flagship-subtitle">Full-featured ATM desktop app with a complete suite of banking operations.</div>
+        <ul class="flagship-points">
+          <li>Ledger-derived balance (sum of deposits − withdrawals) eliminates duplication and inconsistency</li>
+          <li>Full ATM ops: Deposit, Withdrawal, Fast Cash, Balance Enquiry, Mini Statement, PIN Change</li>
+          <li>SQL injection prevention via JDBC prepared statements; dual-table transaction audit trail</li>
         </ul>
-        <div class="proj-footer">
-          <div class="proj-tags">
+        <div class="flagship-footer">
+          <div class="tags">
             <span class="tag">Java 22</span>
             <span class="tag">Java Swing</span>
             <span class="tag tag-amber">MySQL 8</span>
             <span class="tag">JDBC</span>
             <span class="tag">JCalendar</span>
           </div>
-          <a href="https://github.com/KrishMistry18/Nexus-Financial" class="proj-link" target="_blank" rel="noopener">repo ↗</a>
+          <div class="proj-links">
+            <a href="https://github.com/KrishMistry18/Nexus-Financial" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1867,7 +2229,7 @@ window.addEventListener('scroll', () => {
   animateCursor();
 
   // Hover effects
-  const interactiveElements = document.querySelectorAll('a, button, .btn, .proj-card, .ach-item, .cert-img-card, .interest-item, .edu-item, .journey-card, .skill-cat, .contact-chip');
+  const interactiveElements = document.querySelectorAll('a, button, .btn, .proj-card, .ach-item, .cert-img-card, .interest-item, .edu-item, .journey-card, .skill-cat, .contact-chip, .do-item, .tech-item, .flagship-img-col, .flagship-nav');
   interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
       targetScale = 1.35;
