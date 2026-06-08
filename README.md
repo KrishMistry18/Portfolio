@@ -61,6 +61,6 @@ Deployed on Vercel. Any static host works — Netlify, GitHub Pages, Cloudflare 
 
 <div align="center">
 
-*Built with ❤️ by [Krish Mistry](https://github.com/KrishMistry18)*
+*Built with 💕 by [Krish Mistry](https://github.com/KrishMistry18)*
 
 </div>
