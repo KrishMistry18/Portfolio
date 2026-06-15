@@ -59,36 +59,7 @@
   --card-blur: rgba(17, 20, 34, 0.7);
   --overlay-bg: rgba(7,8,15,.55);
 }
-[data-theme="light"] {
-  --bg: #eceff4;
-  --bg-2: #f5f7fa;
-  --bg-3: #e5e9f0;
-  --surface: rgba(0,0,0,0.05);
-  --surface-hover: rgba(0,0,0,0.08);
-  --border: rgba(0,0,0,0.12);
-  --border-bright: rgba(0,0,0,0.22);
-  --text-primary: #1d212b;
-  --text-secondary: #4c566a;
-  --text-muted: #798394;
-  --accent: #1e5dd6;
-  --accent-dim: rgba(30,93,214,0.12);
-  --accent-glow: rgba(30,93,214,0.06);
-  --green: #04825a;
-  --green-dim: rgba(4,130,90,0.12);
-  --amber: #c46800;
-  --amber-dim: rgba(196,104,0,0.12);
-  --coral: #c92020;
-  --coral-dim: rgba(201,32,32,0.12);
-  --nav-bg: rgba(236,239,244,0.92);
-  --grid-color: rgba(0,0,0,0.05);
-  --card-blur: rgba(245, 247, 250, 0.7);
-  --overlay-bg: rgba(236, 239, 244, 0.8);
-}
-[data-theme="light"] body::before { opacity: 0.15; }
-[data-theme="light"] .orb-1 { background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%); }
-[data-theme="light"] .orb-2 { background: radial-gradient(circle, rgba(5,150,105,0.07) 0%, transparent 70%); }
-[data-theme="light"] .orb-3 { background: radial-gradient(circle, rgba(220,38,38,0.07) 0%, transparent 70%); }
-[data-theme="light"] .terminal { background: var(--bg); }
+
 html{scroll-behavior:smooth}
 body{
   background:var(--bg);
@@ -191,28 +162,6 @@ nav{
 }
 .nav-cta:hover{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
 
-/* theme toggle */
-.theme-toggle-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  width: 36px;
-  height: 36px;
-  border-radius: var(--r);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer !important;
-  transition: all 0.3s ease;
-  margin-left: 0.5rem;
-}
-.theme-toggle-btn:hover {
-  background: var(--surface);
-  color: var(--text-primary);
-  border-color: var(--accent);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-.theme-toggle-btn svg { width: 16px; height: 16px; }
 
 /* ═══════════════════════════════════════════
    HERO
@@ -1250,10 +1199,6 @@ nav{
   </ul>
   <div style="display:flex;align-items:center;">
     <a href="mailto:mistrykrish2005@gmail.com" class="nav-cta">hire me ↗</a>
-    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
   </div>
 </nav>
 
@@ -2274,28 +2219,7 @@ window.addEventListener('scroll', () => {
   if(sh) sh.style.opacity = window.scrollY > 80 ? '0' : '1';
 }, { passive: true });
 
-/* Theme Toggle */
-const themeToggle = document.getElementById('theme-toggle');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const saved = localStorage.getItem('theme');
-const initial = saved || (prefersDark ? 'dark' : 'light');
-document.documentElement.setAttribute('data-theme', initial);
-updateToggleIcon(initial);
 
-themeToggle.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  updateToggleIcon(next);
-});
-
-function updateToggleIcon(theme) {
-  if (!themeToggle) return;
-  themeToggle.innerHTML = theme === 'dark'
-    ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`
-    : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-}
 </script>
 
 <!-- Custom Dynamic Cursor -->
@@ -2372,6 +2296,153 @@ function updateToggleIcon(theme) {
       customCursor.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))';
     });
   });
+</script>
+
+<!-- Galaxy Starfield Background -->
+<script>
+  const starCanvas = document.createElement('canvas');
+  starCanvas.id = 'starfield';
+  starCanvas.style.position = 'fixed';
+  starCanvas.style.top = '0';
+  starCanvas.style.left = '0';
+  starCanvas.style.width = '100vw';
+  starCanvas.style.height = '100vh';
+  starCanvas.style.zIndex = '-1';
+  starCanvas.style.pointerEvents = 'none';
+  document.body.prepend(starCanvas);
+
+  const starCtx = starCanvas.getContext('2d');
+  let stars = [];
+  let shootingStars = [];
+  const numStars = window.innerWidth < 768 ? 80 : 200; // Reduced for constellation perf
+
+  function resizeStarCanvas() {
+    starCanvas.width = window.innerWidth;
+    starCanvas.height = window.innerHeight;
+    initStars();
+  }
+
+  function initStars() {
+    stars = [];
+    shootingStars = [];
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * starCanvas.width,
+        y: Math.random() * starCanvas.height,
+        z: Math.random() * 2,
+        radius: Math.random() * 1.5 + 0.1,
+        alpha: Math.random() * 0.8 + 0.2
+      });
+    }
+    // Init shooting stars
+    for (let i=0; i<2; i++) {
+      createShootingStar();
+    }
+  }
+
+  function createShootingStar() {
+    shootingStars.push({
+      x: Math.random() * starCanvas.width * 1.5,
+      y: Math.random() * starCanvas.height - starCanvas.height/2,
+      length: Math.random() * 80 + 40,
+      speed: Math.random() * 15 + 10,
+      delay: Math.random() * 200,
+      active: false
+    });
+  }
+
+  window.addEventListener('resize', resizeStarCanvas);
+  resizeStarCanvas();
+
+  function animateStars() {
+    starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+    
+    // Theme-specific colors
+    const starColorBase = 'rgba(255, 255, 255,';
+    const constColorBase = 'rgba(200, 220, 255,';
+    const shootingColor = 'rgba(255, 255, 255,';
+
+    // 1. Draw Constellation Lines
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        let dx = stars[i].x - stars[j].x;
+        let dy = stars[i].y - stars[j].y;
+        let distSq = dx*dx + dy*dy;
+        if (distSq < 15000) { // Connect if close
+          starCtx.beginPath();
+          starCtx.moveTo(stars[i].x, stars[i].y);
+          starCtx.lineTo(stars[j].x, stars[j].y);
+          let alpha = (1 - distSq/15000) * 0.15;
+          starCtx.strokeStyle = constColorBase + alpha + ')';
+          starCtx.lineWidth = 0.6;
+          starCtx.stroke();
+        }
+      }
+    }
+
+    // 2. Draw Stars
+    for (let s of stars) {
+      s.y -= (0.15 + s.z * 0.25); 
+      s.x += Math.sin(s.y * 0.005) * 0.15;
+
+      if (s.y < 0) {
+        s.y = starCanvas.height;
+        s.x = Math.random() * starCanvas.width;
+      }
+      if (s.x < 0) s.x = starCanvas.width;
+      if (s.x > starCanvas.width) s.x = 0;
+
+      if (Math.random() > 0.98) {
+        s.alpha += (Math.random() - 0.5) * 0.5;
+        s.alpha = Math.max(0.1, Math.min(1, s.alpha));
+      }
+
+      starCtx.beginPath();
+      // Make stars slightly larger in light mode
+      starCtx.arc(s.x, s.y, s.radius * (1 + s.z * 0.3), 0, Math.PI * 2);
+      
+      let finalAlpha = s.alpha;
+      if (s.z > 1.5) {
+        starCtx.fillStyle = `rgba(180, 210, 255, ${finalAlpha})`;
+      } else {
+        starCtx.fillStyle = starColorBase + finalAlpha + ')';
+      }
+      starCtx.fill();
+    }
+
+    // 3. Draw Shooting Stars
+    for (let i = shootingStars.length - 1; i >= 0; i--) {
+      let ss = shootingStars[i];
+      if (ss.delay > 0) {
+        ss.delay--;
+        continue;
+      }
+      ss.active = true;
+      ss.x -= ss.speed;
+      ss.y += ss.speed * 0.5; // fly diagonally down-left
+
+      starCtx.beginPath();
+      starCtx.moveTo(ss.x, ss.y);
+      starCtx.lineTo(ss.x + ss.length, ss.y - ss.length * 0.5);
+      
+      let grad = starCtx.createLinearGradient(ss.x, ss.y, ss.x + ss.length, ss.y - ss.length * 0.5);
+      let ssAlpha = 0.8;
+      grad.addColorStop(0, shootingColor + ssAlpha + ')');
+      grad.addColorStop(1, shootingColor + '0)');
+      
+      starCtx.strokeStyle = grad;
+      starCtx.lineWidth = 2;
+      starCtx.stroke();
+
+      if (ss.x < -100 || ss.y > starCanvas.height + 100) {
+        shootingStars.splice(i, 1);
+        createShootingStar();
+      }
+    }
+
+    requestAnimationFrame(animateStars);
+  }
+  animateStars();
 </script>
 </body>
 </html>
