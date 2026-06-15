@@ -3,8 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  (function() {
+    const currentTheme = localStorage.getItem('theme');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (currentTheme === 'light' || (!currentTheme && !prefersDarkScheme.matches)) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 <title>Krish Hitendra Mistry — Full Stack Developer</title>
-<meta name="description" content="Full Stack Developer · AI Systems · Mumbai. Building reliable, production-grade software.">
+<meta name="description" content="Full Stack Developer · AI Systems · Mumbai. 8 production apps shipped. Building reliable, scalable software with Next.js, Django, Flutter, and TensorFlow.">
+<meta property="og:title" content="Krish Mistry — Full Stack Developer & AI Builder">
+<meta property="og:description" content="Final-year SFIT student with 8 shipped apps — from a 3D geopolitical dashboard to a WebRTC co-watching platform. Open to internships in full-stack & AI/ML.">
+<meta property="og:url" content="https://portfolio-eta-pied-17.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://portfolio-eta-pied-17.vercel.app/assets/profile/My_profile_picture.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Krish Mistry — Full Stack Developer & AI Builder">
+<meta name="twitter:description" content="8 production apps shipped. Open to full-stack & AI/ML internships. Mumbai, India.">
+<meta name="twitter:image" content="https://portfolio-eta-pied-17.vercel.app/assets/profile/My_profile_picture.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -36,7 +54,41 @@
   --r:8px;
   --r-lg:14px;
   --section-gap:7rem;
+  --nav-bg: rgba(7,8,15,.85);
+  --grid-color: rgba(255,255,255,.022);
+  --card-blur: rgba(17, 20, 34, 0.7);
+  --overlay-bg: rgba(7,8,15,.55);
 }
+[data-theme="light"] {
+  --bg: #eceff4;
+  --bg-2: #f5f7fa;
+  --bg-3: #e5e9f0;
+  --surface: rgba(0,0,0,0.05);
+  --surface-hover: rgba(0,0,0,0.08);
+  --border: rgba(0,0,0,0.12);
+  --border-bright: rgba(0,0,0,0.22);
+  --text-primary: #1d212b;
+  --text-secondary: #4c566a;
+  --text-muted: #798394;
+  --accent: #1e5dd6;
+  --accent-dim: rgba(30,93,214,0.12);
+  --accent-glow: rgba(30,93,214,0.06);
+  --green: #04825a;
+  --green-dim: rgba(4,130,90,0.12);
+  --amber: #c46800;
+  --amber-dim: rgba(196,104,0,0.12);
+  --coral: #c92020;
+  --coral-dim: rgba(201,32,32,0.12);
+  --nav-bg: rgba(236,239,244,0.92);
+  --grid-color: rgba(0,0,0,0.05);
+  --card-blur: rgba(245, 247, 250, 0.7);
+  --overlay-bg: rgba(236, 239, 244, 0.8);
+}
+[data-theme="light"] body::before { opacity: 0.15; }
+[data-theme="light"] .orb-1 { background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%); }
+[data-theme="light"] .orb-2 { background: radial-gradient(circle, rgba(5,150,105,0.07) 0%, transparent 70%); }
+[data-theme="light"] .orb-3 { background: radial-gradient(circle, rgba(220,38,38,0.07) 0%, transparent 70%); }
+[data-theme="light"] .terminal { background: var(--bg); }
 html{scroll-behavior:smooth}
 body{
   background:var(--bg);
@@ -46,6 +98,7 @@ body{
   line-height:1.6;
   min-height:100vh;
   overflow-x:hidden;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* noise */
@@ -62,7 +115,7 @@ body::before{
 /* grid lines */
 body::after{
   content:'';position:fixed;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
   background-size:80px 80px;pointer-events:none;z-index:0;
   mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black 20%,transparent 100%);
 }
@@ -114,7 +167,7 @@ nav{
   height:62px;padding:0 2.5rem;
   display:flex;align-items:center;justify-content:space-between;
   border-bottom:1px solid var(--border);
-  background:rgba(7,8,15,.85);
+  background:var(--nav-bg);
   backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   transition:border-color .3s;
 }
@@ -137,6 +190,29 @@ nav{
   transition:all .2s;background:var(--surface);
 }
 .nav-cta:hover{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
+
+/* theme toggle */
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+}
+.theme-toggle-btn:hover {
+  background: var(--surface);
+  color: var(--text-primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+.theme-toggle-btn svg { width: 16px; height: 16px; }
 
 /* ═══════════════════════════════════════════
    HERO
@@ -171,7 +247,7 @@ nav{
 }
 .hero-name .outline{
   color:transparent;
-  -webkit-text-stroke:1.5px rgba(240,240,245,.3);
+  -webkit-text-stroke:1.5px var(--border-bright);
 }
 .hero-tagline{
   font-size:clamp(.95rem,1.8vw,1.15rem);font-weight:300;
@@ -258,7 +334,7 @@ nav{
 .av-row{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
 .av{
   width:50px;height:50px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,#1a2a4a,#0d1a35);
+  background:linear-gradient(135deg,var(--bg-3),var(--bg));
   border:1px solid var(--border-bright);display:flex;align-items:center;
   justify-content:center;font-family:'Syne',sans-serif;
   font-size:1rem;font-weight:700;color:var(--accent);
@@ -763,7 +839,7 @@ nav{
 }
 .journey-card {
   width: 100%;
-  background: rgba(17, 20, 34, 0.7);
+  background: var(--card-blur);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1.4rem;
@@ -924,7 +1000,7 @@ nav{
 .cert-img-card:hover .cert-img-wrap img{transform:scale(1.04)}
 .cert-img-wrap .cert-overlay{
   position:absolute;inset:0;
-  background:rgba(7,8,15,.55);
+  background:var(--overlay-bg);
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .25s;
 }
@@ -969,7 +1045,7 @@ nav{
   font-weight:800;letter-spacing:-.03em;margin-bottom:1rem;line-height:1.05;
 }
 .contact-headline .ghost{
-  color:transparent;-webkit-text-stroke:1.5px rgba(240,240,245,.25);
+  color:transparent;-webkit-text-stroke:1.5px var(--border-bright);
 }
 .contact-sub{font-size:.95rem;color:var(--text-secondary);margin-bottom:2.5rem;line-height:1.7}
 .contact-chips{
@@ -1167,12 +1243,18 @@ nav{
   <a href="#hero" class="nav-logo">krish<em>.</em>dev</a>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
-    <li><a href="#skills">skills</a></li>
+    <li><a href="#technical-expertise">skills</a></li>
+    <li><a href="#leadership-skills">leadership</a></li>
     <li><a href="#projects">work</a></li>
-    <li><a href="#leadership">leadership</a></li>
     <li><a href="#certs">certs</a></li>
   </ul>
-  <a href="mailto:mistrykrish2005@gmail.com" class="nav-cta">hire me ↗</a>
+  <div style="display:flex;align-items:center;">
+    <a href="mailto:mistrykrish2005@gmail.com" class="nav-cta">hire me ↗</a>
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
@@ -1526,7 +1608,6 @@ nav{
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3f3f46">Three.js</span>
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0ea5e9">TailwindCSS</span>
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f97316">HTML5</span>
-              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#06b6d4">Canva</span>
             </div>
           </div>
           
@@ -1539,7 +1620,6 @@ nav{
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#d97706">AWS</span>
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Google Cloud</span>
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">Docker</span>
-              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">Jenkins</span>
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Git</span>
             </div>
           </div>
@@ -1563,7 +1643,6 @@ nav{
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#064e3b">Django</span>
               <span class="badge-name" style="--badge-color:#fff;--badge-bg:#27272a">Express.js</span>
               <span class="badge-name" style="--badge-color:#000;--badge-bg:#f4f4f5">Flask</span>
-              <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">NPM</span>
             </div>
           </div>
 
@@ -1579,18 +1658,6 @@ nav{
             </div>
           </div>
 
-          <!-- Soft Skills -->
-          <div class="bento-box" style="grid-column: 1 / -1;">
-            <div class="bento-title">Soft Skills</div>
-            <div class="bento-tags">
-              <span class="soft-skill-pill">Leadership</span>
-              <span class="soft-skill-pill">Problem-Solving</span>
-              <span class="soft-skill-pill">Teamwork</span>
-              <span class="soft-skill-pill">Communication</span>
-              <span class="soft-skill-pill">Time Management</span>
-              <span class="soft-skill-pill">Event Organization</span>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1636,6 +1703,63 @@ nav{
 
 <hr class="sec-divider">
 
+<!-- ═══════════ LEADERSHIP ═══════════ -->
+<section id="leadership-skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">/ BEYOND THE CODE</span>
+      <h2 class="section-title">How I lead, collaborate, and think under pressure.</h2>
+    </div>
+    <div class="proj-grid">
+      <!-- 6 cards -->
+      <div class="proj-card hl-blue reveal" style="border-left: 3px solid var(--accent);">
+        <div class="proj-icon" style="color: var(--accent);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="proj-name">Leadership Under Pressure</h3>
+        <p class="proj-desc">Led Samadhan '26 — a national ideathon with 100+ participants and NGO partnerships. Coordinated logistics, speakers, and judging panels while also being a final-year student building production apps.</p>
+      </div>
+      <div class="proj-card hl-green reveal reveal-delay-1" style="border-left: 3px solid var(--green);">
+        <div class="proj-icon" style="color: var(--green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="proj-name">Strategic Problem-Solving</h3>
+        <p class="proj-desc">National-level chess competitor. The same long-horizon thinking that wins endgames shapes how I design system architecture — planning five moves ahead means anticipating failure modes before writing the first line.</p>
+      </div>
+      <div class="proj-card hl-amber reveal reveal-delay-2" style="border-left: 3px solid var(--amber);">
+        <div class="proj-icon" style="color: var(--amber);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="proj-name">Cross-functional Teamwork</h3>
+        <p class="proj-desc">Built EduCycle and HemiSphere in team environments — managing Git workflows, code reviews, and feature splits across contributors with different strengths and schedules.</p>
+      </div>
+      <div class="proj-card hl-coral reveal" style="border-left: 3px solid var(--coral);">
+        <div class="proj-icon" style="color: var(--coral);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="proj-name">Clear Communication</h3>
+        <p class="proj-desc">As NSS Head at SFIT, translated complex program goals into clear action plans for 50+ volunteers. Writing clean commit messages, technical docs, and readable code is the same skill applied to software.</p>
+      </div>
+      <div class="proj-card hl-blue reveal reveal-delay-1" style="border-left: 3px solid var(--accent);">
+        <div class="proj-icon" style="color: var(--accent);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="proj-name">Time Management</h3>
+        <p class="proj-desc">Maintained a 9.34 CGPA while shipping 8 production apps, organizing a national event, and leading NSS. Not by working harder — by knowing what to cut, what to defer, and what to finish first.</p>
+      </div>
+      <div class="proj-card hl-green reveal reveal-delay-2" style="border-left: 3px solid var(--green);">
+        <div class="proj-icon" style="color: var(--green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 class="proj-name">Event Organization</h3>
+        <p class="proj-desc">Organized Samadhan '26 from scratch — venue, timeline, participant registration, sponsor outreach, and post-event reporting. Ran the event day-of with zero critical failures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-divider">
+
 <!-- ═══════════ PROJECTS ═══════════ -->
 <section id="projects">
   <div class="container">
@@ -1658,7 +1782,7 @@ nav{
           <h3 class="flagship-title">ImpactGlobe</h3>
           <a href="https://impact-globe.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="flagship-subtitle">Geopolitical Intelligence Dashboard & 3D Interactive Map</div>
+        <div class="flagship-subtitle">For traders & analysts who need geopolitical context without digging through 20 news tabs — a live intelligence layer that maps world events directly to Forex impact.</div>
         
         <ul class="flagship-points">
           <li>3D globe (Three.js + Leaflet) mapping live geopolitical events with severity tiers (Critical, High, Medium) and historical 24-hour replay.</li>
@@ -1694,7 +1818,7 @@ nav{
           <h3 class="flagship-title">HemiSphere</h3>
           <a href="https://hemisphere-dev.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="flagship-subtitle">Smart Community Safety App with Edge AI</div>
+        <div class="flagship-subtitle">Urban communities lack fast, low-cost tools to report and act on safety hazards. HemiSphere puts AI-powered incident classification and CO₂ tracking directly in residents' hands — no cloud dependency needed.</div>
         
         <ul class="flagship-points">
           <li>MobileNetV3 CNN (Transfer Learning) classifies accidents, construction hazards, and garbage from incident photos with on-device inference.</li>
@@ -1727,7 +1851,7 @@ nav{
           <h3 class="flagship-title">ChessAnalyzer</h3>
           <a href="https://chess-analyzer-qf7v.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="flagship-subtitle">Browser-based chess analysis suite powered by Stockfish WASM.</div>
+        <div class="flagship-subtitle">Chess players improving their game need engine analysis, but Lichess and Chess.com require accounts and uploads. ChessAnalyzer runs full Stockfish analysis entirely in the browser — no backend, no sign-up, instant feedback.</div>
         <ul class="flagship-points">
           <li>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU</li>
           <li>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies, mistakes, and blunders</li>
@@ -1758,7 +1882,7 @@ nav{
           <h3 class="flagship-title">EduCycle</h3>
           <a href="https://edu-cycle-five.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="flagship-subtitle">Student marketplace for buying and selling academic essentials.</div>
+        <div class="flagship-subtitle">Students spend thousands on textbooks that sit idle after a semester. EduCycle is a verified peer-to-peer marketplace where students buy, sell, and recycle academic materials — with real payments and secure auth built in.</div>
         <ul class="flagship-points">
           <li>JWT + OAuth2 auth, 2FA, real-time chat, and Stripe payment integration with an analytics dashboard</li>
           <li>Django REST + React.js backend; Redis caching, advanced search and filtering</li>
@@ -1789,7 +1913,7 @@ nav{
           <h3 class="flagship-title">HeritageGuide</h3>
           <a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="flagship-subtitle">Django travel companion with Leaflet + OSM maps.</div>
+        <div class="flagship-subtitle">India's heritage sites are underdocumented and hard to plan around. HeritageGuide gives travellers an interactive map, smart multi-modal routing, and a slot-based booking system — all in one open-source tool.</div>
         <ul class="flagship-points">
           <li>Interactive Leaflet + OSM map with smart multi-modal routing (driving/walking/cycling/transit) via Leaflet Routing Machine</li>
           <li>Multi-day itinerary planner, slot-based attraction booking with availability enforcement</li>
@@ -1820,7 +1944,7 @@ nav{
           <h3 class="flagship-title">AyurWell</h3>
           <a href="https://ayur-well.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live Web ↗</a>
         </div>
-        <div class="flagship-subtitle">Personalized Ayurvedic wellness companion.</div>
+        <div class="flagship-subtitle">Ayurvedic health advice is buried in books and expensive consultations. AyurWell makes it accessible — a dosha assessment engine and AI-generated diet plans that adapt to your body type and season.</div>
         <ul class="flagship-points">
           <li>Dosha assessment engine with Vata / Pitta / Kapha scoring and AI-generated seasonal diet plans</li>
           <li>Django REST backend with token-based auth, CORS, and audited login/signup event logging</li>
@@ -1850,7 +1974,7 @@ nav{
         <div class="flagship-title-row">
           <h3 class="flagship-title">WatchParty</h3>
         </div>
-        <div class="flagship-subtitle">Real-time co-watching platform with perfect sync.</div>
+        <div class="flagship-subtitle">Watch-together services like Teleparty require browser extensions and Netflix subscriptions. WatchParty works with YouTube, needs zero installs, and syncs video state across all participants in under a second using pure WebRTC.</div>
         <ul class="flagship-points">
           <li>Sub-second video sync via Socket.IO signalling + YouTube IFrame API state reconciliation</li>
           <li>WebRTC data channels for P2P chat, voice, and screen sharing — no media server needed</li>
@@ -1867,6 +1991,7 @@ nav{
           <div class="proj-links">
             <a href="https://github.com/KrishMistry18/WatchParty" class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a>
           </div>
+          <p style="font-family:'DM Mono',monospace;font-size:.68rem;color:var(--text-muted);margin-top:.6rem;">⚡ Requires Node server — clone & run locally or deploy to Railway/Render</p>
         </div>
       </div>
     </div>
@@ -1880,7 +2005,7 @@ nav{
         <div class="flagship-title-row">
           <h3 class="flagship-title">Nexus Financial</h3>
         </div>
-        <div class="flagship-subtitle">Full-featured ATM desktop app with a complete suite of banking operations.</div>
+        <div class="flagship-subtitle">Built as a Java DSA project that became a real banking simulation — Nexus Financial demonstrates ledger-accurate ATM operations, SQL injection prevention, and a full audit trail without any third-party dependencies.</div>
         <ul class="flagship-points">
           <li>Ledger-derived balance (sum of deposits − withdrawals) eliminates duplication and inconsistency</li>
           <li>Full ATM ops: Deposit, Withdrawal, Fast Cash, Balance Enquiry, Mini Statement, PIN Change</li>
@@ -1903,8 +2028,6 @@ nav{
   </div>
 </section>
 
-<!-- Sections Leadership removed to merge with About -->
-
 <hr class="sec-divider">
 
 <!-- ═══════════ CERTIFICATES ═══════════ -->
@@ -1919,158 +2042,158 @@ nav{
       <!-- ROW 1 (Left to Right) -->
       <div class="marquee-track right">
         <!-- GROUP 1 -->
-        <a href="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" alt="NoviTech Data Analytics Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoviTech Data Analytics</div></div>
+        <a href="assets/certificates/Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_2026_certificate.jpg" alt="Colloquium '26"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '26</div></div>
         </a>
         <a href="assets/certificates/Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_certificate.jpg" alt="Colloquium 2025 Certificate of Excellence"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 — 2nd Prize</div></div>
-        </a>
-        <a href="assets/certificates/Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Prayas_certificate.jpg" alt="Prayas Project Exhibition Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Prayas Project Exhibition</div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_certificate.jpg" alt="Colloquium '25"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 — 2nd Prize 🏆</div></div>
         </a>
         <a href="assets/certificates/Volunteering_Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Volunteering_Colloquium_certificate.jpg" alt="Colloquium 2025 Volunteer Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 Volunteer</div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Volunteering_Colloquium_certificate.jpg" alt="Volunteering Colloquium"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium Volunteer</div></div>
+        </a>
+        <a href="assets/certificates/NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/NSS_HEAD_Certificate.jpg" alt="NSS Head"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Head of NSS · SFIT</div></div>
+        </a>
+        <a href="assets/certificates/Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Prayas_certificate.jpg" alt="Prayas Project"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Prayas Project Exhibition</div></div>
+        </a>
+        <a href="assets/certificates/gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/gemini_game_night_certificate.jpg" alt="Gemini Game Night"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Gemini Game Night</div></div>
         </a>
         <a href="assets/certificates/BotCampusAI_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/BotCampusAI_certificate.jpg" alt="BotCampus AI Agent Builder Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/BotCampusAI_certificate.jpg" alt="BotCampus AI"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
           <div class="cert-img-info"><div class="cert-img-title">AI Agent Builder Workshop</div></div>
         </a>
-        <a href="assets/certificates/Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_GDG.png" alt="NoSQL Ninjas MongoDB GDG Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (GDG)</div></div>
+        <a href="assets/certificates/AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">AIquiz Student Ambassador</div></div>
         </a>
-        <a href="assets/certificates/Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_MSIT.png" alt="NoSQL Ninjas MongoDB MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (MSIT)</div></div>
+        <a href="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" alt="NoviTech Data Analytics"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoviTech Data Analytics</div></div>
         </a>
-        <a href="assets/certificates/Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_Participation.png" alt="NoSQL Ninjas MongoDB Participation Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas Participation</div></div>
-        </a>
-        <a href="assets/certificates/WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_GDG_certificate.jpg" alt="Web Auth Security GDG VIT-AP Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (GDG)</div></div>
-        </a>
-        <a href="assets/certificates/WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_MSIT_certificate.jpg" alt="Web Auth Security MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (MSIT)</div></div>
-        </a>
-        
+
         <!-- REPEAT GROUP 1 -->
-        <a href="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" alt="NoviTech Data Analytics Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoviTech Data Analytics</div></div>
+        <a href="assets/certificates/Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_2026_certificate.jpg" alt="Colloquium '26"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '26</div></div>
         </a>
         <a href="assets/certificates/Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_certificate.jpg" alt="Colloquium 2025 Certificate of Excellence"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 — 2nd Prize</div></div>
-        </a>
-        <a href="assets/certificates/Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Prayas_certificate.jpg" alt="Prayas Project Exhibition Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Prayas Project Exhibition</div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_certificate.jpg" alt="Colloquium '25"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 — 2nd Prize 🏆</div></div>
         </a>
         <a href="assets/certificates/Volunteering_Colloquium_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Volunteering_Colloquium_certificate.jpg" alt="Colloquium 2025 Volunteer Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Colloquium '25 Volunteer</div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Volunteering_Colloquium_certificate.jpg" alt="Volunteering Colloquium"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Colloquium Volunteer</div></div>
+        </a>
+        <a href="assets/certificates/NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/NSS_HEAD_Certificate.jpg" alt="NSS Head"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Head of NSS · SFIT</div></div>
+        </a>
+        <a href="assets/certificates/Prayas_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Prayas_certificate.jpg" alt="Prayas Project"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Prayas Project Exhibition</div></div>
+        </a>
+        <a href="assets/certificates/gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/gemini_game_night_certificate.jpg" alt="Gemini Game Night"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Gemini Game Night</div></div>
         </a>
         <a href="assets/certificates/BotCampusAI_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/BotCampusAI_certificate.jpg" alt="BotCampus AI Agent Builder Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/BotCampusAI_certificate.jpg" alt="BotCampus AI"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
           <div class="cert-img-info"><div class="cert-img-title">AI Agent Builder Workshop</div></div>
         </a>
-        <a href="assets/certificates/Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_GDG.png" alt="NoSQL Ninjas MongoDB GDG Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (GDG)</div></div>
+        <a href="assets/certificates/AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">AIquiz Student Ambassador</div></div>
         </a>
-        <a href="assets/certificates/Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_MSIT.png" alt="NoSQL Ninjas MongoDB MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas: MongoDB (MSIT)</div></div>
-        </a>
-        <a href="assets/certificates/Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_Participation.png" alt="NoSQL Ninjas MongoDB Participation Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">NoSQL Ninjas Participation</div></div>
-        </a>
-        <a href="assets/certificates/WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_GDG_certificate.jpg" alt="Web Auth Security GDG VIT-AP Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (GDG)</div></div>
-        </a>
-        <a href="assets/certificates/WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_MSIT_certificate.jpg" alt="Web Auth Security MSIT Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (MSIT)</div></div>
+        <a href="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/NoviTech_Data_Analytics_certificate.jpg" alt="NoviTech Data Analytics"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoviTech Data Analytics</div></div>
         </a>
       </div>
 
       <!-- ROW 2 (Right to Left) -->
       <div class="marquee-track left">
         <!-- GROUP 2 -->
-        <a href="assets/certificates/WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_Participation_certificate.jpg" alt="Web Authentication Security Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Web Auth Security Participation</div></div>
-        </a>
-        <a href="assets/certificates/Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_2026_certificate.jpg" alt="Colloquium 2026 Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Colloquium '26 Participation</div></div>
-        </a>
-        <a href="assets/certificates/AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">AIquiz Student Ambassador</div></div>
-        </a>
-        <a href="assets/certificates/gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/gemini_game_night_certificate.jpg" alt="Gemini Game Night"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Gemini Game Night</div></div>
-        </a>
-        <a href="assets/certificates/NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/NSS_HEAD_Certificate.jpg" alt="Head of NSS Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Head of NSS (SFIT)</div></div>
-        </a>
         <a href="assets/certificates/Devtown_ML_GDG.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_GDG.jpg" alt="Machine Learning Mastery GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_GDG.jpg" alt="Machine Learning GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
           <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (GDG)</div></div>
         </a>
         <a href="assets/certificates/Devtown_ML_MSIT.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_MSIT.jpg" alt="Machine Learning Mastery MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_MSIT.jpg" alt="Machine Learning MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
           <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (MSIT)</div></div>
         </a>
         <a href="assets/certificates/Devtown_ML_Participation.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_Participation.jpg" alt="Machine Learning Mastery Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Participation</div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_Participation.jpg" alt="Machine Learning Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Bootcamp</div></div>
+        </a>
+        <a href="assets/certificates/Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_GDG.png" alt="NoSQL GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL & MongoDB (GDG)</div></div>
+        </a>
+        <a href="assets/certificates/Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_MSIT.png" alt="NoSQL MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL & MongoDB (MSIT)</div></div>
+        </a>
+        <a href="assets/certificates/Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_Participation.png" alt="NoSQL Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL & MongoDB Bootcamp</div></div>
+        </a>
+        <a href="assets/certificates/WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_GDG_certificate.jpg" alt="Web Auth GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (GDG)</div></div>
+        </a>
+        <a href="assets/certificates/WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_MSIT_certificate.jpg" alt="Web Auth MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (MSIT)</div></div>
+        </a>
+        <a href="assets/certificates/WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_Participation_certificate.jpg" alt="Web Auth Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Bootcamp</div></div>
         </a>
 
         <!-- REPEAT GROUP 2 -->
-        <a href="assets/certificates/WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_Participation_certificate.jpg" alt="Web Authentication Security Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Web Auth Security Participation</div></div>
-        </a>
-        <a href="assets/certificates/Colloquium_2026_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Colloquium_2026_certificate.jpg" alt="Colloquium 2026 Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Colloquium '26 Participation</div></div>
-        </a>
-        <a href="assets/certificates/AIquiz_student_ambassador_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/AIquiz_student_ambassador_certificate.jpg" alt="AIquiz Student Ambassador"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">AIquiz Student Ambassador</div></div>
-        </a>
-        <a href="assets/certificates/gemini_game_night_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/gemini_game_night_certificate.jpg" alt="Gemini Game Night"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Gemini Game Night</div></div>
-        </a>
-        <a href="assets/certificates/NSS_HEAD_Certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/NSS_HEAD_Certificate.jpg" alt="Head of NSS Certificate"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Head of NSS (SFIT)</div></div>
-        </a>
         <a href="assets/certificates/Devtown_ML_GDG.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_GDG.jpg" alt="Machine Learning Mastery GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_GDG.jpg" alt="Machine Learning GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
           <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (GDG)</div></div>
         </a>
         <a href="assets/certificates/Devtown_ML_MSIT.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_MSIT.jpg" alt="Machine Learning Mastery MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_MSIT.jpg" alt="Machine Learning MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
           <div class="cert-img-info"><div class="cert-img-title">Machine Learning Mastery (MSIT)</div></div>
         </a>
         <a href="assets/certificates/Devtown_ML_Participation.jpg" target="_blank" rel="noopener" class="cert-img-card">
-          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_Participation.jpg" alt="Machine Learning Mastery Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
-          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Participation</div></div>
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_ML_Participation.jpg" alt="Machine Learning Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Machine Learning Bootcamp</div></div>
+        </a>
+        <a href="assets/certificates/Devtown_NoSQL_GDG.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_GDG.png" alt="NoSQL GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL & MongoDB (GDG)</div></div>
+        </a>
+        <a href="assets/certificates/Devtown_NoSQL_MSIT.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_MSIT.png" alt="NoSQL MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL & MongoDB (MSIT)</div></div>
+        </a>
+        <a href="assets/certificates/Devtown_NoSQL_Participation.png" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/Devtown_NoSQL_Participation.png" alt="NoSQL Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">NoSQL & MongoDB Bootcamp</div></div>
+        </a>
+        <a href="assets/certificates/WebAuth_GDG_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_GDG_certificate.jpg" alt="Web Auth GDG"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (GDG)</div></div>
+        </a>
+        <a href="assets/certificates/WebAuth_MSIT_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_MSIT_certificate.jpg" alt="Web Auth MSIT"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Intensive (MSIT)</div></div>
+        </a>
+        <a href="assets/certificates/WebAuth_Participation_certificate.jpg" target="_blank" rel="noopener" class="cert-img-card">
+          <div class="cert-img-wrap"><img src="assets/certificates/WebAuth_Participation_certificate.jpg" alt="Web Auth Participation"><div class="cert-overlay"><span class="cert-overlay-txt">view ↗</span></div></div>
+          <div class="cert-img-info"><div class="cert-img-title">Web Auth Bootcamp</div></div>
         </a>
       </div>
 
@@ -2150,6 +2273,29 @@ const sh = document.querySelector('.scroll-hint');
 window.addEventListener('scroll', () => {
   if(sh) sh.style.opacity = window.scrollY > 80 ? '0' : '1';
 }, { passive: true });
+
+/* Theme Toggle */
+const themeToggle = document.getElementById('theme-toggle');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const saved = localStorage.getItem('theme');
+const initial = saved || (prefersDark ? 'dark' : 'light');
+document.documentElement.setAttribute('data-theme', initial);
+updateToggleIcon(initial);
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateToggleIcon(next);
+});
+
+function updateToggleIcon(theme) {
+  if (!themeToggle) return;
+  themeToggle.innerHTML = theme === 'dark'
+    ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`
+    : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+}
 </script>
 
 <!-- Custom Dynamic Cursor -->
