@@ -3,15 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-  (function() {
-    const currentTheme = localStorage.getItem('theme');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    if (currentTheme === 'light' || (!currentTheme && !prefersDarkScheme.matches)) {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  })();
-</script>
+
 <title>Krish Hitendra Mistry — Full Stack Developer</title>
 <meta name="description" content="Full Stack Developer · AI Systems · Mumbai. 8 production apps shipped. Building reliable, scalable software with Next.js, Django, Flutter, and TensorFlow.">
 <meta property="og:title" content="Krish Mistry — Full Stack Developer & AI Builder">
@@ -2472,5 +2464,6 @@ window.addEventListener('scroll', () => {
   }
   animateStars();
 </script>
+
 </body>
 </html>
