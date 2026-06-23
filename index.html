@@ -2324,6 +2324,91 @@
         grid-template-columns: 1fr;
       }
     }
+    /* ═══════════════════════════════════════════
+   NEW MICRO-INTERACTIONS & UTILITIES
+═══════════════════════════════════════════ */
+    .glass-panel {
+      background: rgba(17, 20, 34, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--r-lg);
+    }
+
+    .glass-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .status-dot.red {
+      background: #ff5f57;
+      box-shadow: 0 0 8px #ff5f57;
+    }
+
+    .status-dot.green {
+      background: #28c840;
+      box-shadow: 0 0 8px #28c840;
+    }
+
+    .status-dot.purple {
+      background: #d500f9;
+      box-shadow: 0 0 8px #d500f9;
+    }
+
+    .status-dot.yellow {
+      background: #ffea00;
+      box-shadow: 0 0 8px #ffea00;
+    }
+
+    .github-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .github-stat-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .github-stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .github-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
   </style>
 </head>
 
@@ -2339,10 +2424,12 @@
     <a href="#hero" class="nav-logo">krish<em>.</em>dev</a>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
-      <li><a href="#technical-expertise">skills</a></li>
       <li><a href="#experience">experience</a></li>
-      <li><a href="#leadership-skills">leadership</a></li>
       <li><a href="#projects">work</a></li>
+      <li><a href="#github-activity">activity</a></li>
+      <li><a href="#technical-expertise">skills</a></li>
+      <li><a href="#leadership-skills">leadership</a></li>
+      <li><a href="#creator-identity">beyond code</a></li>
       <li><a href="#certs">certs</a></li>
     </ul>
     <div style="display:flex;align-items:center;">
@@ -2745,155 +2832,6 @@
 
   <hr class="sec-divider">
 
-  <!-- ═══════════ TECHNICAL EXPERTISE ═══════════ -->
-  <section id="technical-expertise">
-    <div class="container" style="max-width: 1400px;">
-      <div class="expertise-grid">
-        <!-- Left Column: The Stack -->
-        <div class="expertise-left reveal">
-          <div class="stack-title-wrap">
-            <div class="section-label" style="margin-bottom:0.5rem;">/ TECHNICAL SKILLS</div>
-            <h2 class="stack-title">The stack I reach for.</h2>
-            <p class="stack-sub">Grouped by domain — depth over breadth, always.</p>
-          </div>
-
-          <div class="bento-layout">
-            <!-- Languages -->
-            <div class="bento-box">
-              <div class="bento-title">Languages</div>
-              <div class="bento-tags">
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1e40af">C</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1d4ed8">C++</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Java</span>
-                <span class="badge-name" style="--badge-color:#000;--badge-bg:#facc15">JavaScript</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">TypeScript</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#10b981">Python</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#06b6d4">Dart</span>
-              </div>
-            </div>
-
-            <!-- Frontend & Mobile -->
-            <div class="bento-box">
-              <div class="bento-title">Frontend & Mobile</div>
-              <div class="bento-tags">
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#000">Next.js</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">Flutter</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">Angular</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#b91c1c">Angular.js</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3f3f46">Three.js</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0ea5e9">TailwindCSS</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f97316">HTML5</span>
-              </div>
-            </div>
-
-            <!-- Cloud & DevOps -->
-            <div class="bento-box">
-              <div class="bento-title">Cloud & DevOps</div>
-              <div class="bento-tags">
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f59e0b">Firebase</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#000">Vercel</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#d97706">AWS</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Google Cloud</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">Docker</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Git</span>
-              </div>
-            </div>
-
-            <!-- AI & Data Science -->
-            <div class="bento-box">
-              <div class="bento-title">AI & Data Science</div>
-              <div class="bento-tags">
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">TensorFlow</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1e1b4b">Pandas</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">NumPy</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0f172a">Matplotlib</span>
-              </div>
-            </div>
-
-            <!-- Backend -->
-            <div class="bento-box">
-              <div class="bento-title">Backend</div>
-              <div class="bento-tags">
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#166534">Node.js</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#064e3b">Django</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#27272a">Express.js</span>
-                <span class="badge-name" style="--badge-color:#000;--badge-bg:#f4f4f5">Flask</span>
-              </div>
-            </div>
-
-            <!-- Databases -->
-            <div class="bento-box">
-              <div class="bento-title">Databases</div>
-              <div class="bento-tags">
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">MySQL</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0f172a">SQLite</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#16a34a">Supabase</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#15803d">MongoDB</span>
-                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Postgres</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Right Column: What I Do -->
-        <div class="expertise-right reveal reveal-delay-2"
-          style="display:flex;flex-direction:column;justify-content:flex-start;">
-          <h2 class="expertise-heading">Technical Expertise</h2>
-          <div style="width: 70px; height: 3px; background: var(--green); margin-bottom: 2rem; border-radius: 3px;">
-          </div>
-          <p class="expertise-desc">I design and build scalable, high-performance web applications from idea to
-            production — with a strong focus on usability, performance, and clean architecture.</p>
-
-          <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.2rem;">What I Do
-          </h3>
-          <div class="what-i-do-grid">
-            <div class="do-item">
-              <div class="do-icon"><svg viewBox="0 0 24 24">
-                  <path d="M5 12l4 4 10-10" />
-                </svg></div>
-              <span>Full-Stack Web Development</span>
-            </div>
-            <div class="do-item">
-              <div class="do-icon"><svg viewBox="0 0 24 24">
-                  <path d="M5 12l4 4 10-10" />
-                </svg></div>
-              <span>AI & Machine Learning</span>
-            </div>
-            <div class="do-item">
-              <div class="do-icon"><svg viewBox="0 0 24 24">
-                  <path d="M5 12l4 4 10-10" />
-                </svg></div>
-              <span>Mobile App Development</span>
-            </div>
-            <div class="do-item">
-              <div class="do-icon"><svg viewBox="0 0 24 24">
-                  <path d="M5 12l4 4 10-10" />
-                </svg></div>
-              <span>Backend Architecture & APIs</span>
-            </div>
-            <div class="do-item">
-              <div class="do-icon"><svg viewBox="0 0 24 24">
-                  <path d="M5 12l4 4 10-10" />
-                </svg></div>
-              <span>Cloud & DevOps</span>
-            </div>
-            <div class="do-item">
-              <div class="do-icon"><svg viewBox="0 0 24 24">
-                  <path d="M5 12l4 4 10-10" />
-                </svg></div>
-              <span>Interactive 3D & Data Viz</span>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="sec-divider">
-
   <!-- ═══════════ EXPERIENCE ═══════════ -->
   <section id="experience">
     <div class="container">
@@ -2995,94 +2933,6 @@
               <span class="tag">System Design</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="sec-divider">
-
-  <!-- ═══════════ LEADERSHIP ═══════════ -->
-  <section id="leadership-skills">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="section-label">/ BEYOND THE CODE</span>
-        <h2 class="section-title">How I lead, collaborate, and think under pressure.</h2>
-      </div>
-      <div class="proj-grid">
-        <!-- 6 cards -->
-        <div class="proj-card hl-blue reveal" style="border-left: 3px solid var(--accent);">
-          <div class="proj-icon" style="color: var(--accent);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </div>
-          <h3 class="proj-name">Leadership Under Pressure</h3>
-          <p class="proj-desc">Led Samadhan '26 — a national ideathon with 100+ participants and NGO partnerships.
-            Coordinated logistics, speakers, and judging panels while also being a final-year student building
-            production apps.</p>
-        </div>
-        <div class="proj-card hl-green reveal reveal-delay-1" style="border-left: 3px solid var(--green);">
-          <div class="proj-icon" style="color: var(--green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-          </div>
-          <h3 class="proj-name">Strategic Problem-Solving</h3>
-          <p class="proj-desc">National-level chess competitor. The same long-horizon thinking that wins endgames shapes
-            how I design system architecture — planning five moves ahead means anticipating failure modes before writing
-            the first line.</p>
-        </div>
-        <div class="proj-card hl-amber reveal reveal-delay-2" style="border-left: 3px solid var(--amber);">
-          <div class="proj-icon" style="color: var(--amber);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </div>
-          <h3 class="proj-name">Cross-functional Teamwork</h3>
-          <p class="proj-desc">Built EduCycle and HemiSphere in team environments — managing Git workflows, code
-            reviews, and feature splits across contributors with different strengths and schedules.</p>
-        </div>
-        <div class="proj-card hl-coral reveal" style="border-left: 3px solid var(--coral);">
-          <div class="proj-icon" style="color: var(--coral);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-          </div>
-          <h3 class="proj-name">Clear Communication</h3>
-          <p class="proj-desc">As NSS Head at SFIT, translated complex program goals into clear action plans for 50+
-            volunteers. Writing clean commit messages, technical docs, and readable code is the same skill applied to
-            software.</p>
-        </div>
-        <div class="proj-card hl-blue reveal reveal-delay-1" style="border-left: 3px solid var(--accent);">
-          <div class="proj-icon" style="color: var(--accent);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-          </div>
-          <h3 class="proj-name">Time Management</h3>
-          <p class="proj-desc">Maintained a 9.2 CGPA while shipping 8 production apps, organizing a national event, and
-            leading NSS. Not by working harder — by knowing what to cut, what to defer, and what to finish first.</p>
-        </div>
-        <div class="proj-card hl-green reveal reveal-delay-2" style="border-left: 3px solid var(--green);">
-          <div class="proj-icon" style="color: var(--green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-          </div>
-          <h3 class="proj-name">Event Organization</h3>
-          <p class="proj-desc">Organized Samadhan '26 from scratch — venue, timeline, participant registration, sponsor
-            outreach, and post-event reporting. Ran the event day-of with zero critical failures.</p>
         </div>
       </div>
     </div>
@@ -3409,6 +3259,319 @@
     </div>
   </section>
 
+
+  <hr class="sec-divider">
+
+  <!-- ═══════════ GITHUB DASHBOARD ═══════════ -->
+  <section id="github-activity">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">/ CODE ACTIVITY</span>
+        <h2 class="section-title">GitHub Activity Dashboard.</h2>
+      </div>
+
+      <div class="glass-panel reveal" style="padding: 2rem;">
+        <div class="github-grid">
+          <div class="github-stat-card">
+            <span class="github-stat-value">1,200+</span>
+            <span class="github-stat-label">Contributions in 2026</span>
+          </div>
+          <div class="github-stat-card">
+            <span class="github-stat-value">45</span>
+            <span class="github-stat-label">Repositories</span>
+          </div>
+          <div class="github-stat-card">
+            <span class="github-stat-value">14 Day</span>
+            <span class="github-stat-label">Current Streak</span>
+          </div>
+          <div class="github-stat-card">
+            <span class="github-stat-value">TypeScript & Python</span>
+            <span class="github-stat-label">Top Languages</span>
+          </div>
+        </div>
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 0.85rem;">[Heatmap
+            Placeholder - Integrate via GitHub API or iframe here]</p>
+          <img src="https://ghchart.rshah.org/4f8ef7/KrishMistry18" alt="KrishMistry18's Github chart"
+            style="width: 100%; max-width: 800px; border-radius: var(--r); margin-top: 1rem; opacity: 0.9; filter: hue-rotate(10deg) brightness(1.2);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+  <!-- ═══════════ TECHNICAL EXPERTISE ═══════════ -->
+  <section id="technical-expertise">
+    <div class="container" style="max-width: 1400px;">
+      <div class="expertise-grid">
+        <!-- Left Column: The Stack -->
+        <div class="expertise-left reveal">
+          <div class="stack-title-wrap">
+            <div class="section-label" style="margin-bottom:0.5rem;">/ TECHNICAL SKILLS</div>
+            <h2 class="stack-title">The stack I reach for.</h2>
+            <p class="stack-sub">Grouped by domain — depth over breadth, always.</p>
+          </div>
+
+          <div class="bento-layout">
+            <!-- Languages -->
+            <div class="bento-box">
+              <div class="bento-title">Languages</div>
+              <div class="bento-tags">
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1e40af">C</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1d4ed8">C++</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Java</span>
+                <span class="badge-name" style="--badge-color:#000;--badge-bg:#facc15">JavaScript</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">TypeScript</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#10b981">Python</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#06b6d4">Dart</span>
+              </div>
+            </div>
+
+            <!-- Frontend & Mobile -->
+            <div class="bento-box">
+              <div class="bento-title">Frontend & Mobile</div>
+              <div class="bento-tags">
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#000">Next.js</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">Flutter</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#dc2626">Angular</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#b91c1c">Angular.js</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3f3f46">Three.js</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0ea5e9">TailwindCSS</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f97316">HTML5</span>
+              </div>
+            </div>
+
+            <!-- Cloud & DevOps -->
+            <div class="bento-box">
+              <div class="bento-title">Cloud & DevOps</div>
+              <div class="bento-tags">
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#f59e0b">Firebase</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#000">Vercel</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#d97706">AWS</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Google Cloud</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#2563eb">Docker</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">Git</span>
+              </div>
+            </div>
+
+            <!-- AI & Data Science -->
+            <div class="bento-box">
+              <div class="bento-title">AI & Data Science</div>
+              <div class="bento-tags">
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#ea580c">TensorFlow</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#1e1b4b">Pandas</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">NumPy</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0f172a">Matplotlib</span>
+              </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="bento-box">
+              <div class="bento-title">Backend</div>
+              <div class="bento-tags">
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#166534">Node.js</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#064e3b">Django</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#27272a">Express.js</span>
+                <span class="badge-name" style="--badge-color:#000;--badge-bg:#f4f4f5">Flask</span>
+              </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="bento-box">
+              <div class="bento-title">Databases</div>
+              <div class="bento-tags">
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0284c7">MySQL</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#0f172a">SQLite</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#16a34a">Supabase</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#15803d">MongoDB</span>
+                <span class="badge-name" style="--badge-color:#fff;--badge-bg:#3b82f6">Postgres</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: What I Do -->
+        <div class="expertise-right reveal reveal-delay-2"
+          style="display:flex;flex-direction:column;justify-content:flex-start;">
+          <h2 class="expertise-heading">Technical Expertise</h2>
+          <div style="width: 70px; height: 3px; background: var(--green); margin-bottom: 2rem; border-radius: 3px;">
+          </div>
+          <p class="expertise-desc">I design and build scalable, high-performance web applications from idea to
+            production — with a strong focus on usability, performance, and clean architecture.</p>
+
+          <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:1.2rem;">What I Do
+          </h3>
+          <div class="what-i-do-grid">
+            <div class="do-item">
+              <div class="do-icon"><svg viewBox="0 0 24 24">
+                  <path d="M5 12l4 4 10-10" />
+                </svg></div>
+              <span>Full-Stack Web Development</span>
+            </div>
+            <div class="do-item">
+              <div class="do-icon"><svg viewBox="0 0 24 24">
+                  <path d="M5 12l4 4 10-10" />
+                </svg></div>
+              <span>AI & Machine Learning</span>
+            </div>
+            <div class="do-item">
+              <div class="do-icon"><svg viewBox="0 0 24 24">
+                  <path d="M5 12l4 4 10-10" />
+                </svg></div>
+              <span>Mobile App Development</span>
+            </div>
+            <div class="do-item">
+              <div class="do-icon"><svg viewBox="0 0 24 24">
+                  <path d="M5 12l4 4 10-10" />
+                </svg></div>
+              <span>Backend Architecture & APIs</span>
+            </div>
+            <div class="do-item">
+              <div class="do-icon"><svg viewBox="0 0 24 24">
+                  <path d="M5 12l4 4 10-10" />
+                </svg></div>
+              <span>Cloud & DevOps</span>
+            </div>
+            <div class="do-item">
+              <div class="do-icon"><svg viewBox="0 0 24 24">
+                  <path d="M5 12l4 4 10-10" />
+                </svg></div>
+              <span>Interactive 3D & Data Viz</span>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
+  <!-- ═══════════ LEADERSHIP ═══════════ -->
+  <section id="leadership-skills">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">/ BEYOND THE CODE</span>
+        <h2 class="section-title">How I lead, collaborate, and think under pressure.</h2>
+      </div>
+      <div class="proj-grid">
+        <!-- 6 cards -->
+        <div class="proj-card hl-blue reveal" style="border-left: 3px solid var(--accent);">
+          <div class="proj-icon" style="color: var(--accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="proj-name">Leadership Under Pressure</h3>
+          <p class="proj-desc">Led Samadhan '26 — a national ideathon with 100+ participants and NGO partnerships.
+            Coordinated logistics, speakers, and judging panels while also being a final-year student building
+            production apps.</p>
+        </div>
+        <div class="proj-card hl-green reveal reveal-delay-1" style="border-left: 3px solid var(--green);">
+          <div class="proj-icon" style="color: var(--green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </div>
+          <h3 class="proj-name">Strategic Problem-Solving</h3>
+          <p class="proj-desc">National-level chess competitor. The same long-horizon thinking that wins endgames shapes
+            how I design system architecture — planning five moves ahead means anticipating failure modes before writing
+            the first line.</p>
+        </div>
+        <div class="proj-card hl-amber reveal reveal-delay-2" style="border-left: 3px solid var(--amber);">
+          <div class="proj-icon" style="color: var(--amber);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="proj-name">Cross-functional Teamwork</h3>
+          <p class="proj-desc">Built EduCycle and HemiSphere in team environments — managing Git workflows, code
+            reviews, and feature splits across contributors with different strengths and schedules.</p>
+        </div>
+        <div class="proj-card hl-coral reveal" style="border-left: 3px solid var(--coral);">
+          <div class="proj-icon" style="color: var(--coral);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <h3 class="proj-name">Clear Communication</h3>
+          <p class="proj-desc">As NSS Head at SFIT, translated complex program goals into clear action plans for 50+
+            volunteers. Writing clean commit messages, technical docs, and readable code is the same skill applied to
+            software.</p>
+        </div>
+        <div class="proj-card hl-blue reveal reveal-delay-1" style="border-left: 3px solid var(--accent);">
+          <div class="proj-icon" style="color: var(--accent);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <h3 class="proj-name">Time Management</h3>
+          <p class="proj-desc">Maintained a 9.2 CGPA while shipping 8 production apps, organizing a national event, and
+            leading NSS. Not by working harder — by knowing what to cut, what to defer, and what to finish first.</p>
+        </div>
+        <div class="proj-card hl-green reveal reveal-delay-2" style="border-left: 3px solid var(--green);">
+          <div class="proj-icon" style="color: var(--green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+          <h3 class="proj-name">Event Organization</h3>
+          <p class="proj-desc">Organized Samadhan '26 from scratch — venue, timeline, participant registration, sponsor
+            outreach, and post-event reporting. Ran the event day-of with zero critical failures.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <hr class="sec-divider">
+
+  <!-- ═══════════ CREATOR IDENTITY ═══════════ -->
+  <section id="creator-identity">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">/ BEYOND ENGINEERING</span>
+        <h2 class="section-title">Identity & Impact.</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div class="glass-card reveal" style="border-top: 3px solid #ff0000;">
+          <h3 style="font-family: 'Syne', sans-serif; margin-bottom: 0.5rem;">🎥 YouTube Creator</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Building the "Clashing Champion" channel. Learning
+            video editing, audience retention, and storytelling at scale.</p>
+        </div>
+        <div class="glass-card reveal reveal-delay-1" style="border-top: 3px solid var(--accent);">
+          <h3 style="font-family: 'Syne', sans-serif; margin-bottom: 0.5rem;">📈 Personal Brand</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Documenting my journey as a developer, sharing
+            insights on LinkedIn and Twitter to build a lasting professional network.</p>
+        </div>
+        <div class="glass-card reveal reveal-delay-2" style="border-top: 3px solid var(--green);">
+          <h3 style="font-family: 'Syne', sans-serif; margin-bottom: 0.5rem;">🌱 Social Impact</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Leveraging tech to solve real community problems,
+            actively participating in initiatives through NSS and NGOs.</p>
+        </div>
+        <div class="glass-card reveal reveal-delay-3" style="border-top: 3px solid var(--amber);">
+          <h3 style="font-family: 'Syne', sans-serif; margin-bottom: 0.5rem;">♟️ Chess Enthusiast</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">National competitor. Treating system architecture
+            the way I treat chess: sacrificing short-term wins for long-horizon stability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <hr class="sec-divider">
 
   <!-- ═══════════ CERTIFICATES ═══════════ -->
@@ -3608,6 +3771,75 @@
     </div>
     </div>
   </section>
+
+  <hr class="sec-divider">
+
+  <!-- ═══════════ COLLABORATOR & MENTOR SPOTLIGHT ═══════════ -->
+  <section id="spotlight">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">/ TESTIMONIALS</span>
+        <h2 class="section-title">Collaborator & Mentor Spotlight.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+
+        <div class="glass-card reveal" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <p
+            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; font-style: italic; margin-bottom: 1.5rem;">
+            "Krish consistently takes ownership and executes ideas exceptionally well. His ability to lead while
+            delivering high-quality code is rare for a student."</p>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--accent);">
+              FM</div>
+            <div>
+              <h4 style="font-family: 'Syne', sans-serif; font-size: 0.9rem; margin: 0; color: var(--text-primary);">
+                Faculty Mentor</h4>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">SFIT</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card reveal reveal-delay-1"
+          style="display: flex; flex-direction: column; justify-content: space-between;">
+          <p
+            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; font-style: italic; margin-bottom: 1.5rem;">
+            "Excellent leader who balances technical depth with execution. Krish knows when to write code and when to
+            focus on the architecture and team."</p>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background: var(--green-dim); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--green);">
+              TM</div>
+            <div>
+              <h4 style="font-family: 'Syne', sans-serif; font-size: 0.9rem; margin: 0; color: var(--text-primary);">
+                Teammate</h4>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Cipher Monks</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card reveal reveal-delay-2"
+          style="display: flex; flex-direction: column; justify-content: space-between;">
+          <p
+            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; font-style: italic; margin-bottom: 1.5rem;">
+            "Krish bridges engineering and leadership seamlessly. The systems he built scale beautifully, and he
+            communicates complexities with ease."</p>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div
+              style="width: 40px; height: 40px; border-radius: 50%; background: var(--amber-dim); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--amber);">
+              SC</div>
+            <div>
+              <h4 style="font-family: 'Syne', sans-serif; font-size: 0.9rem; margin: 0; color: var(--text-primary);">
+                Startup Collaborator</h4>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Industry Partner</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <!-- ═══════════ CONTACT ═══════════ -->
   <section id="contact">
