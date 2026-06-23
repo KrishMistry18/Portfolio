@@ -2379,24 +2379,25 @@
 
     .github-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
     }
 
     .github-stat-card {
       background: var(--bg-3);
       border: 1px solid var(--border);
       border-radius: var(--r-lg);
-      padding: 1.5rem;
+      padding: 1.2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0.3rem;
     }
 
     .github-stat-value {
       font-family: 'Syne', sans-serif;
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--text-primary);
     }
@@ -3271,29 +3272,68 @@
       </div>
 
       <div class="glass-panel reveal" style="padding: 2rem;">
-        <div class="github-grid">
-          <div class="github-stat-card">
-            <span class="github-stat-value">1,200+</span>
-            <span class="github-stat-label">Contributions in 2026</span>
+        <style>
+          .bento-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+          }
+          .bento-item {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+          }
+          .bento-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+          }
+          .bento-item.span-5 { grid-column: span 5; }
+          .bento-item.span-7 { grid-column: span 7; }
+          .bento-item.span-4 { grid-column: span 4; }
+          .bento-item.span-8 { grid-column: span 8; }
+          .bento-item.span-12 { grid-column: span 12; }
+
+          @media (max-width: 992px) {
+            .bento-item.span-5, .bento-item.span-7, .bento-item.span-4, .bento-item.span-8, .bento-item.span-12 {
+              grid-column: span 12;
+            }
+          }
+        </style>
+
+        <div class="bento-container">
+          <!-- Overall Stats Card -->
+          <div class="bento-item span-5">
+            <img src="https://github-readme-stats.vercel.app/api?username=KrishMistry18&theme=tokyonight&show_icons=true&hide_border=true&bg_color=11142200" alt="GitHub Stats" style="width: 100%; max-width: 450px; height: auto; opacity: 0.95;" />
           </div>
-          <div class="github-stat-card">
-            <span class="github-stat-value">45</span>
-            <span class="github-stat-label">Repositories</span>
+
+          <!-- Streak Stats Card -->
+          <div class="bento-item span-7">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=KrishMistry18&theme=tokyonight&hide_border=true&background=11142200" alt="GitHub Streak" style="width: 100%; max-width: 550px; height: auto; opacity: 0.95;" />
           </div>
-          <div class="github-stat-card">
-            <span class="github-stat-value">14 Day</span>
-            <span class="github-stat-label">Current Streak</span>
+
+          <!-- Top Languages Card -->
+          <div class="bento-item span-4">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=KrishMistry18&theme=tokyonight&layout=compact&hide_border=true&bg_color=11142200" alt="Top Languages" style="width: 100%; max-width: 350px; height: auto; opacity: 0.95;" />
           </div>
-          <div class="github-stat-card">
-            <span class="github-stat-value">TypeScript & Python</span>
-            <span class="github-stat-label">Top Languages</span>
+
+          <!-- Activity Graph Card -->
+          <div class="bento-item span-8">
+            <img src="https://github-readme-activity-graph.vercel.app/graph?username=KrishMistry18&theme=tokyonight&hide_border=true&bg_color=11142200" alt="Activity Graph" style="width: 100%; max-width: 800px; height: auto; opacity: 0.95;" />
           </div>
-        </div>
-        <div style="margin-top: 2rem; text-align: center;">
-          <p style="color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 0.85rem;">[Heatmap
-            Placeholder - Integrate via GitHub API or iframe here]</p>
-          <img src="https://ghchart.rshah.org/4f8ef7/KrishMistry18" alt="KrishMistry18's Github chart"
-            style="width: 100%; max-width: 800px; border-radius: var(--r); margin-top: 1rem; opacity: 0.9; filter: hue-rotate(10deg) brightness(1.2);" />
+
+          <!-- Commit Heatmap Card -->
+          <div class="bento-item span-12" style="flex-direction: column; overflow-x: auto; align-items: flex-start;">
+            <p style="color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 0.85rem; margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase;">// Contribution Heatmap</p>
+            <div style="width: 100%; display: flex; justify-content: center;">
+              <img src="https://ghchart.rshah.org/KrishMistry18" alt="KrishMistry18's Github heatmap" style="width: 100%; max-width: 900px; opacity: 0.95; filter: invert(1) hue-rotate(180deg) brightness(1.2);" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -4154,6 +4194,7 @@
     }
     animateStars();
   </script>
+
 
 </body>
 
