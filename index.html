@@ -2833,6 +2833,158 @@
 
   <hr class="sec-divider">
 
+  <!-- ═══════════ LIVE STATUS ═══════════ -->
+  <section id="live-status">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom: 2.5rem;">
+        <span class="section-label">/ LIVE STATUS</span>
+        <h2 class="section-title">Currently Building.</h2>
+      </div>
+
+      <style>
+        .status-card {
+          position: relative;
+          overflow: hidden;
+          background: rgba(17, 20, 34, 0.6);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          border-radius: var(--r-lg);
+          padding: 1.5rem;
+          min-height: 160px;
+        }
+
+        .status-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Ambient Glows */
+        .status-card.red::before {
+          content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+          background: radial-gradient(circle at top left, rgba(255, 75, 75, 0.15), transparent 40%);
+          z-index: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .status-card.red:hover::before { opacity: 0.8; }
+        .status-card.red:hover { border-color: rgba(255, 75, 75, 0.3); box-shadow: 0 10px 30px -10px rgba(255, 75, 75, 0.2); }
+
+        .status-card.green::before {
+          content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+          background: radial-gradient(circle at top left, rgba(46, 235, 107, 0.15), transparent 40%);
+          z-index: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .status-card.green:hover::before { opacity: 0.8; }
+        .status-card.green:hover { border-color: rgba(46, 235, 107, 0.3); box-shadow: 0 10px 30px -10px rgba(46, 235, 107, 0.2); }
+
+        .status-card.purple::before {
+          content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+          background: radial-gradient(circle at top left, rgba(177, 75, 255, 0.15), transparent 40%);
+          z-index: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .status-card.purple:hover::before { opacity: 0.8; }
+        .status-card.purple:hover { border-color: rgba(177, 75, 255, 0.3); box-shadow: 0 10px 30px -10px rgba(177, 75, 255, 0.2); }
+
+        .status-content {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+        }
+
+        /* Pulsing Dot */
+        @keyframes pulse-dot {
+          0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--dot-rgb), 0.7); }
+          70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(var(--dot-rgb), 0); }
+          100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--dot-rgb), 0); }
+        }
+
+        .live-dot {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          animation: pulse-dot 2s infinite;
+        }
+        .live-dot.red { background: #ff4b4b; --dot-rgb: 255, 75, 75; }
+        .live-dot.green { background: #2eeb6b; --dot-rgb: 46, 235, 107; }
+        .live-dot.purple { background: #b14bff; --dot-rgb: 177, 75, 255; }
+
+        /* Tag Styling */
+        .status-tag {
+          display: inline-flex;
+          align-items: center;
+          padding: 0.35rem 0.85rem;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 100px;
+          font-family: 'DM Mono', monospace;
+          font-size: 0.75rem;
+          color: var(--text-muted);
+          transition: all 0.3s ease;
+        }
+        .status-card:hover .status-tag {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+          border-color: rgba(255, 255, 255, 0.2);
+        }
+      </style>
+
+      <div class="status-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Card 1 -->
+        <div class="status-card red reveal">
+          <div class="status-content">
+            <div>
+              <h3 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600; letter-spacing: -0.01em;">
+                <span class="live-dot red"></span> AI Web Development Intern
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-left: 1.4rem;">@ InAmigos Foundation</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <span class="status-tag">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="status-card green reveal reveal-delay-1">
+          <div class="status-content">
+            <div>
+              <h3 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600; letter-spacing: -0.01em;">
+                <span class="live-dot green"></span> Frontend Engineer Intern
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-left: 1.4rem;">@ Flyrank (Upcoming)</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <span class="status-tag">July 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="status-card purple reveal reveal-delay-2">
+          <div class="status-content">
+            <div>
+              <h3 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600; letter-spacing: -0.01em;">
+                <span class="live-dot purple"></span> Growing Clashing Champion
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-left: 1.4rem;">YouTube Content Creation</p>
+            </div>
+            <div style="margin-top: 1.5rem;">
+              <span class="status-tag">Creator</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="sec-divider">
+
   <!-- ═══════════ EXPERIENCE ═══════════ -->
   <section id="experience">
     <div class="container">
