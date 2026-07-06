@@ -2422,68 +2422,12 @@
       letter-spacing: 0.05em;
     }
 
-    /* ═══════════════════════════════════════════
-   UPGRADE PACK: mesh gradient, 3D hero, tilt, magnetic
-═══════════════════════════════════════════ */
-    .mesh-gradient {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .55;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(79, 142, 247, .10), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(62, 207, 142, .08), transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(249, 112, 102, .06), transparent 45%);
-      background-size: 200% 200%;
-      animation: meshShift 22s ease-in-out infinite;
-    }
 
-    @keyframes meshShift {
-      0%   { background-position: 0% 0%, 100% 0%, 50% 100%; }
-      50%  { background-position: 100% 50%, 0% 50%, 20% 60%; }
-      100% { background-position: 0% 0%, 100% 0%, 50% 100%; }
-    }
-
-    #hero-3d {
-      position: absolute;
-      top: 50%;
-      right: -60px;
-      transform: translateY(-50%);
-      width: 460px;
-      height: 460px;
-      z-index: 0;
-      pointer-events: none;
-      opacity: .85;
-    }
-
-    @media (max-width: 1000px) {
-      #hero-3d { display: none; }
-    }
-
-    .tilt-el {
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: transform .15s ease-out;
-    }
-
-    .magnetic {
-      display: inline-block;
-      will-change: transform;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .mesh-gradient { animation: none; }
-      #hero-3d { display: none; }
-      .tilt-el { transition: none !important; transform: none !important; }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Upgrade Pack: mesh gradient layer -->
-  <div class="mesh-gradient"></div>
 
   <!-- ambient orbs -->
   <div class="orb orb-1"></div>
@@ -2510,8 +2454,6 @@
 
   <!-- ═══════════ HERO ═══════════ -->
   <section id="hero">
-    <!-- Upgrade Pack: 3D object mount -->
-    <div id="hero-3d"></div>
 
     <!-- left -->
     <div>
@@ -4528,142 +4470,7 @@
     });
   </script>
 
-  <!-- ═══════════ UPGRADE PACK: Lenis, 3D hero, tilt, magnetic ═══════════ -->
-  <script>
-  (function () {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    /* 1. Lenis smooth scroll */
-    if (!prefersReduced && window.Lenis) {
-      const lenis = new Lenis({
-        duration: 1.1,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-      });
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-    }
-
-    /* 2. 3D hero object */
-    const heroMount = document.getElementById('hero-3d');
-    if (heroMount && window.THREE && hasFinePointer && !prefersReduced) {
-      const width = heroMount.clientWidth || 460;
-      const height = heroMount.clientHeight || 460;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-      camera.position.z = 6;
-
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(width, height);
-      heroMount.appendChild(renderer.domElement);
-
-      const accent = new THREE.Color(0x4f8ef7);
-      const green = new THREE.Color(0x3ecf8e);
-
-      const geometry = new THREE.IcosahedronGeometry(2.1, 1);
-      const material = new THREE.MeshBasicMaterial({
-        color: accent, wireframe: true, transparent: true, opacity: 0.55,
-      });
-      const mesh = new THREE.Mesh(geometry, material);
-      scene.add(mesh);
-
-      const coreGeo = new THREE.IcosahedronGeometry(1.15, 1);
-      const coreMat = new THREE.MeshBasicMaterial({
-        color: green, wireframe: true, transparent: true, opacity: 0.35,
-      });
-      const core = new THREE.Mesh(coreGeo, coreMat);
-      scene.add(core);
-
-      let targetRotX = 0, targetRotY = 0;
-
-      window.addEventListener('mousemove', (e) => {
-        const nx = (e.clientX / window.innerWidth) * 2 - 1;
-        const ny = (e.clientY / window.innerHeight) * 2 - 1;
-        targetRotY = nx * 0.5;
-        targetRotX = ny * 0.3;
-      });
-
-      function animate() {
-        requestAnimationFrame(animate);
-        mesh.rotation.y += 0.003;
-        mesh.rotation.x += 0.0015;
-        core.rotation.y -= 0.005;
-        core.rotation.x -= 0.002;
-        mesh.rotation.y += (targetRotY - mesh.rotation.y) * 0.02;
-        mesh.rotation.x += (targetRotX - mesh.rotation.x) * 0.02;
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      window.addEventListener('resize', () => {
-        if (window.innerWidth <= 1000) return;
-        const w = heroMount.clientWidth || 460;
-        const h = heroMount.clientHeight || 460;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-      });
-    }
-
-    /* 3. 3D tilt on hover */
-    if (hasFinePointer && !prefersReduced) {
-      const tiltSelectors = [
-        '.tilt-el', '.proj-card', '.journey-card', '.status-card',
-        '.glass-card', '.bento-box', '.flagship-img-col'
-      ].join(', ');
-
-      document.querySelectorAll(tiltSelectors).forEach((card) => {
-        card.classList.add('tilt-el');
-        const maxTilt = 8;
-
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width;
-          const py = (e.clientY - rect.top) / rect.height;
-          const rotY = (px - 0.5) * maxTilt * 2;
-          const rotX = (0.5 - py) * maxTilt * 2;
-          card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
-        });
-      });
-    }
-
-    /* 4. Magnetic buttons */
-    if (hasFinePointer && !prefersReduced) {
-      document.querySelectorAll('.magnetic, .btn-primary, .nav-cta').forEach((btn) => {
-        btn.classList.add('magnetic');
-        const strength = 0.35;
-        const radius = 60;
-
-        btn.addEventListener('mousemove', (e) => {
-          const rect = btn.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dx = e.clientX - cx;
-          const dy = e.clientY - cy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < radius + rect.width / 2) {
-            btn.style.transform = `translate(${dx * strength}px, ${dy * strength}px)`;
-          }
-        });
-
-        btn.addEventListener('mouseleave', () => {
-          btn.style.transform = 'translate(0, 0)';
-        });
-      });
-    }
-  })();
-  </script>
 
 </body>
 
