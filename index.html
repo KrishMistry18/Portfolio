@@ -3320,6 +3320,12 @@
                     --dot-rgb: 177, 75, 255;
                 }
 
+                
+                .live-dot.gray {
+                    background: #888;
+                    animation: none;
+                }
+
                 .live-dot.blue {
                     background: #4285F4;
                     --dot-rgb: 66, 133, 244;
@@ -3352,12 +3358,13 @@
                         <div>
                             <h3
                                 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600; letter-spacing: -0.01em;">
-                                <span class="live-dot red"></span> AI Web Development Intern</h3>
+                                <span class="live-dot gray"></span> AI Web Development Intern</h3>
                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-left: 1.4rem;">@ InAmigos
                                 Foundation</p>
                         </div>
-                        <div style="margin-top: 1.5rem;"><span class="status-tag">Active</span>
-<p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.8rem; margin-left: 1.4rem; line-height: 1.4;">Developing responsive web applications, integrating AI functionalities, and optimizing user interfaces for performance.</p></div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.8rem; margin-left: 1.4rem; line-height: 1.4;">Developing responsive web applications, integrating AI functionalities, and optimizing user interfaces for performance.</p>
+                        </div>
+                        <div style="margin-top: 1.5rem;"><span class="status-tag" style="background: rgba(100, 100, 100, 0.1); color: #aaa; border: 1px solid rgba(100,100,100,0.2);">Completed &bull; June - July</span></div>
                     </div>
                 </div>
                 <div class="status-card green reveal reveal-delay-1">
@@ -3369,7 +3376,7 @@
                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-left: 1.4rem;">@ Flyrank</p>
 <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.8rem; margin-left: 1.4rem; line-height: 1.4;">Developing predictive models, analyzing large datasets, and deploying ML pipelines.</p>
                         </div>
-                        <div style="margin-top: 1.5rem;"><span class="status-tag">July 2026</span></div>
+                        <div style="margin-top: 1.5rem;"><span class="status-tag">Active &bull; Since July</span></div>
                     </div>
                 </div>
 
@@ -3382,7 +3389,7 @@
                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-left: 1.4rem;">@ Google</p>
 <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.8rem; margin-left: 1.4rem; line-height: 1.4;">Advocating for Google technologies, organizing community events, and mentoring students.</p>
                         </div>
-                        <div style="margin-top: 1.5rem;"><span class="status-tag">Active</span></div>
+                        <div style="margin-top: 1.5rem;"><span class="status-tag">Active &bull; Since June</span></div>
                     </div>
                 </div>
             </div>
@@ -4120,7 +4127,7 @@
                     background: transparent;
                     perspective: 1000px;
                     height: 100%;
-                    min-height: 160px;
+                    min-height: 240px;
                 }
 
                 .exp-flip-inner {
@@ -4152,8 +4159,8 @@
                 }
 
                 .exp-flip-front img {
-                    width: 90px;
-                    height: 90px;
+                    width: 140px;
+                    height: 140px;
                     object-fit: contain;
                     border-radius: var(--r-md);
                     flex-shrink: 0;
@@ -4190,7 +4197,13 @@
                     letter-spacing: 0.1em;
                     text-transform: uppercase;
                 }
-.exp-flip-back {
+
+                .exp-flip-card.flipped .exp-flip-inner {
+                    transform: rotateY(180deg);
+                }
+
+                .exp-flip-back {
+
             background: var(--bg-3);
             transform: rotateY(180deg);
             padding: 1.4rem 1.5rem;
