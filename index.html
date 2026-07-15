@@ -688,37 +688,39 @@
 
         .tag {
             font-family: 'DM Mono', monospace;
-            font-size: .62rem;
-            padding: 3px 9px;
-            border-radius: 4px;
-            letter-spacing: .03em;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            background: var(--surface);
-            transition: all .15s;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            background: #1e293b;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+.tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
-        .tag:hover {
-            border-color: var(--border-bright);
-            color: var(--text-primary)
-        }
+
 
         .tag-blue {
-            border-color: rgba(79, 142, 247, .28);
-            color: var(--accent);
-            background: var(--accent-dim)
+            background: #2563eb;
+            color: #fff;
         }
 
         .tag-green {
-            border-color: rgba(62, 207, 142, .28);
-            color: var(--green);
-            background: var(--green-dim)
+            background: #10b981;
+            color: #fff;
         }
 
         .tag-amber {
-            border-color: rgba(245, 158, 11, .28);
-            color: var(--amber);
-            background: var(--amber-dim)
+            background: #d97706;
+            color: #fff;
         }
 
         .card-footer {
