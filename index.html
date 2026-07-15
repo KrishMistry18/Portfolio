@@ -3762,58 +3762,6 @@
                 </div>
             </div>
 
-            <!-- flagship 3 -->
-            <div class="flagship reveal">
-                <div class="flagship-img-col"><img src="assets/projects/chessanalyzer.png" alt="ChessAnalyzer UI"></div>
-                <div class="flagship-details-col">
-                    <div class="flagship-title-row">
-                        <h3 class="flagship-title">ChessAnalyzer</h3>
-                        <a href="https://chess-analyzer-qf7v.vercel.app/" class="proj-link" target="_blank"
-                            rel="noopener">Live Web ↗</a>
-                    </div>
-                    <div class="flagship-subtitle">Chess players improving their game need engine analysis, but Lichess
-                        and Chess.com require accounts and uploads. ChessAnalyzer runs full Stockfish analysis entirely
-                        in the browser — no backend, no sign-up, instant feedback.</div>
-                    <ul class="flagship-points">
-                        <li>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads
-                            gracefully degrading based on CPU.</li>
-                        <li>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies,
-                            mistakes, and blunders.</li>
-                        <li>40+ piece themes, SAN move list, zero backend dependency for analysis.</li>
-                    </ul>
-                    <div class="flagship-footer">
-                        <div class="tags"><span class="tag tag-blue">Next.js 15</span><span
-                                class="tag tag-blue">TypeScript</span><span class="tag">Stockfish WASM</span><span
-                                class="tag">MUI</span><span class="tag">Jotai</span></div>
-                        <div class="proj-links"><a href="https://github.com/KrishMistry18/ChessAnalyzer"
-                                class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- flagship 4 -->
-            <div class="flagship reverse reveal">
-                <div class="flagship-img-col"><img src="assets/projects/heritageguide.png" alt="HeritageGuide UI"></div>
-                <div class="flagship-details-col">
-                    <div class="flagship-title-row">
-                        <h3 class="flagship-title">HeritageGuide</h3>
-                        <a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank"
-                            rel="noopener">Live Web ↗</a>
-                    </div>
-                    <div class="flagship-subtitle">Interactive Leaflet + OSM map with smart multi-modal routing and slot-based booking for India's underdocumented heritage sites.</div>
-                    <ul class="flagship-points">
-                        <li>Dynamic map integration using Leaflet and OpenStreetMap for accurate site discovery.</li>
-                        <li>Built a full-stack Django architecture handling secure slot booking, authentication, and routing.</li>
-                        <li>Firebase-backed features ensure real-time data flow for peak hour updates and reviews.</li>
-                    </ul>
-                    <div class="flagship-footer">
-                        <div class="tags"><span class="tag tag-green">Django 5</span><span class="tag tag-blue">Leaflet</span><span class="tag tag-amber">Firebase</span></div>
-                        <div class="proj-links"><a href="https://github.com/KrishMistry18/HeritageGuide"
-                                class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a></div>
-                    </div>
-                </div>
-            </div>
-
             <!-- More Shipped Work — image-front flip cards -->
             <style>
                 .more-work-head {
@@ -3961,6 +3909,46 @@
             </div>
 
             <div class="proj-flip-grid">
+                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/chessanalyzer.png" alt="ChessAnalyzer">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">ChessAnalyzer</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Browser-based Stockfish engine.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">ChessAnalyzer</div>
+                            <p class="d">Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU.</p>
+                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Next.js 15</span><span class="tag tag-blue">TypeScript</span><span class="tag tag-amber">Stockfish WASM</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://chess-analyzer-qf7v.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/ChessAnalyzer" target="_blank" rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal reveal-delay-1" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/heritageguide.png" alt="HeritageGuide">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">HeritageGuide</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Interactive map with routing.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">HeritageGuide</div>
+                            <p class="d">Interactive Leaflet + OSM map with smart multi-modal routing and slot-based booking for heritage sites.</p>
+                            <div class="proj-flip-back-tags"><span class="tag tag-green">Django 5</span><span class="tag tag-blue">Leaflet</span><span class="tag tag-amber">Firebase</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://heritage-guide.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/HeritageGuide" target="_blank" rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
                     <div class="proj-flip-inner">
                         <div class="proj-flip-face proj-flip-front">

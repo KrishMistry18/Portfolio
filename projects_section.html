@@ -1,0 +1,387 @@
+<section id="projects">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="section-label">/ featured work</span>
+                <h2 class="section-title">Things I've shipped.</h2>
+                <p class="section-sub">Real projects — not tutorials. Every one of these is production-grade and
+                    deployed or deployable.</p>
+            </div>
+
+            <!-- flagship 1 -->
+            <div class="flagship reveal">
+                <div class="flagship-img-col"><img src="assets/projects/impactglobe.png" alt="ImpactGlobe Dashboard">
+                </div>
+                <div class="flagship-details-col">
+                    <div class="flagship-title-row">
+                        <h3 class="flagship-title">ImpactGlobe</h3>
+                        <a href="https://impact-globe.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live
+                            Web ↗</a>
+                    </div>
+                    <div class="flagship-subtitle">For traders & analysts who need geopolitical context without digging
+                        through 20 news tabs — a live intelligence layer that maps world events directly to Forex
+                        impact.</div>
+                    <ul class="flagship-points">
+                        <li>3D globe (Three.js + Leaflet) mapping live geopolitical events with severity tiers
+                            (Critical, High, Medium) and historical 24-hour replay.</li>
+                        <li>Gemini 2.0 Flash auto-generates structured news intelligence with direct Forex impact
+                            analysis (e.g., EUR/USD, XAU/USD).</li>
+                        <li>Real-time event tracking and live market panel powered by Next.js and Firebase — zero manual
+                            refresh needed.</li>
+                    </ul>
+                    <div style="margin-bottom: 2rem;">
+                        <h4
+                            style="font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            ⚙️ Hardest Technical Decision</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">The
+                            trickiest challenge was syncing live geopolitical event data with Three.js globe rendering
+                            without causing frame drops. Solved it by debouncing Firebase listeners and batching DOM
+                            updates outside the animation loop.</p>
+                    </div>
+                    <div class="flagship-footer">
+                        <div class="tags"><span class="tag tag-blue">Next.js</span><span
+                                class="tag tag-blue">TypeScript</span><span class="tag tag-blue">Three.js</span><span
+                                class="tag tag-green">Gemini AI</span><span class="tag tag-amber">Firebase</span></div>
+                        <div class="proj-links"><a href="https://github.com/KrishMistry18/ImpactGlobe" class="proj-link"
+                                target="_blank" rel="noopener">GitHub Repo ↗</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- flagship 2 -->
+            <div class="flagship reverse reveal">
+                <div class="flagship-img-col"><img src="assets/projects/hemisphere.png" alt="HemiSphere App UI"></div>
+                <div class="flagship-details-col">
+                    <div class="flagship-title-row">
+                        <h3 class="flagship-title">HemiSphere</h3>
+                        <a href="https://hemisphere-dev.vercel.app/" class="proj-link" target="_blank"
+                            rel="noopener">Live Web ↗</a>
+                    </div>
+                    <div class="flagship-subtitle">Urban communities lack fast, low-cost tools to report and act on
+                        safety hazards. HemiSphere puts AI-powered incident classification and CO₂ tracking directly in
+                        residents' hands — no cloud dependency needed.</div>
+                    <ul class="flagship-points">
+                        <li>MobileNetV3 CNN (Transfer Learning) classifies accidents, construction hazards, and garbage
+                            from incident photos with on-device inference.</li>
+                        <li>Heuristic regression for real-time CO₂ emissions tracking — gives communities actionable
+                            environmental data locally.</li>
+                        <li>Flutter + Firebase Firestore backend with real-time sync across all community members.</li>
+                    </ul>
+                    <div style="margin-bottom: 2rem;">
+                        <h4
+                            style="font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                            ⚙️ Hardest Technical Decision</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">The
+                            key decision was choosing on-device inference (MobileNetV3) over a cloud API — this
+                            eliminated latency, worked offline, and kept sensitive incident photos off external servers.
+                            The tradeoff was a larger app bundle, offset with lazy loading.</p>
+                    </div>
+                    <div class="flagship-footer">
+                        <div class="tags"><span class="tag tag-green">Flutter</span><span
+                                class="tag tag-green">TensorFlow</span><span
+                                class="tag tag-green">MobileNetV3</span><span class="tag tag-amber">Firebase</span><span
+                                class="tag">Python</span></div>
+                        <div class="proj-links"><a href="https://github.com/KrishMistry18/Hemisphere" class="proj-link"
+                                target="_blank" rel="noopener">GitHub Repo ↗</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- flagship 3 -->
+            <div class="flagship reveal">
+                <div class="flagship-img-col"><img src="assets/projects/chessanalyzer.png" alt="ChessAnalyzer UI"></div>
+                <div class="flagship-details-col">
+                    <div class="flagship-title-row">
+                        <h3 class="flagship-title">ChessAnalyzer</h3>
+                        <a href="https://chess-analyzer-qf7v.vercel.app/" class="proj-link" target="_blank"
+                            rel="noopener">Live Web ↗</a>
+                    </div>
+                    <div class="flagship-subtitle">Chess players improving their game need engine analysis, but Lichess
+                        and Chess.com require accounts and uploads. ChessAnalyzer runs full Stockfish analysis entirely
+                        in the browser — no backend, no sign-up, instant feedback.</div>
+                    <ul class="flagship-points">
+                        <li>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads
+                            gracefully degrading based on CPU.</li>
+                        <li>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies,
+                            mistakes, and blunders.</li>
+                        <li>40+ piece themes, SAN move list, zero backend dependency for analysis.</li>
+                    </ul>
+                    <div class="flagship-footer">
+                        <div class="tags"><span class="tag tag-blue">Next.js 15</span><span
+                                class="tag tag-blue">TypeScript</span><span class="tag">Stockfish WASM</span><span
+                                class="tag">MUI</span><span class="tag">Jotai</span></div>
+                        <div class="proj-links"><a href="https://github.com/KrishMistry18/ChessAnalyzer"
+                                class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- flagship 4 -->
+            <div class="flagship reverse reveal">
+                <div class="flagship-img-col"><img src="assets/projects/heritageguide.png" alt="HeritageGuide UI"></div>
+                <div class="flagship-details-col">
+                    <div class="flagship-title-row">
+                        <h3 class="flagship-title">HeritageGuide</h3>
+                        <a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank"
+                            rel="noopener">Live Web ↗</a>
+                    </div>
+                    <div class="flagship-subtitle">Interactive Leaflet + OSM map with smart multi-modal routing and slot-based booking for India's underdocumented heritage sites.</div>
+                    <ul class="flagship-points">
+                        <li>Dynamic map integration using Leaflet and OpenStreetMap for accurate site discovery.</li>
+                        <li>Built a full-stack Django architecture handling secure slot booking, authentication, and routing.</li>
+                        <li>Firebase-backed features ensure real-time data flow for peak hour updates and reviews.</li>
+                    </ul>
+                    <div class="flagship-footer">
+                        <div class="tags"><span class="tag tag-green">Django 5</span><span class="tag tag-blue">Leaflet</span><span class="tag tag-amber">Firebase</span></div>
+                        <div class="proj-links"><a href="https://github.com/KrishMistry18/HeritageGuide"
+                                class="proj-link" target="_blank" rel="noopener">GitHub Repo ↗</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Shipped Work — image-front flip cards -->
+            <style>
+                .more-work-head {
+                    margin: 1rem 0 1.5rem;
+                }
+
+                .proj-flip-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                    gap: 1.3rem;
+                }
+
+                .proj-flip-card {
+                    perspective: 1600px;
+                    height: 300px;
+                }
+
+                .proj-flip-inner {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    transition: transform .6s cubic-bezier(.4, 0, .2, 1);
+                    transform-style: preserve-3d;
+                    cursor: pointer;
+                }
+
+                .proj-flip-card.flipped .proj-flip-inner {
+                    transform: rotateY(180deg);
+                }
+
+                .proj-flip-face {
+                    position: absolute;
+                    inset: 0;
+                    backface-visibility: hidden;
+                    border-radius: var(--r-lg);
+                    border: 1px solid var(--border);
+                    overflow: hidden;
+                }
+
+                .proj-flip-front {
+                    background: var(--bg-3);
+                }
+
+                .proj-flip-front img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                }
+
+                .proj-flip-front-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5, 6, 12, .92) 0%, rgba(5, 6, 12, .35) 45%, transparent 75%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 1rem 1.1rem;
+        }
+
+                .proj-flip-front-name {
+                    font-family: 'Syne', sans-serif;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    color: #fff;
+                }
+
+                .proj-flip-front-hint {
+                    position: absolute;
+                    top: 10px;
+                    right: 12px;
+                    font-family: 'DM Mono', monospace;
+                    font-size: .58rem;
+                    color: #fff;
+                    letter-spacing: .05em;
+                    text-transform: uppercase;
+                    background: rgba(0, 0, 0, .5);
+                    padding: 3px 8px;
+                    border-radius: 999px;
+                }
+
+                .proj-flip-back {
+                    background: var(--bg-2);
+                    transform: rotateY(180deg);
+                    padding: 1.3rem 1.4rem;
+                    display: flex;
+                    flex-direction: column;
+                    overflow-y: auto;
+                }
+
+                .proj-flip-back-title {
+                    font-family: 'Syne', sans-serif;
+                    font-weight: 700;
+                    font-size: 1.05rem;
+                    color: var(--text-primary);
+                    margin-bottom: .5rem;
+                }
+
+                .proj-flip-back p.d {
+                    font-size: .76rem;
+                    color: var(--text-secondary);
+                    line-height: 1.55;
+                    margin-bottom: .7rem;
+                    flex: 1;
+                }
+
+                .proj-flip-back-tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 4px;
+                    margin-bottom: .6rem;
+                }
+
+                .proj-flip-back-links {
+                    display: flex;
+                    gap: .5rem;
+                    flex-wrap: wrap;
+                }
+
+                .proj-flip-back-links a {
+                    font-family: 'DM Mono', monospace;
+                    font-size: .65rem;
+                    color: var(--green);
+                    text-decoration: none;
+                    border: 1px solid rgba(62, 207, 142, .3);
+                    border-radius: 999px;
+                    padding: 3px 10px;
+                }
+
+                .proj-flip-back-links a:hover {
+                    background: var(--green-dim);
+                }
+
+                @media (max-width: 500px) {
+                    .proj-flip-grid {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+
+            <div class="more-work-head reveal">
+                <h3 class="section-title" style="font-size:1.4rem;">More shipped work.</h3>
+                <p class="section-sub">Flip a card to see what's under the hood.</p>
+            </div>
+
+            <div class="proj-flip-grid">
+                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/EduCycle.png" alt="EduCycle">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">EduCycle</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Verified peer-to-peer marketplace for students.</p>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">EduCycle</div>
+                            <p class="d">Verified peer-to-peer marketplace for students to buy, sell, and recycle
+                                academic materials — real payments, secure auth, PWA offline support.</p>
+                            <div class="proj-flip-back-tags"><span class="tag">Django REST</span><span
+                                    class="tag">React.js</span><span class="tag tag-amber">Stripe</span><span
+                                    class="tag">Redis</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://edu-cycle-five.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/EduCycle" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="proj-flip-card reveal reveal-delay-2" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/AyurWell.png" alt="AyurWell">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">AyurWell</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">AI-generated diet plans & dosha assessment.</p>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">AyurWell</div>
+                            <p class="d">Dosha assessment engine with AI-generated diet plans that adapt to body type
+                                and season, plus a progress dashboard with Recharts visualisations.</p>
+                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Vite + React</span><span
+                                    class="tag">Django REST</span><span class="tag">Tailwind</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://ayur-well.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/AyurWell" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal reveal-delay-3" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/WatchParty.png" alt="WatchParty">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">WatchParty</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Real-time synchronized video streaming.</p>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">WatchParty</div>
+                            <p class="d">Sub-second YouTube co-watching sync via pure WebRTC — zero installs, no Netflix
+                                subscription needed, P2P chat and screen sharing built in.</p>
+                            <div class="proj-flip-back-tags"><span class="tag">WebRTC</span><span
+                                    class="tag">Socket.IO</span><span class="tag">Node.js</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://github.com/KrishMistry18/WatchParty" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                                <span class="tag tag-amber" style="cursor:default">🚀 Demo soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal reveal-delay-4" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/Nexus.png" alt="Nexus Financial">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">Nexus Financial</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">High-performance fintech dashboard.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">Nexus Financial</div>
+                            <p class="d">Ledger-accurate ATM banking simulation with SQL injection prevention via JDBC
+                                prepared statements and a dual-table audit trail.</p>
+                            <div class="proj-flip-back-tags"><span class="tag">Java 22</span><span
+                                    class="tag tag-amber">MySQL 8</span><span class="tag">JDBC</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://github.com/KrishMistry18/Nexus-Financial" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
