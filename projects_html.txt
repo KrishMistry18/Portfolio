@@ -1,0 +1,98 @@
+<div class="proj-flip-grid">
+                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/educycle.png" alt="EduCycle">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">EduCycle</span>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">EduCycle</div>
+                            <p class="d">Verified peer-to-peer marketplace for students to buy, sell, and recycle
+                                academic materials — real payments, secure auth, PWA offline support.</p>
+                            <div class="proj-flip-back-tags"><span class="tag">Django REST</span><span
+                                    class="tag">React.js</span><span class="tag tag-amber">Stripe</span><span
+                                    class="tag">Redis</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://edu-cycle-five.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/EduCycle" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="proj-flip-card reveal reveal-delay-2" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/ayurwell.png" alt="AyurWell">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">AyurWell</span>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">AyurWell</div>
+                            <p class="d">Dosha assessment engine with AI-generated diet plans that adapt to body type
+                                and season, plus a progress dashboard with Recharts visualisations.</p>
+                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Vite + React</span><span
+                                    class="tag">Django REST</span><span class="tag">Tailwind</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://ayur-well.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/AyurWell" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal reveal-delay-3" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/watchparty.png" alt="WatchParty">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">WatchParty</span>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">WatchParty</div>
+                            <p class="d">Sub-second YouTube co-watching sync via pure WebRTC — zero installs, no Netflix
+                                subscription needed, P2P chat and screen sharing built in.</p>
+                            <div class="proj-flip-back-tags"><span class="tag">WebRTC</span><span
+                                    class="tag">Socket.IO</span><span class="tag">Node.js</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://github.com/KrishMistry18/WatchParty" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                                <span class="tag tag-amber" style="cursor:default">🚀 Demo soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal reveal-delay-4" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/nexus.png" alt="Nexus Financial">
+                            <span class="proj-flip-front-hint">flip ↻</span>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">Nexus
+                                    Financial</span></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">Nexus Financial</div>
+                            <p class="d">Ledger-accurate ATM banking simulation with SQL injection prevention via JDBC
+                                prepared statements and a dual-table audit trail.</p>
+                            <div class="proj-flip-back-tags"><span class="tag">Java 22</span><span
+                                    class="tag tag-amber">MySQL 8</span><span class="tag">JDBC</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://github.com/KrishMistry18/Nexus-Financial" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
