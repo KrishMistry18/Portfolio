@@ -3770,8 +3770,8 @@
 
                 .proj-flip-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-                    gap: 1.3rem;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2rem;
                 }
 
                 .proj-flip-card {
@@ -3897,7 +3897,7 @@
                     background: var(--green-dim);
                 }
 
-                @media (max-width: 500px) {
+                @media (max-width: 900px) {
                     .proj-flip-grid {
                         grid-template-columns: 1fr;
                     }
