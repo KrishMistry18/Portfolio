@@ -3859,6 +3859,34 @@
                     border-radius: 999px;
                 }
 
+                
+                .proj-flip-back-points {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0 0 .8rem 0;
+                    flex: 1;
+                }
+
+                .proj-flip-back-points li {
+                    position: relative;
+                    padding-left: 1.1rem;
+                    margin-bottom: .45rem;
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
+                    line-height: 1.5;
+                }
+
+                .proj-flip-back-points li::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 8px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background: var(--green, #2eeb6b);
+                }
+
                 .proj-flip-back {
                     background: var(--bg-2);
                     transform: rotateY(180deg);
