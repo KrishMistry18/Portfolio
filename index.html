@@ -3913,11 +3913,15 @@
                     flex: 1;
                 }
 
+                
+                .proj-flip-back-tech p {
+                    margin-bottom: 0.4rem;
+                }
                 .proj-flip-back-tags {
                     display: flex;
                     flex-wrap: wrap;
                     gap: 4px;
-                    margin-bottom: .6rem;
+                    margin-bottom: 1rem;
                 }
 
                 .proj-flip-back-links {
@@ -3927,17 +3931,30 @@
                 }
 
                 .proj-flip-back-links a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
                     font-family: 'DM Mono', monospace;
-                    font-size: .65rem;
-                    color: var(--green);
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    padding: 0.4rem 0.8rem;
+                    border-radius: 6px;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
                     text-decoration: none;
-                    border: 1px solid rgba(62, 207, 142, .3);
-                    border-radius: 999px;
-                    padding: 3px 10px;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
                 }
-
+                .proj-flip-back-links a[href*="github.com"] {
+                    background: #2563eb;
+                    color: #fff;
+                }
+                .proj-flip-back-links a:not([href*="github.com"]) {
+                    background: #10b981;
+                    color: #fff;
+                }
                 .proj-flip-back-links a:hover {
-                    background: var(--green-dim);
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
                 }
 
                 @media (max-width: 900px) {
