@@ -3865,13 +3865,15 @@
                 }
 
                 .proj-flip-front-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(to top, rgba(5, 6, 12, .92) 0%, rgba(5, 6, 12, .35) 45%, transparent 75%);
-                    display: flex;
-                    align-items: flex-end;
-                    padding: 1rem 1.1rem;
-                }
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5, 6, 12, .92) 0%, rgba(5, 6, 12, .35) 45%, transparent 75%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 1rem 1.1rem;
+        }
 
                 .proj-flip-front-name {
                     font-family: 'Syne', sans-serif;
@@ -4039,8 +4041,8 @@
                         <div class="proj-flip-face proj-flip-front">
                             <img src="assets/projects/nexus.png" alt="Nexus Financial">
                             <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">Nexus
-                                    Financial</span></div>
+                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">Nexus Financial</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">High-performance fintech dashboard.</p></div>
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">Nexus Financial</div>
