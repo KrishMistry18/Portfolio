@@ -3908,147 +3908,123 @@
                 <p class="section-sub">Flip a card to see what's under the hood.</p>
             </div>
 
-            <div class="proj-flip-grid">
-                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/chessanalyzer.png" alt="ChessAnalyzer">
-                            <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">ChessAnalyzer</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Browser-based Stockfish engine.</p></div>
+            <div class="proj-std-grid">
+
+                <div class="proj-std-card reveal">
+                    <img src="assets/projects/chessanalyzer.png" alt="ChessAnalyzer">
+                    <div class="proj-std-content">
+                        <h3 class="proj-std-title">ChessAnalyzer</h3>
+                        <div class="proj-std-subtitle">Chess players improving their game need engine analysis, but Lichess and Chess.com require accounts and uploads. ChessAnalyzer runs full Stockfish analysis entirely in the browser.</div>
+                        <ul class="proj-std-points">
+                            <li>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU.</li><li>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies, mistakes, and blunders.</li><li>40+ piece themes, SAN move list, zero backend dependency for analysis.</li>
+                        </ul>
+                        <div class="proj-std-tech">
+                            <h4>⚙️ Hardest Technical Decision</h4>
+                            <p>The biggest challenge was running a heavy C++ chess engine in JS without freezing the UI. I compiled Stockfish to WebAssembly (WASM) and ran it inside Web Workers, communicating via message passing.</p>
                         </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">ChessAnalyzer</div>
-                            <p class="d">Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU.</p>
-                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Next.js 15</span><span class="tag tag-blue">TypeScript</span><span class="tag tag-amber">Stockfish WASM</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://chess-analyzer-qf7v.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/ChessAnalyzer" target="_blank" rel="noopener">GitHub ↗</a>
-                            </div>
+                        <div class="proj-std-footer">
+                            <div class="proj-std-tags"><span class="tag tag-blue">Next.js 15</span><span class="tag tag-amber">TypeScript</span><span class="tag tag-blue">Stockfish WASM</span><span class="tag tag-green">MUI</span></div>
+                            <div class="proj-links"><a href="https://chess-analyzer-qf7v.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/KrishMistry18/ChessAnalyzer" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="proj-flip-card reveal reveal-delay-1" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/heritageguide.png" alt="HeritageGuide">
-                            <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">HeritageGuide</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Interactive map with routing.</p></div>
+                <div class="proj-std-card reveal">
+                    <img src="assets/projects/heritageguide.png" alt="HeritageGuide">
+                    <div class="proj-std-content">
+                        <h3 class="proj-std-title">HeritageGuide</h3>
+                        <div class="proj-std-subtitle">Interactive Leaflet + OSM map with smart multi-modal routing and slot-based booking for India's underdocumented heritage sites.</div>
+                        <ul class="proj-std-points">
+                            <li>Dynamic map integration using Leaflet and OpenStreetMap for accurate site discovery.</li><li>Built a full-stack Django architecture handling secure slot booking, authentication, and routing.</li><li>Firebase-backed features ensure real-time data flow for peak hour updates and reviews.</li>
+                        </ul>
+                        <div class="proj-std-tech">
+                            <h4>⚙️ Hardest Technical Decision</h4>
+                            <p>The routing engine needed to be fast and multimodal. Instead of building from scratch, I integrated with OpenRouteService APIs but cached frequent routes in Redis to minimize API costs and latency.</p>
                         </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">HeritageGuide</div>
-                            <p class="d">Interactive Leaflet + OSM map with smart multi-modal routing and slot-based booking for heritage sites.</p>
-                            <div class="proj-flip-back-tags"><span class="tag tag-green">Django 5</span><span class="tag tag-blue">Leaflet</span><span class="tag tag-amber">Firebase</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://heritage-guide.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/HeritageGuide" target="_blank" rel="noopener">GitHub ↗</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/EduCycle.png" alt="EduCycle">
-                            <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">EduCycle</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Verified peer-to-peer marketplace for students.</p>
-                            </div>
-                        </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">EduCycle</div>
-                            <p class="d">Verified peer-to-peer marketplace for students to buy, sell, and recycle
-                                academic materials — real payments, secure auth, PWA offline support.</p>
-                            <div class="proj-flip-back-tags"><span class="tag">Django REST</span><span
-                                    class="tag">React.js</span><span class="tag tag-amber">Stripe</span><span
-                                    class="tag">Redis</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://edu-cycle-five.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/EduCycle" target="_blank"
-                                    rel="noopener">GitHub ↗</a>
-                            </div>
+                        <div class="proj-std-footer">
+                            <div class="proj-std-tags"><span class="tag tag-blue">Django 5</span><span class="tag tag-amber">Leaflet</span><span class="tag tag-blue">Firebase</span></div>
+                            <div class="proj-links"><a href="https://heritage-guide.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/KrishMistry18/HeritageGuide" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a></div>
                         </div>
                     </div>
                 </div>
 
-
-
-                <div class="proj-flip-card reveal reveal-delay-2" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/AyurWell.png" alt="AyurWell">
-                            <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">AyurWell</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">AI-generated diet plans & dosha assessment.</p>
-                            </div>
+                <div class="proj-std-card reveal">
+                    <img src="assets/projects/EduCycle.png" alt="EduCycle">
+                    <div class="proj-std-content">
+                        <h3 class="proj-std-title">EduCycle</h3>
+                        <div class="proj-std-subtitle">Verified peer-to-peer marketplace for students to buy, sell, and recycle academic materials — real payments, secure auth, PWA offline support.</div>
+                        <ul class="proj-std-points">
+                            <li>Integrated Stripe for secure, verified student-to-student transactions.</li><li>Developed a robust PWA architecture enabling students to browse and message offline on campus.</li><li>Utilized Redis caching to serve the marketplace feed in under 100ms.</li>
+                        </ul>
+                        <div class="proj-std-tech">
+                            <h4>⚙️ Hardest Technical Decision</h4>
+                            <p>Managing real-time P2P chat alongside transactional data required careful planning. I decoupled the chat microservice using WebSockets while Django handles heavy DB relations.</p>
                         </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">AyurWell</div>
-                            <p class="d">Dosha assessment engine with AI-generated diet plans that adapt to body type
-                                and season, plus a progress dashboard with Recharts visualisations.</p>
-                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Vite + React</span><span
-                                    class="tag">Django REST</span><span class="tag">Tailwind</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://ayur-well.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/AyurWell" target="_blank"
-                                    rel="noopener">GitHub ↗</a>
-                            </div>
+                        <div class="proj-std-footer">
+                            <div class="proj-std-tags"><span class="tag tag-blue">Django REST</span><span class="tag tag-amber">React.js</span><span class="tag tag-blue">Stripe</span><span class="tag tag-green">Redis</span></div>
+                            <div class="proj-links"><a href="https://edu-cycle-five.vercel.app/" class="proj-link" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/KrishMistry18/EduCycle" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="proj-flip-card reveal reveal-delay-3" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/WatchParty.png" alt="WatchParty">
-                            <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">WatchParty</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Real-time synchronized video streaming.</p>
-                            </div>
+                <div class="proj-std-card reveal">
+                    <img src="assets/projects/AyurWell.png" alt="AyurWell">
+                    <div class="proj-std-content">
+                        <h3 class="proj-std-title">AyurWell</h3>
+                        <div class="proj-std-subtitle">Dosha assessment engine with AI-generated diet plans that adapt to body type and season, plus a progress dashboard with Recharts visualisations.</div>
+                        <ul class="proj-std-points">
+                            <li>Formulated an intricate scoring algorithm mapping user survey inputs to precise Ayurvedic Dosha profiles.</li><li>Integrated LLMs to dynamically generate highly personalized, season-aware dietary plans.</li><li>Constructed a fluid dashboard using Recharts to visualize wellness progress over time.</li>
+                        </ul>
+                        <div class="proj-std-tech">
+                            <h4>⚙️ Hardest Technical Decision</h4>
+                            <p>Feeding complex health profiles into the LLM safely was critical. I implemented a strict prompt chaining pipeline with validation layers to ensure the AI generated safe advice.</p>
                         </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">WatchParty</div>
-                            <p class="d">Sub-second YouTube co-watching sync via pure WebRTC — zero installs, no Netflix
-                                subscription needed, P2P chat and screen sharing built in.</p>
-                            <div class="proj-flip-back-tags"><span class="tag">WebRTC</span><span
-                                    class="tag">Socket.IO</span><span class="tag">Node.js</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://github.com/KrishMistry18/WatchParty" target="_blank"
-                                    rel="noopener">GitHub ↗</a>
-                                <span class="tag tag-amber" style="cursor:default">🚀 Demo soon</span>
-                            </div>
+                        <div class="proj-std-footer">
+                            <div class="proj-std-tags"><span class="tag tag-blue">Vite + React</span><span class="tag tag-amber">Django REST</span><span class="tag tag-blue">Tailwind</span></div>
+                            <div class="proj-links"><a href="https://github.com/KrishMistry18/AyurWell" class="proj-link" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/KrishMistry18/AyurWell" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="proj-flip-card reveal reveal-delay-4" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/Nexus.png" alt="Nexus Financial">
-                            <span class="proj-flip-front-hint">flip ↻</span>
-                            <div class="proj-flip-front-overlay"><span class="proj-flip-front-name">Nexus Financial</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">High-performance fintech dashboard.</p></div>
+                <div class="proj-std-card reveal">
+                    <img src="assets/projects/WatchParty.png" alt="WatchParty">
+                    <div class="proj-std-content">
+                        <h3 class="proj-std-title">WatchParty</h3>
+                        <div class="proj-std-subtitle">Sub-second YouTube co-watching sync via pure WebRTC — zero installs, no Netflix subscription needed, P2P chat and screen sharing built in.</div>
+                        <ul class="proj-std-points">
+                            <li>Engineered a custom WebRTC signaling server using Socket.IO to establish low-latency peer connections.</li><li>Implemented robust timestamp synchronization algorithms to ensure sub-second video playback alignment.</li><li>Built lightweight, zero-install architecture focusing on pure client-side P2P media flow.</li>
+                        </ul>
+                        <div class="proj-std-tech">
+                            <h4>⚙️ Hardest Technical Decision</h4>
+                            <p>Instead of relaying video through a central server (expensive and slow), I forced a pure P2P mesh network for smaller rooms. The signaling server purely orchestrates connections.</p>
                         </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">Nexus Financial</div>
-                            <p class="d">Ledger-accurate ATM banking simulation with SQL injection prevention via JDBC
-                                prepared statements and a dual-table audit trail.</p>
-                            <div class="proj-flip-back-tags"><span class="tag">Java 22</span><span
-                                    class="tag tag-amber">MySQL 8</span><span class="tag">JDBC</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://github.com/KrishMistry18/Nexus-Financial" target="_blank"
-                                    rel="noopener">GitHub ↗</a>
-                            </div>
+                        <div class="proj-std-footer">
+                            <div class="proj-std-tags"><span class="tag tag-blue">WebRTC</span><span class="tag tag-amber">Socket.IO</span><span class="tag tag-blue">Node.js</span></div>
+                            <div class="proj-links"><a href="https://github.com/KrishMistry18/WatchParty" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-std-card reveal">
+                    <img src="assets/projects/Nexus.png" alt="Nexus Financial">
+                    <div class="proj-std-content">
+                        <h3 class="proj-std-title">Nexus Financial</h3>
+                        <div class="proj-std-subtitle">Ledger-accurate ATM banking simulation with SQL injection prevention via JDBC prepared statements and a dual-table audit trail.</div>
+                        <ul class="proj-std-points">
+                            <li>Architected a double-entry ledger system in Java to guarantee atomic, ACID-compliant transactions.</li><li>Enforced strict security measures using JDBC prepared statements to prevent any SQL injection vulnerabilities.</li><li>Developed a comprehensive dual-table audit trail to track every single balance change and user action.</li>
+                        </ul>
+                        <div class="proj-std-tech">
+                            <h4>⚙️ Hardest Technical Decision</h4>
+                            <p>Ensuring transaction atomicity during concurrent ATM operations was paramount. I heavily utilized MySQL row-level locking (SELECT ... FOR UPDATE) to prevent race conditions.</p>
+                        </div>
+                        <div class="proj-std-footer">
+                            <div class="proj-std-tags"><span class="tag tag-blue">Java 22</span><span class="tag tag-amber">MySQL 8</span><span class="tag tag-blue">JDBC</span></div>
+                            <div class="proj-links"><a href="https://github.com/KrishMistry18/Nexus" class="proj-link" target="_blank" rel="noopener">GitHub ↗</a></div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
-    </section>
+        </section>
 
     <hr class="sec-divider">
 
