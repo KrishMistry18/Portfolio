@@ -3776,7 +3776,7 @@
 
                 .proj-flip-card {
                     perspective: 1600px;
-                    height: 300px;
+                    height: 480px;
                 }
 
                 .proj-flip-inner {
@@ -3851,6 +3851,7 @@
                     display: flex;
                     flex-direction: column;
                     overflow-y: auto;
+                overflow-y: auto;
                 }
 
                 .proj-flip-back-title {
@@ -3919,7 +3920,14 @@
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">ChessAnalyzer</div>
-                            <p class="d">Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU.</p>
+                            <ul class="proj-flip-back-points">
+                                <li>Play-vs-Stockfish with adjustable strength, multi-engine support with WASM threads gracefully degrading based on CPU.</li><li>Move classification, multi-PV engine lines, and game summaries highlighting inaccuracies, mistakes, and blunders.</li><li>40+ piece themes, SAN move list, zero backend dependency for analysis.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>The biggest challenge was running a heavy C++ chess engine in JS without freezing the UI. I compiled Stockfish to WebAssembly (WASM) and ran it inside Web Workers, communicating via message passing.</p>
+                            </div>
+    
                             <div class="proj-flip-back-tags"><span class="tag tag-blue">Next.js 15</span><span class="tag tag-blue">TypeScript</span><span class="tag tag-amber">Stockfish WASM</span></div>
                             <div class="proj-flip-back-links" onclick="event.stopPropagation()">
                                 <a href="https://chess-analyzer-qf7v.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
@@ -3939,7 +3947,14 @@
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">HeritageGuide</div>
-                            <p class="d">Interactive Leaflet + OSM map with smart multi-modal routing and slot-based booking for heritage sites.</p>
+                            <ul class="proj-flip-back-points">
+                                <li>Dynamic map integration using Leaflet and OpenStreetMap for accurate site discovery.</li><li>Built a full-stack Django architecture handling secure slot booking, authentication, and routing.</li><li>Firebase-backed features ensure real-time data flow for peak hour updates and reviews.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>The routing engine needed to be fast and multimodal. Instead of building from scratch, I integrated with OpenRouteService APIs but cached frequent routes in Redis to minimize API costs and latency.</p>
+                            </div>
+    
                             <div class="proj-flip-back-tags"><span class="tag tag-green">Django 5</span><span class="tag tag-blue">Leaflet</span><span class="tag tag-amber">Firebase</span></div>
                             <div class="proj-flip-back-links" onclick="event.stopPropagation()">
                                 <a href="https://heritage-guide.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
@@ -3960,8 +3975,14 @@
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">EduCycle</div>
-                            <p class="d">Verified peer-to-peer marketplace for students to buy, sell, and recycle
-                                academic materials — real payments, secure auth, PWA offline support.</p>
+                            <ul class="proj-flip-back-points">
+                                <li>Integrated Stripe for secure, verified student-to-student transactions.</li><li>Developed a robust PWA architecture enabling students to browse and message offline on campus.</li><li>Utilized Redis caching to serve the marketplace feed in under 100ms.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Managing real-time P2P chat alongside transactional data required careful planning. I decoupled the chat microservice using WebSockets while Django handles heavy DB relations.</p>
+                            </div>
+    
                             <div class="proj-flip-back-tags"><span class="tag">Django REST</span><span
                                     class="tag">React.js</span><span class="tag tag-amber">Stripe</span><span
                                     class="tag">Redis</span></div>
@@ -3987,8 +4008,14 @@
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">AyurWell</div>
-                            <p class="d">Dosha assessment engine with AI-generated diet plans that adapt to body type
-                                and season, plus a progress dashboard with Recharts visualisations.</p>
+                            <ul class="proj-flip-back-points">
+                                <li>Formulated an intricate scoring algorithm mapping user survey inputs to precise Ayurvedic Dosha profiles.</li><li>Integrated LLMs to dynamically generate highly personalized, season-aware dietary plans.</li><li>Constructed a fluid dashboard using Recharts to visualize wellness progress over time.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Feeding complex health profiles into the LLM safely was critical. I implemented a strict prompt chaining pipeline with validation layers to ensure the AI generated safe advice.</p>
+                            </div>
+    
                             <div class="proj-flip-back-tags"><span class="tag tag-blue">Vite + React</span><span
                                     class="tag">Django REST</span><span class="tag">Tailwind</span></div>
                             <div class="proj-flip-back-links" onclick="event.stopPropagation()">
@@ -4011,8 +4038,14 @@
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">WatchParty</div>
-                            <p class="d">Sub-second YouTube co-watching sync via pure WebRTC — zero installs, no Netflix
-                                subscription needed, P2P chat and screen sharing built in.</p>
+                            <ul class="proj-flip-back-points">
+                                <li>Engineered a custom WebRTC signaling server using Socket.IO to establish low-latency peer connections.</li><li>Implemented robust timestamp synchronization algorithms to ensure sub-second video playback alignment.</li><li>Built lightweight, zero-install architecture focusing on pure client-side P2P media flow.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Instead of relaying video through a central server (expensive and slow), I forced a pure P2P mesh network for smaller rooms. The signaling server purely orchestrates connections.</p>
+                            </div>
+    
                             <div class="proj-flip-back-tags"><span class="tag">WebRTC</span><span
                                     class="tag">Socket.IO</span><span class="tag">Node.js</span></div>
                             <div class="proj-flip-back-links" onclick="event.stopPropagation()">
@@ -4034,8 +4067,14 @@
                         </div>
                         <div class="proj-flip-face proj-flip-back">
                             <div class="proj-flip-back-title">Nexus Financial</div>
-                            <p class="d">Ledger-accurate ATM banking simulation with SQL injection prevention via JDBC
-                                prepared statements and a dual-table audit trail.</p>
+                            <ul class="proj-flip-back-points">
+                                <li>Architected a double-entry ledger system in Java to guarantee atomic, ACID-compliant transactions.</li><li>Enforced strict security measures using JDBC prepared statements to prevent any SQL injection vulnerabilities.</li><li>Developed a comprehensive dual-table audit trail to track every single balance change and user action.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Ensuring transaction atomicity during concurrent ATM operations was paramount. I heavily utilized MySQL row-level locking (SELECT ... FOR UPDATE) to prevent race conditions.</p>
+                            </div>
+    
                             <div class="proj-flip-back-tags"><span class="tag">Java 22</span><span
                                     class="tag tag-amber">MySQL 8</span><span class="tag">JDBC</span></div>
                             <div class="proj-flip-back-links" onclick="event.stopPropagation()">
