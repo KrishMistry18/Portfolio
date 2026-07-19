@@ -4368,7 +4368,7 @@
         <div class="container">
             <div class="section-head reveal">
                 <span class="section-label">/ CODE ACTIVITY</span>
-                <h2 class="section-title">GitHub Activity Dashboard.</h2>
+                <h2 class="section-title">GitHub & LeetCode Activity.</h2>
             </div>
             <div class="glass-panel reveal" style="padding: 2rem;">
                 <style>
@@ -4399,6 +4399,10 @@
                         grid-column: span 5;
                     }
 
+                    .gh-bento-item.span-6 {
+                        grid-column: span 6;
+                    }
+
                     .gh-bento-item.span-7 {
                         grid-column: span 7;
                     }
@@ -4410,6 +4414,7 @@
                     @media (max-width: 992px) {
 
                         .gh-bento-item.span-5,
+                        .gh-bento-item.span-6,
                         .gh-bento-item.span-7,
                         .gh-bento-item.span-12 {
                             grid-column: span 12;
@@ -4417,24 +4422,41 @@
                     }
                 </style>
                 <div class="gh-bento-container">
-                    <div class="gh-bento-item span-5" style="padding: 1rem;">
+                    <!-- ROW 1 -->
+                    <div class="gh-bento-item span-6" style="padding: 1rem;">
                         <img src="https://streak-stats.demolab.com/?user=KrishMistry18&theme=tokyonight&hide_border=true&background=11142200"
                             alt="GitHub Streak" style="width: 100%; max-width: 900px; height: auto; opacity: 0.95;" />
                     </div>
-                    <div class="gh-bento-item span-7" style="padding: 1rem;">
+                    <div class="gh-bento-item span-6" style="padding: 1rem;">
+                        <img src="https://leetcard.jacoblin.cool/KrishMistry18?font=Syne&colors=111422,1f2937,f0f0f5,8b8fa8,ffa116,39d353,f0ad4e,d9534f" alt="KrishMistry18's LeetCode Stats"
+                            style="width: 100%; max-width: 500px; height: auto; opacity: 0.95; border-radius: 8px;" />
+                    </div>
+
+                    <!-- ROW 2 -->
+                    <div class="gh-bento-item span-6"
+                        style="padding: 1rem; flex-direction: column; overflow-x: auto; align-items: center;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text-primary);">
+                            GitHub Heatmap</h3>
+                        <div style="width: 100%; display: flex; justify-content: center;">
+                            <img src="https://ghchart.rshah.org/KrishMistry18" alt="KrishMistry18's Github heatmap"
+                                style="width: 100%; max-width: 500px; opacity: 0.95; filter: invert(1) hue-rotate(180deg) brightness(1.2);" />
+                        </div>
+                    </div>
+                    <div class="gh-bento-item span-6"
+                        style="padding: 1rem; flex-direction: column; align-items: center;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text-primary);">
+                            LeetCode Heatmap</h3>
+                        <div style="width: 100%; display: flex; justify-content: center; height: 110px; overflow: hidden; border-radius: 8px;">
+                            <img src="https://leetcard.jacoblin.cool/KrishMistry18?font=Syne&ext=heatmap&colors=111422,1f2937,f0f0f5,8b8fa8,ffa116,39d353,f0ad4e,d9534f" alt="LeetCode Heatmap"
+                                style="width: 500px; height: auto; margin-top: -245px;" />
+                        </div>
+                    </div>
+
+                    <!-- ROW 3 -->
+                    <div class="gh-bento-item span-12" style="padding: 1rem;">
                         <img src="https://github-readme-activity-graph.vercel.app/graph?username=KrishMistry18&theme=tokyonight&hide_border=true&bg_color=11142200"
                             alt="Activity Graph"
                             style="width: 100%; height: 100%; object-fit: contain; max-height: 270px; opacity: 0.95;" />
-                    </div>
-                    <div class="gh-bento-item span-12"
-                        style="padding: 1rem; flex-direction: column; overflow-x: auto; align-items: flex-start;">
-                        <p
-                            style="color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;">
-                            // Contribution Heatmap</p>
-                        <div style="width: 100%; display: flex; justify-content: center;">
-                            <img src="https://ghchart.rshah.org/KrishMistry18" alt="KrishMistry18's Github heatmap"
-                                style="width: 100%; max-width: 700px; opacity: 0.95; filter: invert(1) hue-rotate(180deg) brightness(1.2);" />
-                        </div>
                     </div>
                 </div>
             </div>
