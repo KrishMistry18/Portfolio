@@ -4147,6 +4147,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/CrowdPulse.png" alt="CrowdPulse">
+                            <div class="proj-flip-front-overlay">
+<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">CrowdPulse</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Real-time Crowd Analysis Dashboard.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">CrowdPulse</div>
+                            <ul class="proj-flip-back-points">
+                                <li>Real-time object detection and density mapping using YOLOv8.</li><li>Built a secure Flask-based web dashboard with dynamic hotspot zones.</li><li>Deployed on Hugging Face Spaces with PyTorch and GPU acceleration.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>To achieve low latency in crowd monitoring, I moved the AI inference to an NVIDIA GPU using PyTorch (CUDA 12.1) and optimized the object tracking algorithms.</p>
+                            </div>
+    
+                            <div class="proj-flip-back-tags"><span class="tag tag-green">Python</span><span class="tag tag-blue">Flask</span><span class="tag tag-amber">YOLOv8</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://krishmistry18-crowdpulse.hf.space/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/CrowdPulse" target="_blank" rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
