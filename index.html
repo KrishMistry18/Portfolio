@@ -3973,6 +3973,33 @@
             </div>
 
             <div class="proj-flip-grid">
+                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')" style="grid-column: 1 / -1; height: 500px;">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/TransitOps.png" alt="TransitOps" style="object-position: top left;">
+                            <div class="proj-flip-front-overlay">
+<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">TransitOps</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Enterprise fleet & logistics command center.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">TransitOps</div>
+                            <ul class="proj-flip-back-points">
+                                <li>Comprehensive logistics dashboard bridging hardware tracking, human resource management, and financial analytics.</li><li>Real-time trip lifecycle planning, fuel intelligence with anomaly detection, and driver operations tracking.</li><li>Role-Based Access Control with gated write operations, audit logging, and data export functionalities.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Building a fully synchronized, real-time interface across multiple modules (fleet, dispatch, fuel) required careful state management and real-time database architecture to prevent redundant fetches and ensure absolute data consistency.</p>
+                            </div>
+    
+                            <div class="proj-flip-back-tags"><span class="tag tag-blue">React 19</span><span class="tag tag-blue">TypeScript</span><span class="tag tag-amber">Firebase</span><span class="tag tag-green">Tailwind</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://transit-ops-mu-liard.vercel.app" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/TransitOps" target="_blank" rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
                     <div class="proj-flip-inner">
                         <div class="proj-flip-face proj-flip-front">
