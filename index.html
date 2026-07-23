@@ -4901,6 +4901,8 @@
         let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
         let cursorX = mouseX, cursorY = mouseY;
         let currentScale = 1, targetScale = 1;
+        let currentAngle = -45, targetAngle = -45;
+        let lastCursorX = cursorX, lastCursorY = cursorY;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX; mouseY = e.clientY;
@@ -4919,11 +4921,29 @@
             }
         });
 
+        function lerpAngle(start, end, factor) { 
+            let delta = end - start; 
+            delta = (delta + 540) % 360 - 180; 
+            return start + delta * factor; 
+        }
+
         function animateCursor() {
             cursorX += (mouseX - cursorX) * 0.45;
             cursorY += (mouseY - cursorY) * 0.45;
+            
+            const dx = cursorX - lastCursorX;
+            const dy = cursorY - lastCursorY;
+            if (dx * dx + dy * dy > 0.5) {
+                targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+            }
+            currentAngle = lerpAngle(currentAngle, targetAngle, 0.2);
+            
             currentScale += (targetScale - currentScale) * 0.2;
-            customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) scale(${currentScale})`;
+            customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) rotate(${currentAngle}deg) scale(${currentScale})`;
+            
+            lastCursorX = cursorX;
+            lastCursorY = cursorY;
+            
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
