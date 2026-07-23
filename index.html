@@ -5405,12 +5405,73 @@
 
                 let selectedSquare = null, legalMoves = [];
 
+                function evaluateBoard(game) {
+                    let score = 0;
+                    const board = game.board();
+                    const pieceValues = { p: 10, n: 30, b: 30, r: 50, q: 90, k: 900 };
+                    for (let r = 0; r < 8; r++) {
+                        for (let c = 0; c < 8; c++) {
+                            const piece = board[r][c];
+                            if (piece) {
+                                const val = pieceValues[piece.type];
+                                const centerBonus = (piece.type === 'p' || piece.type === 'n') ? (3.5 - Math.abs(3.5 - r)) * (3.5 - Math.abs(3.5 - c)) * 0.1 : 0;
+                                score += piece.color === 'w' ? (val + centerBonus) : -(val + centerBonus);
+                            }
+                        }
+                    }
+                    return score;
+                }
+
+                function minimax(game, depth, alpha, beta, isMaximizingPlayer) {
+                    if (depth === 0 || (game.game_over && game.game_over())) return evaluateBoard(game);
+                    const moves = game.moves();
+                    if (isMaximizingPlayer) {
+                        let maxEval = -Infinity;
+                        for (let i = 0; i < moves.length; i++) {
+                            game.move(moves[i]);
+                            const ev = minimax(game, depth - 1, alpha, beta, false);
+                            game.undo();
+                            maxEval = Math.max(maxEval, ev);
+                            alpha = Math.max(alpha, ev);
+                            if (beta <= alpha) break;
+                        }
+                        return maxEval;
+                    } else {
+                        let minEval = Infinity;
+                        for (let i = 0; i < moves.length; i++) {
+                            game.move(moves[i]);
+                            const ev = minimax(game, depth - 1, alpha, beta, true);
+                            game.undo();
+                            minEval = Math.min(minEval, ev);
+                            beta = Math.min(beta, ev);
+                            if (beta <= alpha) break;
+                        }
+                        return minEval;
+                    }
+                }
+
                 function computerMove() {
                     if (game.game_over && game.game_over()) return;
-                    const moves = game.moves({ verbose: true });
+                    const moves = game.moves();
                     if (!moves.length) return;
-                    const mv = moves[Math.floor(Math.random() * moves.length)];
-                    game.move({ from: mv.from, to: mv.to, promotion: 'q' });
+                    
+                    let bestMoves = [];
+                    let bestValue = Infinity; 
+                    
+                    for (let i = 0; i < moves.length; i++) {
+                        game.move(moves[i]);
+                        const boardValue = minimax(game, 2, -Infinity, Infinity, true);
+                        game.undo();
+                        if (boardValue < bestValue) {
+                            bestValue = boardValue;
+                            bestMoves = [moves[i]];
+                        } else if (boardValue === bestValue) {
+                            bestMoves.push(moves[i]);
+                        }
+                    }
+                    
+                    const bestMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
+                    game.move(bestMove);
                     rebuildPieces(game);
                     updateStatus();
                 }
