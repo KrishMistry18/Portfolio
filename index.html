@@ -4898,33 +4898,35 @@
     </style>
     <script>
         const customCursor = document.getElementById('custom-cursor');
-        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2, cursorX = mouseX, cursorY = mouseY;
-        let currentAngle = -45, targetAngle = -45, currentScale = 1, targetScale = 1;
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let cursorX = mouseX, cursorY = mouseY;
+        let currentScale = 1, targetScale = 1;
+
         document.addEventListener('mousemove', (e) => {
-            const dx = e.clientX - mouseX, dy = e.clientY - mouseY;
             mouseX = e.clientX; mouseY = e.clientY;
-            if (Math.abs(dx) > 1.5 || Math.abs(dy) > 1.5) targetAngle = Math.atan2(dy, dx) * 180 / Math.PI;
         });
-        function lerpAngle(start, end, factor) { let delta = end - start; delta = (delta + 540) % 360 - 180; return start + delta * factor; }
+
+        document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .btn, .cube-btn, .journey-v2-card, .cert-img-card, .interest-item, .edu-item, .contact-chip, .do-item, .flagship-img-col, .flagship-nav, .exp-flip-card, .proj-flip-card, .story-hobby-card, canvas')) {
+                targetScale = 1.35;
+                customCursor.style.filter = 'drop-shadow(0 0 10px rgba(46,176,255,0.9))';
+            }
+        });
+        document.body.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a, button, .btn, .cube-btn, .journey-v2-card, .cert-img-card, .interest-item, .edu-item, .contact-chip, .do-item, .flagship-img-col, .flagship-nav, .exp-flip-card, .proj-flip-card, .story-hobby-card, canvas')) {
+                targetScale = 1;
+                customCursor.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))';
+            }
+        });
+
         function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.35; cursorY += (mouseY - cursorY) * 0.35;
-            currentAngle = lerpAngle(currentAngle, targetAngle, 0.15);
+            cursorX += (mouseX - cursorX) * 0.45;
+            cursorY += (mouseY - cursorY) * 0.45;
             currentScale += (targetScale - currentScale) * 0.2;
-            customCursor.style.transform = `translate(${cursorX}px, ${cursorY}px) rotate(${currentAngle}deg) scale(${currentScale})`;
+            customCursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) scale(${currentScale})`;
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
-        function refreshCursorTargets() {
-            const interactiveElements = document.querySelectorAll('a, button, .btn, .cube-btn, .journey-v2-card, .cert-img-card, .interest-item, .edu-item, .contact-chip, .do-item, .flagship-img-col, .flagship-nav, .exp-flip-card, .proj-flip-card, .story-hobby-card, canvas');
-            interactiveElements.forEach(el => {
-                if (el.__cursorBound) return;
-                el.__cursorBound = true;
-                el.addEventListener('mouseenter', () => { targetScale = 1.35; customCursor.style.filter = 'drop-shadow(0 0 10px rgba(46,176,255,0.9))'; });
-                el.addEventListener('mouseleave', () => { targetScale = 1; customCursor.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))'; });
-            });
-        }
-        document.addEventListener('DOMContentLoaded', refreshCursorTargets);
-        setInterval(refreshCursorTargets, 2000);
     </script>
 
     <!-- Galaxy Starfield Background — confined to #hero only -->
@@ -5185,16 +5187,38 @@
                         if (wasDrag && swipeStartCubelet) {
                             const dx = e.clientX - startX;
                             const dy = e.clientY - startY;
+                            const px = swipeStartCubelet.position.x;
+                            const py = swipeStartCubelet.position.y;
+                            const pz = swipeStartCubelet.position.z;
+
+                            const absX = Math.abs(px), absY = Math.abs(py), absZ = Math.abs(pz);
+                            let faceX = false, faceY = false, faceZ = false;
+                            if (absZ > 0.9) faceZ = true; 
+                            else if (absX > 0.9) faceX = true; 
+                            else if (absY > 0.9) faceY = true; 
+                            
                             if (Math.abs(dx) > Math.abs(dy)) {
                                 const rev = dx < 0;
-                                if (swipeStartCubelet.position.y > 0.5) doMove('U', rev);
-                                else if (swipeStartCubelet.position.y < -0.5) doMove('D', !rev);
-                                else doMove('E', !rev);
+                                if (faceZ || faceX) {
+                                    if (py > 0.5) doMove('U', rev);
+                                    else if (py < -0.5) doMove('D', !rev);
+                                    else doMove('E', !rev);
+                                } else if (faceY) {
+                                    if (pz > 0.5) doMove('F', !rev);
+                                    else if (pz < -0.5) doMove('B', rev);
+                                    else doMove('S', !rev);
+                                }
                             } else {
                                 const rev = dy > 0;
-                                if (swipeStartCubelet.position.x > 0.5) doMove('R', rev);
-                                else if (swipeStartCubelet.position.x < -0.5) doMove('L', !rev);
-                                else doMove('M', !rev);
+                                if (faceZ || faceY) {
+                                    if (px > 0.5) doMove('R', rev);
+                                    else if (px < -0.5) doMove('L', !rev);
+                                    else doMove('M', !rev);
+                                } else if (faceX) {
+                                    if (pz > 0.5) doMove('F', !rev);
+                                    else if (pz < -0.5) doMove('B', rev);
+                                    else doMove('S', !rev);
+                                }
                             }
                         }
                         swipeStartCubelet = null;
@@ -5308,29 +5332,34 @@
                     else if (type === 'r') { 
                         top = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.4, 32), mat); 
                         top.position.y = 0.5; 
+                        const cren = new THREE.Mesh(new THREE.TorusGeometry(0.28, 0.05, 8, 24), mat);
+                        cren.position.y = 0.7; cren.rotation.x = Math.PI/2;
+                        cren.castShadow = true; g.add(cren);
                     }
                     else if (type === 'n') { 
-                        const nGeo = new THREE.ConeGeometry(0.25, 0.6, 32);
-                        nGeo.translate(0, 0.3, 0);
-                        nGeo.rotateX(0.2);
+                        const nGeo = new THREE.BoxGeometry(0.3, 0.5, 0.4);
                         top = new THREE.Mesh(nGeo, mat); 
-                        top.position.y = 0.3; 
+                        top.position.set(0, 0.5, 0.1); 
+                        const snout = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.4), mat);
+                        snout.position.set(0, 0.6, -0.15); snout.castShadow = true; g.add(snout);
+                        const ears = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.2, 0.1), mat);
+                        ears.position.set(0, 0.8, 0.2); ears.castShadow = true; g.add(ears);
                     }
                     else if (type === 'b') { 
-                        top = new THREE.Mesh(new THREE.ConeGeometry(0.25, 0.7, 32), mat); 
-                        top.position.y = 0.65; 
-                        const bead = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), mat);
-                        bead.position.y = 1.05;
-                        bead.castShadow = true; g.add(bead);
+                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.25, 0.6, 32), mat); 
+                        top.position.y = 0.6; 
+                        const bead = new THREE.Mesh(new THREE.SphereGeometry(0.12, 16, 16), mat);
+                        bead.position.y = 1.0; bead.castShadow = true;
+                        g.add(bead);
                     }
                     else if (type === 'q') {
-                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.2, 0.6, 32), mat); 
-                        top.position.y = 0.6;
-                        const crown = new THREE.Mesh(new THREE.SphereGeometry(0.18, 32, 32), mat); 
-                        crown.position.y = 1.0; 
-                        crown.castShadow = true; g.add(crown);
+                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.3, 0.7, 32), mat); 
+                        top.position.y = 0.65;
+                        const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.1, 0.15, 8), mat); 
+                        crown.position.y = 1.05; crown.castShadow = true;
+                        g.add(crown);
                     } else if (type === 'k') {
-                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.2, 0.7, 32), mat); 
+                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.3, 0.7, 32), mat); 
                         top.position.y = 0.65;
                         const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.3, 0.08), mat); 
                         crossV.position.y = 1.15; crossV.castShadow = true; g.add(crossV);
@@ -5369,6 +5398,7 @@
                         sq.material.emissive.setHex(0x000000);
                         sq.material.color.setHex(sq.userData.baseColor); 
                     });
+                    highlightLastMove();
                 }
                 function highlightSelected(square) {
                     if (squareMeshes[square]) {
@@ -5403,7 +5433,20 @@
                 }
                 updateStatus();
 
-                let selectedSquare = null, legalMoves = [];
+                let selectedSquare = null, legalMoves = [], lastMove = null;
+
+                function highlightLastMove() {
+                    if (lastMove) {
+                        if (squareMeshes[lastMove.from]) {
+                            squareMeshes[lastMove.from].material.emissive.setHex(0xaaaa33);
+                            squareMeshes[lastMove.from].material.emissiveIntensity = 0.25;
+                        }
+                        if (squareMeshes[lastMove.to]) {
+                            squareMeshes[lastMove.to].material.emissive.setHex(0xaaaa33);
+                            squareMeshes[lastMove.to].material.emissiveIntensity = 0.25;
+                        }
+                    }
+                }
 
                 function evaluateBoard(game) {
                     let score = 0;
@@ -5472,6 +5515,12 @@
                     
                     const bestMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
                     game.move(bestMove);
+                    const history = game.history({ verbose: true });
+                    if (history.length > 0) {
+                        const last = history[history.length - 1];
+                        lastMove = { from: last.from, to: last.to };
+                    }
+                    clearHighlights();
                     rebuildPieces(game);
                     updateStatus();
                 }
@@ -5483,6 +5532,7 @@
                         const match = legalMoves.find(m => m.to === square);
                         if (match) {
                             game.move({ from: selectedSquare, to: square, promotion: 'q' });
+                            lastMove = { from: selectedSquare, to: square };
                             selectedSquare = null; legalMoves = [];
                             clearHighlights(); rebuildPieces(game); updateStatus();
                             if (!(game.game_over && game.game_over()) && game.turn() === 'b') {
