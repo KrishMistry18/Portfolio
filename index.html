@@ -4996,12 +4996,22 @@
             const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             function addLights(scene) {
-                const amb = new THREE.AmbientLight(0xffffff, 0.65);
-                const key = new THREE.DirectionalLight(0xffffff, 0.9);
-                key.position.set(4, 6, 5);
-                const fill = new THREE.DirectionalLight(0x9fc2ff, 0.35);
-                fill.position.set(-5, 2, -4);
-                scene.add(amb, key, fill);
+                const amb = new THREE.AmbientLight(0xffffff, 0.8);
+                
+                const key = new THREE.DirectionalLight(0xffffff, 1.4);
+                key.position.set(5, 8, 5);
+                key.castShadow = true;
+                key.shadow.mapSize.width = 2048;
+                key.shadow.mapSize.height = 2048;
+                key.shadow.bias = -0.0005;
+                
+                const fill = new THREE.DirectionalLight(0x9fc2ff, 1.0);
+                fill.position.set(-5, 3, -4);
+                
+                const back = new THREE.PointLight(0xeebbff, 1.5, 20);
+                back.position.set(0, -2, -5);
+                
+                scene.add(amb, key, fill, back);
             }
 
             function setupOrbit(dom, onDrag, thresholdPx) {
@@ -5028,9 +5038,16 @@
 
             function makeRenderer(container) {
                 const width = container.clientWidth, height = container.clientHeight;
-                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
                 renderer.setSize(width, height);
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                
+                renderer.outputEncoding = THREE.sRGBEncoding;
+                renderer.toneMapping = THREE.ACESFilmicToneMapping;
+                renderer.toneMappingExposure = 1.1;
+                renderer.shadowMap.enabled = true;
+                renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
                 container.appendChild(renderer.domElement);
                 window.addEventListener('resize', () => {
                     const w = container.clientWidth, h = container.clientHeight;
@@ -5054,28 +5071,37 @@
                 wrapper.add(cubeGroup);
                 scene.add(wrapper);
 
-                const GAP = 1.03, SIZE = 0.96;
-                const colors = { right: 0xd7263d, left: 0xff7f11, top: 0xfafafa, bottom: 0xffd23f, front: 0x2fb872, back: 0x3f88ea };
-                const inner = 0x0c0c0c;
+                const GAP = 1.02, SIZE = 0.96;
+                const colors = { right: 0x610000, left: 0x823100, top: 0x6e737a, bottom: 0x735e00, front: 0x0a4a22, back: 0x002755 };
+                const inner = 0x111111;
                 let cubelets = [];
 
                 function buildCube() {
                     cubelets.forEach(c => { cubeGroup.remove(c); });
                     cubelets = [];
+                    
+                    const getPremiumMat = (colorCode) => new THREE.MeshPhysicalMaterial({ 
+                        color: colorCode, 
+                        roughness: 0.15, 
+                        metalness: 0.1, 
+                        clearcoat: 1.0, 
+                        clearcoatRoughness: 0.1 
+                    });
+
                     for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
                         const mats = [
-                            new THREE.MeshStandardMaterial({ color: x === 1 ? colors.right : inner, roughness: .15, metalness: .3 }),
-                            new THREE.MeshStandardMaterial({ color: x === -1 ? colors.left : inner, roughness: .15, metalness: .3 }),
-                            new THREE.MeshStandardMaterial({ color: y === 1 ? colors.top : inner, roughness: .15, metalness: .3 }),
-                            new THREE.MeshStandardMaterial({ color: y === -1 ? colors.bottom : inner, roughness: .15, metalness: .3 }),
-                            new THREE.MeshStandardMaterial({ color: z === 1 ? colors.front : inner, roughness: .15, metalness: .3 }),
-                            new THREE.MeshStandardMaterial({ color: z === -1 ? colors.back : inner, roughness: .15, metalness: .3 }),
+                            getPremiumMat(x === 1 ? colors.right : inner),
+                            getPremiumMat(x === -1 ? colors.left : inner),
+                            getPremiumMat(y === 1 ? colors.top : inner),
+                            getPremiumMat(y === -1 ? colors.bottom : inner),
+                            getPremiumMat(z === 1 ? colors.front : inner),
+                            getPremiumMat(z === -1 ? colors.back : inner),
                         ];
                         const geo = new THREE.BoxGeometry(SIZE, SIZE, SIZE);
                         const cubelet = new THREE.Mesh(geo, mats);
+                        cubelet.castShadow = true;
+                        cubelet.receiveShadow = true;
                         cubelet.position.set(x * GAP, y * GAP, z * GAP);
-                        const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 1 }));
-                        cubelet.add(edges);
                         cubeGroup.add(cubelet);
                         cubelets.push(cubelet);
                     }
@@ -5085,10 +5111,13 @@
 
                 const FACES = {
                     U: { axis: 'y', test: 1, angle: -Math.PI / 2 },
+                    E: { axis: 'y', test: 0, angle: Math.PI / 2 }, 
                     D: { axis: 'y', test: -1, angle: Math.PI / 2 },
                     L: { axis: 'x', test: -1, angle: Math.PI / 2 },
+                    M: { axis: 'x', test: 0, angle: Math.PI / 2 }, 
                     R: { axis: 'x', test: 1, angle: -Math.PI / 2 },
                     F: { axis: 'z', test: 1, angle: -Math.PI / 2 },
+                    S: { axis: 'z', test: 0, angle: -Math.PI / 2 }, 
                     B: { axis: 'z', test: -1, angle: Math.PI / 2 },
                 };
                 const axisVec = { x: new THREE.Vector3(1, 0, 0), y: new THREE.Vector3(0, 1, 0), z: new THREE.Vector3(0, 0, 1) };
@@ -5096,8 +5125,8 @@
                 let animating = false;
                 const queue = [];
 
-                function doMove(face) {
-                    if (animating) { queue.push(face); return; }
+                function doMove(face, reverse = false) {
+                    if (animating) { queue.push({face, reverse}); return; }
                     animating = true;
                     const def = FACES[face];
                     const pivot = new THREE.Group();
@@ -5107,26 +5136,27 @@
 
                     const duration = 260;
                     const start = performance.now();
+                    const angle = reverse ? -def.angle : def.angle;
                     function step(now) {
                         const t = Math.min(1, (now - start) / duration);
                         const eased = 1 - Math.pow(1 - t, 3);
-                        pivot.rotation[def.axis] = def.angle * eased;
+                        pivot.rotation[def.axis] = angle * eased;
                         if (t < 1) { requestAnimationFrame(step); return; }
                         // bake rotation into cubelets, reparent back
                         pivot.updateMatrixWorld(true);
                         selected.forEach(c => {
-                            c.position.applyAxisAngle(axisVec[def.axis], def.angle);
+                            c.position.applyAxisAngle(axisVec[def.axis], angle);
                             c.position.x = Math.round(c.position.x / (GAP / 2)) * (GAP / 2);
                             c.position.y = Math.round(c.position.y / (GAP / 2)) * (GAP / 2);
                             c.position.z = Math.round(c.position.z / (GAP / 2)) * (GAP / 2);
-                            const q = new THREE.Quaternion().setFromAxisAngle(axisVec[def.axis], def.angle);
+                            const q = new THREE.Quaternion().setFromAxisAngle(axisVec[def.axis], angle);
                             c.quaternion.premultiply(q);
                             pivot.remove(c);
                             cubeGroup.add(c);
                         });
                         cubeGroup.remove(pivot);
                         animating = false;
-                        if (queue.length) { const next = queue.shift(); doMove(next); }
+                        if (queue.length) { const next = queue.shift(); doMove(next.face, next.reverse); }
                     }
                     requestAnimationFrame(step);
                 }
@@ -5156,13 +5186,15 @@
                             const dx = e.clientX - startX;
                             const dy = e.clientY - startY;
                             if (Math.abs(dx) > Math.abs(dy)) {
-                                if (swipeStartCubelet.position.y > 0.5) doMove('U');
-                                else if (swipeStartCubelet.position.y < -0.5) doMove('D');
-                                else doMove(dx > 0 ? 'R' : 'L');
+                                const rev = dx < 0;
+                                if (swipeStartCubelet.position.y > 0.5) doMove('U', rev);
+                                else if (swipeStartCubelet.position.y < -0.5) doMove('D', !rev);
+                                else doMove('E', !rev);
                             } else {
-                                if (swipeStartCubelet.position.x > 0.5) doMove('R');
-                                else if (swipeStartCubelet.position.x < -0.5) doMove('L');
-                                else doMove(dy > 0 ? 'F' : 'B');
+                                const rev = dy > 0;
+                                if (swipeStartCubelet.position.x > 0.5) doMove('R', rev);
+                                else if (swipeStartCubelet.position.x < -0.5) doMove('L', !rev);
+                                else doMove('M', !rev);
                             }
                         }
                         swipeStartCubelet = null;
@@ -5171,7 +5203,7 @@
 
                 function animate() {
                     requestAnimationFrame(animate);
-                    if (!animating && !reducedMotion) rotY += 0.0018;
+                    // Cube stays still as requested
                     wrapper.rotation.y = rotY; wrapper.rotation.x = rotX;
                     renderer.render(scene, camera);
                 }
@@ -5184,10 +5216,10 @@
                     renderer.setSize(w, h);
                 });
 
-                window.__cubeMove = (face) => doMove(face);
+                window.__cubeMove = (face) => doMove(face, false);
                 window.__cubeShuffle = () => {
                     const faces = Object.keys(FACES);
-                    for (let i = 0; i < 14; i++) doMove(faces[Math.floor(Math.random() * faces.length)]);
+                    for (let i = 0; i < 14; i++) doMove(faces[Math.floor(Math.random() * faces.length)], Math.random() > 0.5);
                 };
                 window.__cubeReset = () => { queue.length = 0; buildCube(); };
             }
@@ -5210,18 +5242,33 @@
                 wrapper.add(boardGroup, piecesGroup, highlightGroup);
                 wrapper.scale.set(0.66, 0.66, 0.66);
 
-                const LIGHT = 0xdcccaa, DARK = 0x4a3626, WHITE_C = 0xf5f0e6, BLACK_C = 0x232323;
+                const LIGHT = 0x242933, DARK = 0x0a0c12;
                 const squareMeshes = {};
 
                 function algebraic(c, r) { return 'abcdefgh'[c] + (8 - r); }
                 function coordsFor(c, r) { return { x: c - 3.5, z: r - 3.5 }; }
 
                 function buildBoard() {
+                    const boardBase = new THREE.Mesh(
+                        new THREE.BoxGeometry(8.4, 0.1, 8.4),
+                        new THREE.MeshPhysicalMaterial({ color: 0x111111, roughness: 0.8, metalness: 0.2 })
+                    );
+                    boardBase.position.y = -0.06;
+                    boardBase.receiveShadow = true;
+                    boardGroup.add(boardBase);
+
                     for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++) {
                         const isLight = (r + c) % 2 === 0;
-                        const mat = new THREE.MeshStandardMaterial({ color: isLight ? LIGHT : DARK, roughness: .4, metalness: .1 });
+                        const mat = new THREE.MeshPhysicalMaterial({ 
+                            color: isLight ? LIGHT : DARK, 
+                            roughness: 0.15, 
+                            metalness: 0.1,
+                            clearcoat: 0.8,
+                            clearcoatRoughness: 0.2
+                        });
                         const geo = new THREE.BoxGeometry(1, 0.12, 1);
                         const sq = new THREE.Mesh(geo, mat);
+                        sq.receiveShadow = true;
                         const { x, z } = coordsFor(c, r);
                         sq.position.set(x, 0, z);
                         sq.userData = { square: algebraic(c, r), baseColor: isLight ? LIGHT : DARK };
@@ -5233,23 +5280,71 @@
 
                 function pieceMesh(type, color) {
                     const g = new THREE.Group();
-                    const mat = new THREE.MeshStandardMaterial({ color: color === 'w' ? WHITE_C : BLACK_C, roughness: .2, metalness: .2 });
-                    const base = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.24, 0.16, 16), mat);
-                    base.position.y = 0.16; g.add(base);
+                    const isWhite = color === 'w';
+                    
+                    const mat = new THREE.MeshPhysicalMaterial({ 
+                        color: isWhite ? 0x939aab : 0x090b0d, 
+                        roughness: 0.15, 
+                        metalness: 0.5,
+                        clearcoat: 1.0,
+                        clearcoatRoughness: 0.1
+                    });
+                    
+                    const base = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.4, 0.15, 32), mat);
+                    base.position.y = 0.075; 
+                    base.castShadow = true; base.receiveShadow = true;
+                    g.add(base);
+                    
+                    const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.32, 0.15, 32), mat);
+                    pedestal.position.y = 0.225;
+                    pedestal.castShadow = true; pedestal.receiveShadow = true;
+                    g.add(pedestal);
+
                     let top;
-                    if (type === 'p') { top = new THREE.Mesh(new THREE.SphereGeometry(0.15, 12, 12), mat); top.position.y = 0.34; }
-                    else if (type === 'r') { top = new THREE.Mesh(new THREE.BoxGeometry(0.27, 0.34, 0.27), mat); top.position.y = 0.42; }
-                    else if (type === 'n') { top = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.42, 8), mat); top.position.y = 0.46; top.rotation.z = 0.32; }
-                    else if (type === 'b') { top = new THREE.Mesh(new THREE.ConeGeometry(0.14, 0.44, 14), mat); top.position.y = 0.5; }
-                    else if (type === 'q') {
-                        top = new THREE.Mesh(new THREE.SphereGeometry(0.2, 14, 14), mat); top.position.y = 0.55;
-                        const crownTip = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.12, 8), mat); crownTip.position.y = 0.72; g.add(crownTip);
-                    } else if (type === 'k') {
-                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.18, 0.5, 12), mat); top.position.y = 0.55;
-                        const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.2, 0.05), mat); crossV.position.y = 0.86; g.add(crossV);
-                        const crossH = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.05, 0.05), mat); crossH.position.y = 0.82; g.add(crossH);
+                    if (type === 'p') { 
+                        top = new THREE.Mesh(new THREE.SphereGeometry(0.25, 32, 32), mat); 
+                        top.position.y = 0.55; 
                     }
-                    if (top) g.add(top);
+                    else if (type === 'r') { 
+                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.4, 32), mat); 
+                        top.position.y = 0.5; 
+                    }
+                    else if (type === 'n') { 
+                        const nGeo = new THREE.ConeGeometry(0.25, 0.6, 32);
+                        nGeo.translate(0, 0.3, 0);
+                        nGeo.rotateX(0.2);
+                        top = new THREE.Mesh(nGeo, mat); 
+                        top.position.y = 0.3; 
+                    }
+                    else if (type === 'b') { 
+                        top = new THREE.Mesh(new THREE.ConeGeometry(0.25, 0.7, 32), mat); 
+                        top.position.y = 0.65; 
+                        const bead = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), mat);
+                        bead.position.y = 1.05;
+                        bead.castShadow = true; g.add(bead);
+                    }
+                    else if (type === 'q') {
+                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.2, 0.6, 32), mat); 
+                        top.position.y = 0.6;
+                        const crown = new THREE.Mesh(new THREE.SphereGeometry(0.18, 32, 32), mat); 
+                        crown.position.y = 1.0; 
+                        crown.castShadow = true; g.add(crown);
+                    } else if (type === 'k') {
+                        top = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.2, 0.7, 32), mat); 
+                        top.position.y = 0.65;
+                        const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.3, 0.08), mat); 
+                        crossV.position.y = 1.15; crossV.castShadow = true; g.add(crossV);
+                        const crossH = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.08, 0.08), mat); 
+                        crossH.position.y = 1.15; crossH.castShadow = true; g.add(crossH);
+                    }
+                    
+                    if (top) {
+                        top.castShadow = true;
+                        top.receiveShadow = true;
+                        g.add(top);
+                    }
+                    
+                    g.scale.set(0.75, 0.75, 0.75);
                     g.userData.baseY = 0;
                     return g;
                 }
@@ -5270,16 +5365,26 @@
 
                 function clearHighlights() {
                     while (highlightGroup.children.length) highlightGroup.remove(highlightGroup.children[0]);
-                    Object.values(squareMeshes).forEach(sq => { sq.material.color.setHex(sq.userData.baseColor); });
+                    Object.values(squareMeshes).forEach(sq => { 
+                        sq.material.emissive.setHex(0x000000);
+                        sq.material.color.setHex(sq.userData.baseColor); 
+                    });
                 }
                 function highlightSelected(square) {
-                    if (squareMeshes[square]) squareMeshes[square].material.color.setHex(0x4f8ef7);
+                    if (squareMeshes[square]) {
+                        squareMeshes[square].material.emissive.setHex(0x4f8ef7);
+                        squareMeshes[square].material.emissiveIntensity = 0.3;
+                    }
                 }
                 function highlightTargets(list) {
                     list.forEach(m => {
                         const { x, z } = coordsFor('abcdefgh'.indexOf(m.to[0]), 8 - parseInt(m.to[1]));
-                        const dot = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.04, 20), new THREE.MeshStandardMaterial({ color: 0x3ecf8e, emissive: 0x3ecf8e, emissiveIntensity: .5 }));
-                        dot.position.set(x, 0.14, z);
+                        const dot = new THREE.Mesh(
+                            new THREE.RingGeometry(0.25, 0.35, 32), 
+                            new THREE.MeshBasicMaterial({ color: 0x3ecf8e, side: THREE.DoubleSide, transparent: true, opacity: 0.8 })
+                        );
+                        dot.rotation.x = -Math.PI / 2;
+                        dot.position.set(x, 0.065, z);
                         highlightGroup.add(dot);
                     });
                 }
