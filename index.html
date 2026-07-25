@@ -3976,6 +3976,89 @@
                 <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
                     <div class="proj-flip-inner">
                         <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/TransitOps.png" alt="TransitOps">
+                            <div class="proj-flip-front-overlay">
+<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">TransitOps</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Enterprise fleet & logistics command center.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">TransitOps</div>
+                            <ul class="proj-flip-back-points">
+                                <li>Comprehensive logistics dashboard bridging hardware tracking, human resource management, and financial analytics.</li><li>Real-time trip lifecycle planning, fuel intelligence with anomaly detection, and driver operations tracking.</li><li>Role-Based Access Control with gated write operations, audit logging, and data export functionalities.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Building a fully synchronized, real-time interface across multiple modules (fleet, dispatch, fuel) required careful state management and real-time database architecture to prevent redundant fetches and ensure absolute data consistency.</p>
+                            </div>
+    
+                            <div class="proj-flip-back-tags"><span class="tag tag-blue">React 19</span><span class="tag tag-blue">TypeScript</span><span class="tag tag-amber">Firebase</span><span class="tag tag-green">Tailwind</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://transit-ops-mu-liard.vercel.app" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/TransitOps" target="_blank" rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/CrowdPulse.png" alt="CrowdPulse">
+                            <div class="proj-flip-front-overlay">
+<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">CrowdPulse</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Real-time Crowd Analysis Dashboard.</p></div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">CrowdPulse</div>
+                            <ul class="proj-flip-back-points">
+                                <li>Engineered real-time object detection and density mapping pipelines using YOLOv8 to proactively identify crowd anomalies.</li><li>Developed a Flask web dashboard featuring passkey authentication and interactive, dynamic hotspot zones for targeted monitoring.</li><li>Architected and deployed the AI model on Hugging Face Spaces, utilizing PyTorch and CUDA for GPU-accelerated inference.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Balancing high-accuracy tracking with the low latency required for real-time alerts. I optimized the YOLOv8 tracking algorithms and moved all AI inference to an NVIDIA GPU using PyTorch (CUDA 12.1), successfully achieving real-time processing speeds without sacrificing precision.</p>
+                            </div>
+    
+                            <div class="proj-flip-back-tags"><span class="tag tag-green">Python</span><span class="tag tag-blue">Flask</span><span class="tag tag-amber">YOLOv8</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://krishmistry18-crowdpulse.hf.space/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/CrowdPulse" target="_blank" rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal reveal-delay-2" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
+                            <img src="assets/projects/AyurWell.png" alt="AyurWell">
+                            <div class="proj-flip-front-overlay">
+<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">AyurWell</span>
+<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">AI-generated diet plans & dosha assessment.</p>
+                            </div>
+                        </div>
+                        <div class="proj-flip-face proj-flip-back">
+                            <div class="proj-flip-back-title">AyurWell</div>
+                            <ul class="proj-flip-back-points">
+                                <li>Formulated an intricate scoring algorithm mapping user survey inputs to precise Ayurvedic Dosha profiles.</li><li>Integrated LLMs to dynamically generate highly personalized, season-aware dietary plans.</li><li>Constructed a fluid dashboard using Recharts to visualize wellness progress over time.</li>
+                            </ul>
+                            <div class="proj-flip-back-tech">
+                                <h4>⚙️ Hardest Technical Decision</h4>
+                                <p>Feeding complex health profiles into the LLM safely was critical. I implemented a strict prompt chaining pipeline with validation layers to ensure the AI generated safe advice.</p>
+                            </div>
+    
+                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Vite + React</span><span
+                                    class="tag">Django REST</span><span class="tag">Tailwind</span></div>
+                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
+                                <a href="https://ayur-well.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+                                <a href="https://github.com/KrishMistry18/AyurWell" target="_blank"
+                                    rel="noopener">GitHub ↗</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
+                    <div class="proj-flip-inner">
+                        <div class="proj-flip-face proj-flip-front">
                             <img src="assets/projects/chessanalyzer.png" alt="ChessAnalyzer">
                             <div class="proj-flip-front-overlay">
 <span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">ChessAnalyzer</span>
@@ -4060,36 +4143,6 @@
 
 
 
-                <div class="proj-flip-card reveal reveal-delay-2" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/AyurWell.png" alt="AyurWell">
-                            <div class="proj-flip-front-overlay">
-<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">AyurWell</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">AI-generated diet plans & dosha assessment.</p>
-                            </div>
-                        </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">AyurWell</div>
-                            <ul class="proj-flip-back-points">
-                                <li>Formulated an intricate scoring algorithm mapping user survey inputs to precise Ayurvedic Dosha profiles.</li><li>Integrated LLMs to dynamically generate highly personalized, season-aware dietary plans.</li><li>Constructed a fluid dashboard using Recharts to visualize wellness progress over time.</li>
-                            </ul>
-                            <div class="proj-flip-back-tech">
-                                <h4>⚙️ Hardest Technical Decision</h4>
-                                <p>Feeding complex health profiles into the LLM safely was critical. I implemented a strict prompt chaining pipeline with validation layers to ensure the AI generated safe advice.</p>
-                            </div>
-    
-                            <div class="proj-flip-back-tags"><span class="tag tag-blue">Vite + React</span><span
-                                    class="tag">Django REST</span><span class="tag">Tailwind</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://ayur-well.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/AyurWell" target="_blank"
-                                    rel="noopener">GitHub ↗</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="proj-flip-card reveal reveal-delay-3" onclick="this.classList.toggle('flipped')">
                     <div class="proj-flip-inner">
                         <div class="proj-flip-face proj-flip-front">
@@ -4147,60 +4200,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/CrowdPulse.png" alt="CrowdPulse">
-                            <div class="proj-flip-front-overlay">
-<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">CrowdPulse</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Real-time Crowd Analysis Dashboard.</p></div>
-                        </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">CrowdPulse</div>
-                            <ul class="proj-flip-back-points">
-                                <li>Engineered real-time object detection and density mapping pipelines using YOLOv8 to proactively identify crowd anomalies.</li><li>Developed a Flask web dashboard featuring passkey authentication and interactive, dynamic hotspot zones for targeted monitoring.</li><li>Architected and deployed the AI model on Hugging Face Spaces, utilizing PyTorch and CUDA for GPU-accelerated inference.</li>
-                            </ul>
-                            <div class="proj-flip-back-tech">
-                                <h4>⚙️ Hardest Technical Decision</h4>
-                                <p>Balancing high-accuracy tracking with the low latency required for real-time alerts. I optimized the YOLOv8 tracking algorithms and moved all AI inference to an NVIDIA GPU using PyTorch (CUDA 12.1), successfully achieving real-time processing speeds without sacrificing precision.</p>
-                            </div>
-    
-                            <div class="proj-flip-back-tags"><span class="tag tag-green">Python</span><span class="tag tag-blue">Flask</span><span class="tag tag-amber">YOLOv8</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://krishmistry18-crowdpulse.hf.space/" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/CrowdPulse" target="_blank" rel="noopener">GitHub ↗</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="proj-flip-card reveal" onclick="this.classList.toggle('flipped')">
-                    <div class="proj-flip-inner">
-                        <div class="proj-flip-face proj-flip-front">
-                            <img src="assets/projects/TransitOps.png" alt="TransitOps">
-                            <div class="proj-flip-front-overlay">
-<span class="proj-flip-front-hint" style="position: absolute; top: 12px; right: 20px; z-index: 20;">flip ↻</span><span class="proj-flip-front-name">TransitOps</span>
-<p style="font-size: 0.9rem; color: #ddd; margin-top: 0.5rem; font-weight: normal;">Enterprise fleet & logistics command center.</p></div>
-                        </div>
-                        <div class="proj-flip-face proj-flip-back">
-                            <div class="proj-flip-back-title">TransitOps</div>
-                            <ul class="proj-flip-back-points">
-                                <li>Comprehensive logistics dashboard bridging hardware tracking, human resource management, and financial analytics.</li><li>Real-time trip lifecycle planning, fuel intelligence with anomaly detection, and driver operations tracking.</li><li>Role-Based Access Control with gated write operations, audit logging, and data export functionalities.</li>
-                            </ul>
-                            <div class="proj-flip-back-tech">
-                                <h4>⚙️ Hardest Technical Decision</h4>
-                                <p>Building a fully synchronized, real-time interface across multiple modules (fleet, dispatch, fuel) required careful state management and real-time database architecture to prevent redundant fetches and ensure absolute data consistency.</p>
-                            </div>
-    
-                            <div class="proj-flip-back-tags"><span class="tag tag-blue">React 19</span><span class="tag tag-blue">TypeScript</span><span class="tag tag-amber">Firebase</span><span class="tag tag-green">Tailwind</span></div>
-                            <div class="proj-flip-back-links" onclick="event.stopPropagation()">
-                                <a href="https://transit-ops-mu-liard.vercel.app" target="_blank" rel="noopener">Live ↗</a>
-                                <a href="https://github.com/KrishMistry18/TransitOps" target="_blank" rel="noopener">GitHub ↗</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </section>
