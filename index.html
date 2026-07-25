@@ -5245,8 +5245,15 @@
                     }
                 });
 
+                let isVisible = true;
+                const visObs = new IntersectionObserver(entries => {
+                    isVisible = entries[0].isIntersecting;
+                });
+                visObs.observe(container);
+
                 function animate() {
                     requestAnimationFrame(animate);
+                    if (!isVisible) return;
                     // Cube stays still as requested
                     wrapper.rotation.y = rotY; wrapper.rotation.x = rotX;
                     renderer.render(scene, camera);
@@ -5513,7 +5520,7 @@
                     }
                 }
 
-                function computerMove() {
+                async function computerMove() {
                     if (game.game_over && game.game_over()) return;
                     const moves = game.moves();
                     if (!moves.length) return;
@@ -5531,6 +5538,8 @@
                         } else if (boardValue === bestValue) {
                             bestMoves.push(moves[i]);
                         }
+                        // yield to event loop to prevent freezing
+                        await new Promise(r => setTimeout(r, 0));
                     }
                     
                     const bestMove = bestMoves[Math.floor(Math.random() * bestMoves.length)];
@@ -5600,8 +5609,15 @@
                     }
                 });
 
+                let isVisible = true;
+                const visObs = new IntersectionObserver(entries => {
+                    isVisible = entries[0].isIntersecting;
+                });
+                visObs.observe(container);
+
                 function animate() {
                     requestAnimationFrame(animate);
+                    if (!isVisible) return;
                     wrapper.rotation.y = rotY; wrapper.rotation.x = rotX;
                     renderer.render(scene, camera);
                 }
