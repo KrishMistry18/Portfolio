@@ -3,6 +3,7 @@ const app = express();
 const chatHandler = require('./api/chat.js');
 
 app.use(express.json());
+app.use(express.static('.'));
 app.post('/api/chat', (req, res) => {
     chatHandler(req, res);
 });

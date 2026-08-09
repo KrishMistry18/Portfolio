@@ -56,7 +56,11 @@ function initAgent() {
   function appendMessage(role, text) {
     const msg = document.createElement("div");
     msg.className = `agent-msg ${role}`;
-    msg.textContent = text;
+    if (role === "bot" && typeof marked !== "undefined" && typeof DOMPurify !== "undefined") {
+      msg.innerHTML = DOMPurify.sanitize(marked.parse(text));
+    } else {
+      msg.textContent = text;
+    }
     messagesDiv.appendChild(msg);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }

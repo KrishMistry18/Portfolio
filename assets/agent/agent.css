@@ -99,6 +99,59 @@
   background-color: var(--bg-3, #111422);
   color: var(--text-primary, #f0f0f5);
   border: 1px solid var(--text-muted, #4a4e66);
+  line-height: 1.6;
+}
+
+/* Markdown Rendering Styles */
+.agent-msg.bot p {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+.agent-msg.bot p:last-child {
+  margin-bottom: 0;
+}
+.agent-msg.bot ul,
+.agent-msg.bot ol {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+}
+.agent-msg.bot li {
+  margin-bottom: 0.4rem;
+}
+.agent-msg.bot strong {
+  font-weight: 700;
+  color: #fff;
+}
+.agent-msg.bot a {
+  color: var(--accent, #4f8ef7);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.agent-msg.bot a:hover {
+  color: #3b76e1;
+}
+.agent-msg.bot code {
+  font-family: 'DM Mono', monospace;
+  background-color: var(--bg-2, #0d0f1a);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--green, #3ecf8e);
+}
+.agent-msg.bot pre code {
+  display: block;
+  padding: 10px;
+  overflow-x: auto;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--text-muted, #4a4e66);
+}
+.agent-msg.bot h1, .agent-msg.bot h2, .agent-msg.bot h3 {
+  font-family: 'Syne', sans-serif;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1em;
+  color: #fff;
 }
 
 #agent-input-area {
