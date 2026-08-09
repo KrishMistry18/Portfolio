@@ -28,7 +28,7 @@ const agentTemplate = `
 </div>
 `;
 
-document.addEventListener("DOMContentLoaded", () => {
+function initAgent() {
   document.body.insertAdjacentHTML('beforeend', agentTemplate);
 
   const btn = document.getElementById("agent-button");
@@ -107,4 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
       sendMessage(e.target.textContent);
     });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAgent);
+} else {
+  initAgent();
+}
