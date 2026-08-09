@@ -1,118 +1,215 @@
 {
-  "personal_profile": {
-    "name": "Krish Hitendra Mistry",
-    "location": "Mumbai, India",
-    "claim": "I turn real-world problems into usable full-stack products."
-  },
-  "portfolio_positioning": "A dark, technical, futuristic aesthetic emphasizing clean structure and developer-centric presentation.",
-  "education": {
-    "institution": "St. Francis Institute of Technology (SFIT), Mumbai",
-    "degree": "B.E. Information Technology",
-    "cgpa": "9.2",
-    "graduation_year": "Final Year"
-  },
-  "skills": {
-    "frontend": [
-      "Next.js",
-      "React",
-      "HTML/CSS",
-      "JavaScript",
-      "TypeScript"
+    "profile": {
+        "name": "Krish Hitendra Mistry",
+        "brand": "krish.dev",
+        "positioning": "I turn real-world problems into usable full-stack products.",
+        "location": "Mumbai, India",
+        "tagline": "Full Stack Developer & AI Builder",
+        "status": "Actively looking for internship opportunities in full-stack, AI/ML, or product engineering."
+    },
+    "contact": {
+        "email": "mistrykrish2005@gmail.com",
+        "github": "https://github.com/KrishMistry18",
+        "linkedin": "https://www.linkedin.com/in/krish-mistry/",
+        "portfolio": "https://portfolio-eta-pied-17.vercel.app/"
+    },
+    "education": [
+        {
+            "institution": "St. Francis Institute of Technology (SFIT), Mumbai",
+            "degree": "Bachelor of Engineering (B.E.)",
+            "department": "Information Technology",
+            "academic_year": "2023 - 2027",
+            "relevant_info": "Head of NSS SFIT, Colloquium '25 2nd Prize"
+        }
     ],
-    "backend": [
-      "Django",
-      "Python",
-      "Node.js"
+    "experience": [
+        {
+            "company": "FlyRank",
+            "role": "Machine Learning Intern",
+            "status": "completed",
+            "description": "Applied Search Intelligence: Google Search Ranking & Discoverability on anonymized real FlyRank search data.",
+            "work_performed": [
+                "Analyzed a large dataset (~79M rows) using DuckDB and Hugging Face datasets.",
+                "Performed signal analysis for search ranking and discoverability.",
+                "Built and trained models focusing on readability and rule extraction.",
+                "Completed Capstone Project: Master the AI stack, build a personal brand with a real website, ship a personal agent."
+            ],
+            "technologies": ["Python", "DuckDB", "Hugging Face", "Machine Learning", "Colab", "Jupyter Notebooks"]
+        },
+        {
+            "company": "OVA",
+            "role": "Software Engineering Intern",
+            "status": "completed",
+            "description": "Software Engineering Internship at OVA."
+        },
+        {
+            "company": "InAmigos Foundation",
+            "role": "Intern",
+            "status": "completed",
+            "description": "Internship at InAmigos Foundation."
+        },
+        {
+            "company": "Google Student Ambassador",
+            "role": "Student Ambassador",
+            "status": "completed",
+            "description": "Google Student Ambassador."
+        }
     ],
-    "ai_ml": [
-      "TensorFlow",
-      "Gemini AI",
-      "LLM Integration",
-      "Predictive Modeling"
+    "skills": {
+        "Frontend": ["React 19", "Next.js 15", "Vite", "Tailwind", "HTML", "CSS", "TypeScript", "JavaScript"],
+        "Backend": ["Node.js", "Django 5", "Django REST", "Flask", "Java 22", "Spring Boot", "Python"],
+        "AI/ML": ["TensorFlow", "PyTorch", "CUDA 12.1", "YOLOv8", "MobileNetV3", "LLMs", "Machine Learning", "AI Integrations"],
+        "Databases": ["Firebase", "Firestore", "Redis", "MySQL 8", "MongoDB", "NoSQL", "DuckDB"],
+        "Mobile": ["Flutter"],
+        "Tools": ["WebRTC", "Socket.IO", "Leaflet", "Stripe", "Docker", "Git", "GitHub", "Vercel"]
+    },
+    "projects": [
+        {
+            "name": "ImpactGlobe",
+            "description": "Offline-first incident reporting app with local AI inference.",
+            "problem": "Communities need a reliable way to report incidents (accidents, hazards, garbage) even without internet access, and sensitive photos shouldn't be sent to cloud servers.",
+            "motivation": "Provide a privacy-first, offline-capable solution for community incident reporting.",
+            "built_features": [
+                "Local AI inference using MobileNetV3 to classify incidents.",
+                "Heuristic regression for real-time CO2 emissions tracking.",
+                "Flutter + Firebase Firestore backend with real-time sync."
+            ],
+            "technologies": ["Flutter", "TensorFlow", "MobileNetV3", "Firebase", "Python"],
+            "ai_components": "On-device inference using MobileNetV3 CNN (Transfer Learning).",
+            "database_backend": "Firebase Firestore",
+            "key_decision": "Choosing on-device inference (MobileNetV3) over a cloud API to eliminate latency, work offline, and keep sensitive incident photos off external servers.",
+            "status": "completed"
+        },
+        {
+            "name": "TransitOps",
+            "description": "Enterprise fleet & logistics command center.",
+            "problem": "Managing hardware tracking, HR, and financial analytics for fleets requires a unified, real-time command center.",
+            "built_features": [
+                "Real-time trip lifecycle planning and fuel intelligence with anomaly detection.",
+                "Role-Based Access Control (RBAC) with gated write operations and audit logging."
+            ],
+            "technologies": ["React 19", "TypeScript", "Firebase", "Tailwind"],
+            "database_backend": "Firebase",
+            "key_decision": "Building a fully synchronized, real-time interface across multiple modules required careful state management and real-time database architecture to prevent redundant fetches.",
+            "status": "completed"
+        },
+        {
+            "name": "CrowdPulse",
+            "description": "Real-time Crowd Analysis Dashboard.",
+            "problem": "Proactively identifying crowd anomalies requires high-accuracy tracking and low latency.",
+            "built_features": [
+                "Real-time object detection and density mapping pipelines using YOLOv8.",
+                "Flask web dashboard featuring passkey authentication and interactive hotspot zones."
+            ],
+            "technologies": ["Python", "Flask", "YOLOv8", "PyTorch", "CUDA", "Hugging Face Spaces"],
+            "ai_components": "YOLOv8 tracking algorithms deployed on Hugging Face Spaces using PyTorch and CUDA 12.1.",
+            "key_decision": "Optimized YOLOv8 algorithms and moved AI inference to an NVIDIA GPU (CUDA 12.1) to achieve real-time processing speeds without sacrificing precision.",
+            "status": "completed"
+        },
+        {
+            "name": "AyurWell",
+            "description": "AI-generated diet plans & dosha assessment.",
+            "problem": "Generating highly personalized Ayurvedic diet plans safely based on user surveys.",
+            "built_features": [
+                "Scoring algorithm mapping user survey inputs to Ayurvedic Dosha profiles.",
+                "Dynamic generation of personalized, season-aware dietary plans.",
+                "Fluid dashboard using Recharts to visualize wellness progress."
+            ],
+            "technologies": ["Vite", "React", "Django REST", "Tailwind", "LLMs"],
+            "ai_components": "Integrated LLMs with strict prompt chaining and validation layers.",
+            "database_backend": "Django REST",
+            "key_decision": "Implemented a strict prompt chaining pipeline with validation layers to ensure the AI generated safe health advice.",
+            "status": "completed"
+        },
+        {
+            "name": "ChessAnalyzer",
+            "description": "Browser-based Stockfish engine.",
+            "problem": "Running a heavy C++ chess engine in JS without freezing the UI.",
+            "built_features": [
+                "Play-vs-Stockfish with adjustable strength and multi-engine support.",
+                "Move classification, multi-PV engine lines, and game summaries.",
+                "Zero backend dependency."
+            ],
+            "technologies": ["Next.js 15", "TypeScript", "Stockfish WASM", "Web Workers"],
+            "key_decision": "Compiled Stockfish to WebAssembly (WASM) and ran it inside Web Workers, communicating via message passing to prevent UI freezing.",
+            "status": "completed"
+        },
+        {
+            "name": "HeritageGuide",
+            "description": "Interactive map with routing.",
+            "problem": "Providing fast, multimodal routing and accurate site discovery for heritage sites.",
+            "built_features": [
+                "Dynamic map integration using Leaflet and OpenStreetMap.",
+                "Full-stack Django architecture handling secure slot booking, authentication, and routing.",
+                "Firebase-backed real-time data flow for peak hour updates."
+            ],
+            "technologies": ["Django 5", "Leaflet", "Firebase", "Redis", "OpenRouteService APIs"],
+            "database_backend": "Django 5, Firebase, Redis",
+            "key_decision": "Integrated with OpenRouteService APIs and cached frequent routes in Redis to minimize API costs and latency.",
+            "status": "completed"
+        },
+        {
+            "name": "EduCycle",
+            "description": "Verified peer-to-peer marketplace for students.",
+            "problem": "Students need a secure, fast, offline-capable peer-to-peer marketplace.",
+            "built_features": [
+                "Integrated Stripe for secure, verified student-to-student transactions.",
+                "PWA architecture enabling students to browse and message offline.",
+                "Redis caching to serve the marketplace feed in under 100ms."
+            ],
+            "technologies": ["Django REST", "React.js", "Stripe", "Redis", "WebSockets"],
+            "database_backend": "Django REST, Redis",
+            "key_decision": "Decoupled the chat microservice using WebSockets while Django handled heavy DB relations.",
+            "status": "completed"
+        },
+        {
+            "name": "WatchParty",
+            "description": "Real-time synchronized video streaming.",
+            "problem": "Relaying video through a central server is expensive and slow for small watch parties.",
+            "built_features": [
+                "Custom WebRTC signaling server using Socket.IO.",
+                "Robust timestamp synchronization algorithms.",
+                "Zero-install architecture focusing on pure client-side P2P media flow."
+            ],
+            "technologies": ["WebRTC", "Socket.IO", "Node.js"],
+            "key_decision": "Forced a pure P2P mesh network for smaller rooms instead of relaying video, using a signaling server purely to orchestrate connections.",
+            "status": "completed"
+        },
+        {
+            "name": "Nexus Financial",
+            "description": "High-performance fintech dashboard.",
+            "problem": "Ensuring transaction atomicity and security during concurrent ATM operations.",
+            "built_features": [
+                "Double-entry ledger system to guarantee atomic, ACID-compliant transactions.",
+                "Strict security measures using JDBC prepared statements.",
+                "Comprehensive dual-table audit trail."
+            ],
+            "technologies": ["Java 22", "MySQL 8", "JDBC"],
+            "database_backend": "MySQL 8",
+            "key_decision": "Heavily utilized MySQL row-level locking (SELECT ... FOR UPDATE) to prevent race conditions.",
+            "status": "completed"
+        }
     ],
-    "mobile": [
-      "Flutter"
+    "achievements": [
+        "Colloquium 25 - 2nd Prize",
+        "Head of NSS - SFIT",
+        "AI Agent Builder Workshop",
+        "Machine Learning Mastery (GDG)",
+        "Machine Learning Mastery (MSIT)",
+        "Claude 101",
+        "AI Capabilities & Limitations",
+        "NoSQL & MongoDB (GDG)",
+        "NoSQL & MongoDB (MSIT)",
+        "Web Auth Intensive (GDG)",
+        "Web Auth Intensive (MSIT)",
+        "NoviTech Data Analytics",
+        "AI Fluency for Students",
+        "AI Fluency Framework & Foundation",
+        "AI Fluency for Small Businesses",
+        "Google Cloud GEN AI",
+        "Introduction to Claude Cowork",
+        "BotCampusAI Certificate",
+        "Devtown Participation",
+        "Prayas Certificate"
     ]
-  },
-  "projects": [
-    {
-      "name": "ImpactGlobe",
-      "problem": "Need for a unified geopolitical tracking dashboard.",
-      "what_i_built": "A 3D geopolitical dashboard analyzing global events.",
-      "technologies": [
-        "Next.js",
-        "Three.js",
-        "AI Integration"
-      ],
-      "key_decisions": [
-        "Used Three.js for interactive globe visualization"
-      ],
-      "outcome": "Deployed to production, used as portfolio flagship.",
-      "status": "Completed",
-      "links": []
-    },
-    {
-      "name": "HemiSphere",
-      "problem": "Lack of immersive 3D data visualization for spatial data.",
-      "what_i_built": "An interactive 3D UI for spatial data analysis.",
-      "technologies": [
-        "React",
-        "WebGL"
-      ],
-      "key_decisions": [],
-      "outcome": "Successful production deployment.",
-      "status": "Completed",
-      "links": []
-    },
-    {
-      "name": "TransitOps",
-      "problem": "Public transit tracking inefficiencies.",
-      "what_i_built": "A real-time transit operations tracker.",
-      "technologies": [
-        "Django",
-        "React"
-      ],
-      "key_decisions": [],
-      "outcome": "Production app.",
-      "status": "Completed",
-      "links": []
-    }
-  ],
-  "flyrank_internship": {
-    "company": "FlyRank",
-    "role": "Machine Learning Intern",
-    "what_i_built": "A ranking model to score content refresh opportunities using Google Search Console data.",
-    "technologies": [
-      "Python",
-      "Scikit-Learn",
-      "Pandas"
-    ],
-    "outcome": "Precision@500 improved to 74.6% vs 74.0% baseline. Deployed research paper via GitHub Pages.",
-    "status": "Completed Capstone"
-  },
-  "current_projects": [
-    {
-      "name": "Cipher Monks Hackathons",
-      "role": "Team Lead",
-      "details": "Growing the hackathon track record and running standups."
-    },
-    {
-      "name": "Personal AI Agent",
-      "role": "Developer",
-      "details": "Building a context-aware AI portfolio assistant for krish.dev."
-    }
-  ],
-  "achievements": [
-    "Shipped 8 production apps.",
-    "Google Student Ambassador.",
-    "Former NSS Head."
-  ],
-  "contact_information": {
-    "email": "mistrykrish2005@gmail.com"
-  },
-  "links": {
-    "github": "https://github.com/KrishMistry18",
-    "linkedin": "Available upon request",
-    "portfolio": "https://portfolio-eta-pied-17.vercel.app/"
-  }
 }

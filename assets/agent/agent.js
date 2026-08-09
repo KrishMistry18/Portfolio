@@ -15,9 +15,12 @@ const agentTemplate = `
     <div id="agent-messages">
       <div class="agent-msg bot">Hi! I'm Krish's personal AI assistant. You can ask me about his projects, skills, or experience.</div>
       <div id="agent-suggestions">
-        <button class="agent-sugg-btn">What did Krish build?</button>
+        <button class="agent-sugg-btn">Who is Krish?</button>
+        <button class="agent-sugg-btn">What are his strongest skills?</button>
         <button class="agent-sugg-btn">Tell me about ImpactGlobe.</button>
-        <button class="agent-sugg-btn">How can I contact Krish?</button>
+        <button class="agent-sugg-btn">What did he do at FlyRank?</button>
+        <button class="agent-sugg-btn">Show me his best AI projects.</button>
+        <button class="agent-sugg-btn">How can I contact him?</button>
       </div>
     </div>
     <div id="agent-input-area">
