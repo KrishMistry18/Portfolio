@@ -52,7 +52,7 @@ function initAgent() {
 
   function appendMessage(role, text) {
     const msg = document.createElement("div");
-    msg.className = \`agent-msg \${role}\`;
+    msg.className = `agent-msg ${role}`;
     msg.textContent = text;
     messagesDiv.appendChild(msg);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
