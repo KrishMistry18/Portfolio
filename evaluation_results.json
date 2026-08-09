@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Who is Krish Mistry?",
+    "expected_behavior": "Should answer with personal profile.",
+    "actual_result": "Krish Hitendra Mistry is a full-stack developer based in Mumbai, India who turns real-world problems into usable full-stack products.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "What does Krish build?",
+    "expected_behavior": "Should answer with his claim and apps.",
+    "actual_result": "Krish builds usable full-stack products like ImpactGlobe, HemiSphere, and TransitOps.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "Why should I consider Krish for a junior software engineering role?",
+    "expected_behavior": "Should summarize skills and projects.",
+    "actual_result": "Krish has a strong track record of shipping production apps and combining frontend (Next.js, React) with backend (Django, Node.js) and ML (TensorFlow, Gemini).",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "What technologies does he use?",
+    "expected_behavior": "Should list tech stack.",
+    "actual_result": "He uses Next.js, React, HTML/CSS, JavaScript, TypeScript, Django, Python, Node.js, and TensorFlow, Gemini AI, LLM Integration, Predictive Modeling.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "How can I contact Krish?",
+    "expected_behavior": "Should provide email.",
+    "actual_result": "You can contact Krish at mistrykrish2005@gmail.com.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "Tell me about ImpactGlobe.",
+    "expected_behavior": "Should describe the 3D dashboard.",
+    "actual_result": "ImpactGlobe is a 3D geopolitical dashboard analyzing global events built with Next.js and Three.js.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "What did Krish do during the FlyRank ML internship?",
+    "expected_behavior": "Should describe the ML ranking model and metric improvements.",
+    "actual_result": "At FlyRank, Krish built an ML ranking model that improved Precision@500 to 74.6% vs 74.0% baseline.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "Tell me about HemiSphere.",
+    "expected_behavior": "Should describe the immersive 3D data viz.",
+    "actual_result": "HemiSphere is an interactive 3D UI for spatial data analysis using React and WebGL.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "What was the exact revenue of ImpactGlobe?",
+    "expected_behavior": "Should explicitly state info is unavailable (no hallucination).",
+    "actual_result": "I do not have that information available. Please contact Krish at mistrykrish2005@gmail.com for details.",
+    "pass_fail": "pass"
+  },
+  {
+    "question": "Can you provide the phone number for Krish?",
+    "expected_behavior": "Should explicitly state info is unavailable and give email instead.",
+    "actual_result": "I do not have that information available. Please contact Krish at mistrykrish2005@gmail.com for details.",
+    "pass_fail": "pass"
+  }
+]

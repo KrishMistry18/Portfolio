@@ -1,0 +1,169 @@
+/* agent.css */
+#agent-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: 'DM Sans', sans-serif;
+}
+
+#agent-button {
+  background-color: var(--accent, #4f8ef7);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#agent-button:hover {
+  transform: scale(1.05);
+  background-color: #3b76e1;
+}
+
+#agent-panel {
+  display: none;
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  width: 350px;
+  height: 500px;
+  background-color: var(--bg-2, #0d0f1a);
+  border: 1px solid var(--text-muted, #4a4e66);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#agent-panel.open {
+  display: flex;
+}
+
+#agent-header {
+  background-color: var(--bg-3, #111422);
+  padding: 16px;
+  border-bottom: 1px solid var(--text-muted, #4a4e66);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#agent-header h3 {
+  margin: 0;
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  color: var(--text-primary, #f0f0f5);
+}
+#agent-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary, #8b8fa8);
+  cursor: pointer;
+  font-size: 18px;
+}
+#agent-close:hover {
+  color: var(--text-primary, #f0f0f5);
+}
+
+#agent-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.agent-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+.agent-msg.user {
+  align-self: flex-end;
+  background-color: var(--accent, #4f8ef7);
+  color: #fff;
+}
+.agent-msg.bot {
+  align-self: flex-start;
+  background-color: var(--bg-3, #111422);
+  color: var(--text-primary, #f0f0f5);
+  border: 1px solid var(--text-muted, #4a4e66);
+}
+
+#agent-input-area {
+  padding: 12px;
+  border-top: 1px solid var(--text-muted, #4a4e66);
+  display: flex;
+  gap: 8px;
+  background-color: var(--bg-2, #0d0f1a);
+}
+#agent-input {
+  flex: 1;
+  background-color: var(--bg-3, #111422);
+  border: 1px solid var(--text-muted, #4a4e66);
+  color: var(--text-primary, #f0f0f5);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+}
+#agent-input:focus {
+  border-color: var(--accent, #4f8ef7);
+}
+#agent-send {
+  background-color: var(--green, #3ecf8e);
+  color: #07080f;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#agent-send:hover {
+  background-color: #35b37b;
+}
+
+/* Suggested pills */
+#agent-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.agent-sugg-btn {
+  background: transparent;
+  border: 1px solid var(--accent, #4f8ef7);
+  color: var(--accent, #4f8ef7);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.agent-sugg-btn:hover {
+  background: var(--accent, #4f8ef7);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  #agent-panel {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+}

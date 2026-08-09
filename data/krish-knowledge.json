@@ -1,0 +1,118 @@
+{
+  "personal_profile": {
+    "name": "Krish Hitendra Mistry",
+    "location": "Mumbai, India",
+    "claim": "I turn real-world problems into usable full-stack products."
+  },
+  "portfolio_positioning": "A dark, technical, futuristic aesthetic emphasizing clean structure and developer-centric presentation.",
+  "education": {
+    "institution": "St. Francis Institute of Technology (SFIT), Mumbai",
+    "degree": "B.E. Information Technology",
+    "cgpa": "9.2",
+    "graduation_year": "Final Year"
+  },
+  "skills": {
+    "frontend": [
+      "Next.js",
+      "React",
+      "HTML/CSS",
+      "JavaScript",
+      "TypeScript"
+    ],
+    "backend": [
+      "Django",
+      "Python",
+      "Node.js"
+    ],
+    "ai_ml": [
+      "TensorFlow",
+      "Gemini AI",
+      "LLM Integration",
+      "Predictive Modeling"
+    ],
+    "mobile": [
+      "Flutter"
+    ]
+  },
+  "projects": [
+    {
+      "name": "ImpactGlobe",
+      "problem": "Need for a unified geopolitical tracking dashboard.",
+      "what_i_built": "A 3D geopolitical dashboard analyzing global events.",
+      "technologies": [
+        "Next.js",
+        "Three.js",
+        "AI Integration"
+      ],
+      "key_decisions": [
+        "Used Three.js for interactive globe visualization"
+      ],
+      "outcome": "Deployed to production, used as portfolio flagship.",
+      "status": "Completed",
+      "links": []
+    },
+    {
+      "name": "HemiSphere",
+      "problem": "Lack of immersive 3D data visualization for spatial data.",
+      "what_i_built": "An interactive 3D UI for spatial data analysis.",
+      "technologies": [
+        "React",
+        "WebGL"
+      ],
+      "key_decisions": [],
+      "outcome": "Successful production deployment.",
+      "status": "Completed",
+      "links": []
+    },
+    {
+      "name": "TransitOps",
+      "problem": "Public transit tracking inefficiencies.",
+      "what_i_built": "A real-time transit operations tracker.",
+      "technologies": [
+        "Django",
+        "React"
+      ],
+      "key_decisions": [],
+      "outcome": "Production app.",
+      "status": "Completed",
+      "links": []
+    }
+  ],
+  "flyrank_internship": {
+    "company": "FlyRank",
+    "role": "Machine Learning Intern",
+    "what_i_built": "A ranking model to score content refresh opportunities using Google Search Console data.",
+    "technologies": [
+      "Python",
+      "Scikit-Learn",
+      "Pandas"
+    ],
+    "outcome": "Precision@500 improved to 74.6% vs 74.0% baseline. Deployed research paper via GitHub Pages.",
+    "status": "Completed Capstone"
+  },
+  "current_projects": [
+    {
+      "name": "Cipher Monks Hackathons",
+      "role": "Team Lead",
+      "details": "Growing the hackathon track record and running standups."
+    },
+    {
+      "name": "Personal AI Agent",
+      "role": "Developer",
+      "details": "Building a context-aware AI portfolio assistant for krish.dev."
+    }
+  ],
+  "achievements": [
+    "Shipped 8 production apps.",
+    "Google Student Ambassador.",
+    "Former NSS Head."
+  ],
+  "contact_information": {
+    "email": "mistrykrish2005@gmail.com"
+  },
+  "links": {
+    "github": "https://github.com/KrishMistry18",
+    "linkedin": "Available upon request",
+    "portfolio": "https://portfolio-eta-pied-17.vercel.app/"
+  }
+}
