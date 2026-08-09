@@ -70,7 +70,7 @@ ${JSON.stringify(kb, null, 2)}
         } else if (userMsg.includes("salary") || userMsg.includes("address") || userMsg.includes("phone")) {
             reply = "I don't have that information in Krish's public profile.";
         } else {
-            reply = "This is a mock response. Please provide a GEMINI_API_KEY for dynamic AI responses.";
+            reply = "Ask Krish AI is temporarily unavailable. Please use the portfolio or contact Krish directly.";
         }
 
         return res.status(200).json({ reply });
