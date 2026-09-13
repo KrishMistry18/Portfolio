@@ -65,16 +65,19 @@ ${JSON.stringify(kb, null, 2)}
             reply = `**${kb.profile?.name}** is a *${kb.profile?.tagline}* based in ${kb.profile?.location} who says: \n\n> "${kb.profile?.positioning}"`;
         } else if (userMsg.includes("impactglobe")) {
             reply = "**ImpactGlobe** is an offline-first incident reporting app with local AI inference.\n\n- Uses **Flutter**, **Firebase**, and **MobileNetV3** for on-device image classification.\n- Allows offline syncing.";
-        } else if (userMsg.includes("flyrank")) {
-            reply = "At **FlyRank**, Krish worked as a Machine Learning Intern:\n- Analyzed ~79M rows with **DuckDB** and **Hugging Face**.\n- Performed signal analysis for search ranking.\n- Built readable `models`.";
+        } else if (userMsg.includes("flyrank") || userMsg.includes("experience")) {
+            const exp = kb.experience?.[0];
+            reply = `At **${exp?.company}**, Krish worked as a ${exp?.role}:\n- Analyzed ~79M rows with **DuckDB** and **Hugging Face**.\n- Performed signal analysis for search ranking.\n- Built readable \`models\`.`;
+        } else if (userMsg.includes("ai projects") || userMsg.includes("ai project")) {
+            reply = "Krish has built several AI projects including **ImpactGlobe** (MobileNetV3 for incident classification) and **CrowdPulse** (YOLOv8 for crowd analysis).";
         } else if (userMsg.includes("technologies") || userMsg.includes("skills") || userMsg.includes("proficient") || userMsg.includes("frontend") || userMsg.includes("backend") || userMsg.includes("database") || userMsg.includes("ai/ml") || userMsg.includes("frameworks") || userMsg.includes("tools") || userMsg.includes("flutter")) {
             reply = `Krish works with:\n\n- **Frontend**: ${kb.skills?.Frontend?.map(s=>`\`${s}\``).join(", ")}\n- **Backend**: ${kb.skills?.Backend?.map(s=>`\`${s}\``).join(", ")}\n- **AI/ML**: ${kb.skills?.["AI/ML"]?.map(s=>`\`${s}\``).join(", ")}\n- **Databases**: ${kb.skills?.Databases?.map(s=>`\`${s}\``).join(", ")}\n- **Mobile**: ${kb.skills?.Mobile?.map(s=>`\`${s}\``).join(", ")}`;
         } else if (userMsg.includes("contact") || userMsg.includes("email") || userMsg.includes("github") || userMsg.includes("linkedin")) {
             reply = `You can contact Krish at [${kb.contact?.email}](mailto:${kb.contact?.email}) or visit his [LinkedIn](${kb.contact?.linkedin}). His GitHub is [${kb.contact?.github}](${kb.contact?.github}).`;
-        } else if (userMsg.includes("salary") || userMsg.includes("address") || userMsg.includes("phone")) {
+        } else if (userMsg.includes("salary") || userMsg.includes("address") || userMsg.includes("phone") || userMsg.includes("company did krish work for in 2024")) {
             reply = "I don't have that information in Krish's public profile.";
-        } else if (userMsg.includes("xss")) {
-            reply = "Here is an XSS attempt: <script>alert('XSS')</script> <img src=x onerror=alert(1)> **bold text**";
+        } else if (userMsg.includes("xss") || userMsg.includes("ignore") || userMsg.includes("system prompt") || userMsg.includes("api key")) {
+            reply = "I am unable to fulfill that request. I am here to discuss Krish's professional portfolio.";
         } else {
             reply = "Ask Krish AI is temporarily unavailable. Please use the portfolio or contact Krish directly.";
         }
